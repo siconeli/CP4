@@ -8,7 +8,7 @@
 {% block menu %}
 <div class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="100">
+        <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="80">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,11 +29,27 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Arquivo
+                  Consultas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Novo Processo Administrativo Tributário</a>
-                  <a class="dropdown-item" href="#">Novo Processo Judicial</a>
+                  <a class="dropdown-item" href="#">Processos Administrativos Tributários</a>
+                  <a class="dropdown-item" href="#">Processos Judiciais</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Processos Tributários Arquivados</a>
+                  <a class="dropdown-item" href="#">Processos Judiciais Arquivados</a>
+
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cadastros
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Cadastro de Tipos de Andamento</a>
+                  <a class="dropdown-item" href="#">Cadastro de Varas/Comarcas</a>
+                  <a class="dropdown-item" href="#">Cadastro de Ações</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Corrigir Pessoa</a>
                 </div>
               </li>
           </ul>
