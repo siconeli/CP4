@@ -25,13 +25,13 @@
     </div>
     {% endblock %}
 
-    {% block conteudo %}
     <div class="container">
-        <h3>template de modelo</h3>
+        {% block conteudo %}
+            <h3>template de modelo</h3>
 
-        <p>conteúdo do site</p>
+            <p>conteúdo do site</p>
+        {% endblock %}
     </div>
-    {% endblock %}
 
     {% block rodape %}
     <div class="bg-light">
