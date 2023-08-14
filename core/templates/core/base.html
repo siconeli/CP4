@@ -1,12 +1,44 @@
 {% load static %}
+{% load bootstrap4 %} 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base</title>
+
+    {% block titulo %}
+    <title>base</title>
+    {% endblock %}
+
+    {% bootstrap_css %}
 </head>
 <body>
-    
+    {% block menu %}
+    <div class="bg-light">
+        Código do meu menu
+    </div>
+    {% endblock %}
+
+    {% block destaque %}
+    <div class="bg-secondary">
+        figuras de destaque
+    </div>
+    {% endblock %}
+
+    {% block conteudo %}
+    <div class="container">
+        <h3>template de modelo</h3>
+
+        <p>conteúdo do site</p>
+    </div>
+    {% endblock %}
+
+    {% block rodape %}
+    <div class="bg-light">
+        Rodapé
+    </div>
+    {% endblock %}
+
+    {% bootstrap_javascript jquery='full' %}
 </body>
 </html>
