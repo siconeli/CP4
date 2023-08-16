@@ -32,6 +32,7 @@ class ProcessoAdministrativo(Base): #Cadastro de processo administrativo
     datand = models.DateField(verbose_name='Data Andamento') #Data andamento
     anda = models.IntegerField(verbose_name='Andamento Atual') #Andamento atual
     datprazo = models.DateField(verbose_name='Data Prazo') #Data prazo
+    upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
 
     def __str__(self):
         return f'{self.pat}'

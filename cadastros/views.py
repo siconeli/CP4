@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 ###### CREATE ######
 class CadProcessoAdmCreate(CreateView):
     model = ProcessoAdministrativo
-    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo']
+    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo', 'upload']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')  #name da url, irá direcionar para a url
 
@@ -17,7 +17,7 @@ class CadProcessoAdmCreate(CreateView):
 ###### UPDATE ######
 class CadProcessoAdmUpdate(UpdateView):
     model = ProcessoAdministrativo
-    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo']
+    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo', 'upload']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
 

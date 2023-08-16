@@ -121,8 +121,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+
+#Arquivos de Media/Upload
 MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR / 'media')
+MEDIA_ROOT = str(BASE_DIR / 'media') #cria a pasta 'media' para onde irão todos os arquivos enviados
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
