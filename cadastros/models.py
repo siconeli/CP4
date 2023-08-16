@@ -9,18 +9,18 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
+    
+class UnidadeFederativa(Base):
+    uf = models.CharField(max_length=50) 
 
-# class UnidadeFederativa(Base):
-#     uf = models.CharField(max_length=2)
-#     descricao = models.CharField(max_length=150, verbose_name='Descrição')
+    def __str__(self):
+        return f'{self.uf}'
 
-#     def __str__(self):
-#         return f'{self.nome}'
 
 class ProcessoAdministrativo(Base):
     pat = models.IntegerField() #PAT n°
     munic = models.CharField(max_length=50, verbose_name='Município') #Município
-    #uf = models.ForeignKey('cadastros.UnidadeFederativa', on_delete=models.CASCADE)
+    uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT)
     datini = models.DateField() #Data inicial
     datfin = models.DateField() #Data final
     datdivat = models.DateField() #Data dívida ativa
@@ -35,4 +35,3 @@ class ProcessoAdministrativo(Base):
 
     def __str__(self):
         return f'{self.pat}, {self.munic}'
-    

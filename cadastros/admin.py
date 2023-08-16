@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProcessoAdministrativo#, UnidadeFederativa
+from .models import UnidadeFederativa, ProcessoAdministrativo
 
+admin.site.register(UnidadeFederativa)
 admin.site.register(ProcessoAdministrativo)
-#admin.site.register(UnidadeFederativa)
