@@ -37,12 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'bootstrap4',
     'stdimage',
-    'core.apps.CoreConfig',
-    'cadastros.apps.CadastrosConfig',
-    'django_cleanup.apps.CleanupConfig', #Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
+    'core.apps.CoreConfig', # Minha aplicação 'core'
+    'cadastros.apps.CadastrosConfig', # Minha aplicação 'cadastros'
+    'django_cleanup.apps.CleanupConfig', # Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
+    'crispy_forms', # Para usar o Crispy forms para formulários do bootstrap4
+    'crispy_bootstrap4', # Para usar o Crispy forms para formulários do bootstrap4
 ]
+
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # Para definir para o Crispy que estou utilizando o bootstrap4
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
