@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'stdimage',
     'core.apps.CoreConfig',
     'cadastros.apps.CadastrosConfig',
+    'django_cleanup.apps.CleanupConfig', #Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
 ]
 
 MIDDLEWARE = [

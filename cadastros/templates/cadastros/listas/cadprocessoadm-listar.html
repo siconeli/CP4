@@ -14,6 +14,7 @@
         <tr>
             <th>Processo</th>
             <th>Município</th>
+            <th>Arquivo</th>
             <th>Opções</th>        
         </tr>
 
@@ -22,6 +23,7 @@
         <tr>
             <td> {{ processo.pat }}</td>
             <td> {{ processo.munic }}</td>
+            <td><a href="{{ processo.upload.url }}" class="btn btn-success btn-sm">Download</a></td>
             <td>
                 <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Editar</a>
                 <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
