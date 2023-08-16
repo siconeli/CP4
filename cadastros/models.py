@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Base(models.Model):
+class Base(models.Model): #Classe para registrar no banco de dados, data de criação e modificação dos registros.
     criados = models.DateField('Criação', auto_now_add=True)
     modificado = models.DateField('Atualização', auto_now=True)
     ativo = models.BooleanField('Ativo?', default=True)
@@ -10,17 +10,17 @@ class Base(models.Model):
         abstract = True
 
     
-class UnidadeFederativa(Base):  #Não terá um formulário para cadastro, irei cadastrar todas as uf através do painel admin
+class UnidadeFederativa(Base):  #Não terá um formulário para cadastro, irei cadastrar todas as uf através do painel admin.
     uf = models.CharField(max_length=50) 
 
     def __str__(self):
         return f'{self.uf}'
 
 
-class ProcessoAdministrativo(Base): #Campos do cadastro de processo administrativo
+class ProcessoAdministrativo(Base): #Cadastro de processo administrativo
     pat = models.IntegerField(verbose_name='PAT N°') #PAT n°
     munic = models.CharField(max_length=50, verbose_name='Município') #Município
-    uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT)
+    uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT) # O 'PROTECT' protege na hora de um delete, não deixa excluir se possuir algum vínculo.
     datini = models.DateField(verbose_name='Data Inicial') #Data inicial
     datfin = models.DateField(verbose_name='Data Final') #Data final
     datdivat = models.DateField(verbose_name='Data Dívida Ativa') #Data dívida ativa
@@ -34,4 +34,4 @@ class ProcessoAdministrativo(Base): #Campos do cadastro de processo administrati
     datprazo = models.DateField(verbose_name='Data Prazo') #Data prazo
 
     def __str__(self):
-        return f'{self.pat}, {self.munic}'
+        return f'{self.pat}'

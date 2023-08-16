@@ -1,0 +1,27 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Excluir Processo Administrativo</title>
+{% endblock %}
+
+{% block conteudo %}  
+<p class="lead">
+    Confirme para excluir o registro difinitivamente.
+</p>
+<hr>
+
+<form action="" method="post">
+    <p> 
+        Deseja excluir o Processo: <b>{{ object }}</b> 
+    </p>
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    
+</form>
+
+{% endblock %}

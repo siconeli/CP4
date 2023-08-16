@@ -1,0 +1,42 @@
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Listar Processo Administrativo</title>
+{% endblock %}
+
+{% block conteudo %}  
+<h3>Lista de Processos Administrativos</h3>
+
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Processo</th>
+            <th>Município</th>
+            <th>Opções</th>        
+        </tr>
+
+        {% for processo in object_list %}
+
+        <tr>
+            <td> {{ processo.pat }}</td>
+            <td> {{ processo.munic }}</td>
+            <td>
+                <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+
+        {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
+
+        <tr>
+            <td colspan="3">Nenhum processo registrado</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+{% endblock %}

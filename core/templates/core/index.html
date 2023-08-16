@@ -33,7 +33,7 @@
                         Arquivo
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'cad-proc-adm' %}">Novo Processo Administrativo Tributário</a>
+                        <a class="dropdown-item" href="{% url 'cre-proc-adm' %}">Novo Processo Administrativo Tributário</a>
                         <a class="dropdown-item" href="#">Novo Processo Judicial</a>
                     </div>
                     </li>
@@ -42,7 +42,7 @@
                         Consultas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Processos Administrativos Tributários</a>
+                        <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
                         <a class="dropdown-item" href="#">Processos Judiciais</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Processos Tributários Arquivados</a>
