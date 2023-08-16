@@ -10,14 +10,14 @@ class Base(models.Model):
         abstract = True
 
     
-class UnidadeFederativa(Base):
+class UnidadeFederativa(Base):  #Não terá um formulário para cadastro, irei cadastrar todas as uf através do painel admin
     uf = models.CharField(max_length=50) 
 
     def __str__(self):
         return f'{self.uf}'
 
 
-class ProcessoAdministrativo(Base):
+class ProcessoAdministrativo(Base): #Campos do cadastro de processo administrativo
     pat = models.IntegerField(verbose_name='PAT N°') #PAT n°
     munic = models.CharField(max_length=50, verbose_name='Município') #Município
     uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT)
