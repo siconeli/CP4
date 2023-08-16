@@ -1,6 +1,6 @@
 from django.urls import path
-#from .views import 
+#from .views import CadProcessoAdmCreate
 
 urlpatterns = [
-    #path('', .as_view(), name=''),
+    #path('cadastrar/administrativo/', CadProcessoAdmCreate.as_view(), name='cad-proc-adm'),
 ]
