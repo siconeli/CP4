@@ -2,5 +2,5 @@ from django.urls import path
 #from .views import CadProcessoAdmCreate
 
 urlpatterns = [
-    #path('cadastrar/administrativo/', CadProcessoAdmCreate.as_view(), name='cad-proc-adm'),
+    #path('cadastrar/administrativo/', CadProcessoAdmCreate.as_view(), name='cad-proc-adm'),  *Foi inserida na aplicação 'core' porque o menu está lá*
 ]

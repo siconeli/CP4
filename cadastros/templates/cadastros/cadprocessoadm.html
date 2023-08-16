@@ -11,6 +11,12 @@
 
 <form action="" method="post">
 
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    
 </form>
 
 {% endblock %}
