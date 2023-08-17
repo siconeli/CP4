@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'stdimage',
     'core.apps.CoreConfig', # Minha aplicação 'core'
     'cadastros.apps.CadastrosConfig', # Minha aplicação 'cadastros'
+    'usuarios.apps.UsuariosConfig', # Minha aplicação 'usuários'
     'django_cleanup.apps.CleanupConfig', # Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
     'crispy_forms', # Para usar o Crispy forms para formulários do bootstrap4
     'crispy_bootstrap4', # Para usar o Crispy forms para formulários do bootstrap4

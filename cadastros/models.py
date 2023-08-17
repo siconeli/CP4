@@ -18,7 +18,7 @@ class UnidadeFederativa(Base):  #Não terá um formulário para cadastro, irei c
 
 
 class ProcessoAdministrativo(Base): #Cadastro de processo administrativo
-    pat = models.IntegerField(verbose_name='PAT N°') #PAT n°
+    pat = models.IntegerField(verbose_name='PAT N°', unique=True) #PAT n° - Número do processo
     munic = models.CharField(max_length=50, verbose_name='Município') #Município
     uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT) # O 'PROTECT' protege na hora de um delete, não deixa excluir se possuir algum vínculo.
     datini = models.DateField(verbose_name='Data Inicial') #Data inicial
