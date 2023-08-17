@@ -10,16 +10,21 @@
 
 {% block conteudo %}
 
-<h3>Autenticação</h3>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <form action="" method="post">
+            <h3>Autenticação</h3>
+            
+            <hr>
 
-<form action="" method="post">
+            {% csrf_token %}
 
-    {% csrf_token %}
+            {{ form|crispy }}
 
-    {{ form|crispy }}
-
-    <button type="submit" class="btn btn-light mt-3">Entrar</button>
-    
-</form>
+            <button type="submit" class="btn btn-light mt-3">Entrar</button>
+            
+        </form>
+    </div>
+</div>
 
 {% endblock %}
