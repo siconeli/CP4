@@ -18,7 +18,8 @@ class CadProcessoAdmCreate(LoginRequiredMixin, CreateView):
 
 
 ###### UPDATE ######
-class CadProcessoAdmUpdate(UpdateView):
+class CadProcessoAdmUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = ProcessoAdministrativo
     fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo', 'upload']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
@@ -26,7 +27,8 @@ class CadProcessoAdmUpdate(UpdateView):
 
 
 ###### DELETE ######
-class CadProcessoAdmDelete(DeleteView):
+class CadProcessoAdmDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
     model = ProcessoAdministrativo
     template_name = 'cadastros/cadprocessoadm-deletar.html'
     success_url = reverse_lazy('list-proc-adm')
