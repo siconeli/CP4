@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     'crispy_bootstrap4', # Para usar o Crispy forms para formulários do bootstrap4
 ]
 
+
 # Crispy Forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4' # Para definir para o Crispy que estou utilizando o bootstrap4
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,7 +63,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'CP4.urls'
+
 
 TEMPLATES = [
     {
@@ -78,6 +82,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'CP4.wsgi.application'
 
@@ -127,16 +132,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
 STATIC_URL = 'static/'
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
-#Arquivos de Media/Upload
+
+# Arquivos de Media/Upload
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR / 'media') #cria a pasta 'media' para onde irão todos os arquivos enviados
-
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Configurações de autenticação padrão de login
+LOGIN_REDIRECT_URL = 'index'  # Redireciona para a url de nome'index' após realizar o login
+LOGOUT_REDIRECT_URL = 'login' # Ao fazer o logout(sair), ira direcionar para a url de nome 'login'
+LOGIN_URL = 'login'  # Ao tentar acessar uma funcionalidade com permissão apenas para quem tem login, ira direcionar para a url de nome 'login'
