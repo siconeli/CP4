@@ -67,11 +67,10 @@
                         </div>
                     </li>
 
-                    
                     {% if request.user.is_authenticated %}  <!-- Se a requisição tem um usuário que está autenticado, mostra a 'li' a baixo -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Usuário
+                        {{ request.user }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
