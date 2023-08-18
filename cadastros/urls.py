@@ -4,7 +4,6 @@ from .views import CadProcessoAdmUpdate
 from .views import CadProcessoAdmDelete
 from .views import CadProcessoAdmList
 
-
 urlpatterns = [
     ###### CREATE ######
     path('cadastrar/administrativo/', CadProcessoAdmCreate.as_view(), name='cre-proc-adm'),  
@@ -17,4 +16,5 @@ urlpatterns = [
 
     ###### LIST ######
     path('listar/administrativo/', CadProcessoAdmList.as_view(), name='list-proc-adm'),
+
 ]

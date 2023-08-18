@@ -1,30 +1,122 @@
-{% extends 'core/index.html' %}
-
 {% load static %}
+
+{% load bootstrap4 %} 
 
 {% load crispy_forms_tags %}
 
-{% block titulo %}
-<title>Login</title>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sem Permissões</title>
 
-{% block conteudo %}
+    {% bootstrap_css %}
+</head>
+<body>
 
-<div class="row">
-    <div class="col-md-4 mx-auto">
-        <form action="" method="post">
-            <h3>Autenticação</h3>
+    {% if request.user.is_authenticated %}  <!-- Se o usuário for autenticado(estiver logado): -->
+    
+    <div class="container">
+        <div class="bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <img src="{% static 'img/CP4.png' %}" alt="" width="80">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
             
-            <hr>
-
-            {% csrf_token %}
-
-            {{ form|crispy }}
-
-            <button type="submit" class="btn btn-light mt-3">Entrar</button>
-            
-        </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Início <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Novo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'cre-proc-adm' %}">Novo Processo Administrativo Tributário</a>
+                        <a class="dropdown-item" href="#">Novo Processo Judicial</a>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Consultas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
+                        <a class="dropdown-item" href="#">Processos Judiciais</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Processos Tributários Arquivados</a>
+                        <a class="dropdown-item" href="#">Processos Judiciais Arquivados</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Cadastros
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Cadastro de Tipos de Andamento</a>
+                        <a class="dropdown-item" href="#">Cadastro de Varas/Comarcas</a>
+                        <a class="dropdown-item" href="#">Cadastro de Ações</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Corrigir Pessoa</a>
+                        </div>
+                    </li>
+    
+                    {% if request.user.is_authenticated %}  <!-- Se a requisição tem um usuário que está autenticado, mostra a 'li' a baixo -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ request.user }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+                        </div>
+                    </li>
+    
+                    {% else %}  <!-- Se não, mostra a 'li' a baixo -->
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+    
+                    {% endif %}
+    
+                </ul>
+                </div>
+            </nav>
+          </div>
     </div>
-</div>
 
-{% endblock %}
+    <div class="container">
+        <h1>Usuário sem permissão de acesso</h1>
+    </div>
+    
+    {% else %}
+    
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <form action="" method="post">
+                <h3>Login</h3>
+                
+                <hr>
+    
+                {% csrf_token %}
+    
+                {{ form|crispy }}
+    
+                <button type="submit" class="btn btn-light mt-3">Entrar</button>
+                
+            </form>
+        </div>
+    </div>
+    
+    {% endif %}
+
+
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>
+
+
