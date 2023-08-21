@@ -5,6 +5,8 @@ from .views import CadProcessoAdmDelete
 from .views import CadProcessoAdmList
 from .views import AndamentosList
 from .views import CadAndamentoCreate
+from .views import CadAndamentoUpdate
+from .views import CadAndamentoDelete
 
 urlpatterns = [
     ###### VISUALIZAR ######
@@ -16,9 +18,11 @@ urlpatterns = [
 
     ###### UPDATE ######
     path('editar/administrativo/<int:pk>/', CadProcessoAdmUpdate.as_view(), name='upd-proc-adm'),
+    path('editar/andamento/administrativo/<int:pk>/', CadAndamentoUpdate.as_view(), name='upd-and-proc-adm'),
 
     ###### DELETE ######
     path('excluir/administrativo/<int:pk>/', CadProcessoAdmDelete.as_view(), name='del-proc-adm'),
+    path('excluir/andamento/administrativo/<int:pk>/', CadAndamentoDelete.as_view(), name='del-and-proc-adm' ), #continuar
 
     ###### LIST ######
     path('listar/administrativo/', CadProcessoAdmList.as_view(), name='list-proc-adm'),

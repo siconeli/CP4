@@ -10,8 +10,12 @@
 
 {% block conteudo %}  
 <h3>Lista de Processos Administrativos</h3>
-
 <hr>
+
+<a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>
+
+<br></br>
+
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>

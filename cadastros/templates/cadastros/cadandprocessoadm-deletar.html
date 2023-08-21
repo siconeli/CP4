@@ -1,0 +1,29 @@
+<!--Tela de confirmação de 'delete' do Andamento Administrativo-->
+
+{% extends 'core/index.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Excluir Andamento</title>
+{% endblock %}
+
+{% block conteudo %}  
+<p class="lead">
+    Confirme para excluir o registro difinitivamente.
+</p>
+<hr>
+
+<form action="" method="post">
+    <p> 
+        Deseja excluir o Andamento: <b>{{ object.andamento }}</b> 
+    </p>
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    
+</form>
+
+{% endblock %}

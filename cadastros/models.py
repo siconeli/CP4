@@ -28,7 +28,7 @@ class CadAndamentos(Base): # Cadastro de tipos de andamento realizado apenas pel
     def __str__(self):
         return f'{self.cadandamento}'
     
-class Andamento(Base):
+class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     datandamento = models.DateField(verbose_name='Data do Andamento')
     andamento = models.ForeignKey(CadAndamentos, on_delete=models.PROTECT) 
     dataprazo = models.DateField(verbose_name='Prazo')
@@ -40,20 +40,20 @@ class Andamento(Base):
     def __str__(self):
         return f'{self.datandamento}'
 
-class ProcessoAdministrativo(Base): # Cadastro de processo administrativo
-    pat = models.IntegerField(verbose_name='PAT N°', unique=True) # PAT n° - Número do processo
-    municipio = models.ForeignKey(Municipio, on_delete=models.PROTECT) # Município
+class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Campos do Formulário
+    pat = models.IntegerField(verbose_name='PAT N°', unique=True) # Número do processo
+    municipio = models.ForeignKey(Municipio, on_delete=models.PROTECT)
     uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT) # O 'PROTECT' protege na hora de um delete, não deixa excluir se possuir algum vínculo.
-    datini = models.DateField(verbose_name='Data Inicial') # Data inicial
-    datfin = models.DateField(verbose_name='Data Final') # Data final
-    datdivat = models.DateField(verbose_name='Data Dívida Ativa') # Data dívida ativa
-    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atributo') # Valor do Tributo
-    valmul = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor da Multa') # Valor da Multa
-    valcred = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Crédito') # Valor do Crédito
-    valatu = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atualizado') # Valor do Atualizado
-    datvalatu = models.DateField(verbose_name='Data Valor Atualizado') # Data valor atualizado
-    datand = models.DateField(verbose_name='Data Andamento') # Data andamento
-    datprazo = models.DateField(verbose_name='Data Prazo') # Data prazo
+    datini = models.DateField(verbose_name='Data Inicial') 
+    datfin = models.DateField(verbose_name='Data Final')
+    datdivat = models.DateField(verbose_name='Data Dívida Ativa')
+    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atributo') 
+    valmul = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor da Multa') 
+    valcred = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Crédito')
+    valatu = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atualizado')
+    datvalatu = models.DateField(verbose_name='Data Valor Atualizado') 
+    datand = models.DateField(verbose_name='Data Andamento') 
+    datprazo = models.DateField(verbose_name='Data Prazo') 
     #upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
 
     def __str__(self):
