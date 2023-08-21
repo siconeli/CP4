@@ -41,7 +41,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
         return f'{self.datandamento}'
 
 class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Campos do Formulário
-    pat = models.IntegerField(verbose_name='PAT N°', unique=True) # Número do processo
+    pat = models.IntegerField(verbose_name='PAT N°', unique=True, help_text='Número real do processo.') # Número do processo
     municipio = models.ForeignKey(Municipio, on_delete=models.PROTECT)
     uf = models.ForeignKey(UnidadeFederativa, on_delete=models.PROTECT) # O 'PROTECT' protege na hora de um delete, não deixa excluir se possuir algum vínculo.
     datini = models.DateField(verbose_name='Data Inicial') 
