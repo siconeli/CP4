@@ -34,7 +34,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'cre-proc-adm' %}">Novo Processo Administrativo Tributário</a>
-                        <a class="dropdown-item" href="#">Novo Processo Judicial</a>
+                        <!--<a class="dropdown-item" href="#">Novo Processo Judicial</a>-->
                     </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -43,13 +43,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
-                        <a class="dropdown-item" href="#">Processos Judiciais</a>
+                        <!--<a class="dropdown-item" href="#">Processos Judiciais</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Processos Tributários Arquivados</a>
                         <a class="dropdown-item" href="#">Processos Judiciais Arquivados</a>
-                        </div>
+                        </div>-->
                     </li>
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Cadastros
                         </a>
@@ -60,7 +60,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Corrigir Pessoa</a>
                         </div>
-                    </li>
+                    </li>-->
 
                     {% if request.user.is_authenticated %}  <!-- Se a requisição tem um usuário que está autenticado, mostra a 'li' a baixo -->
                     <li class="nav-item dropdown">

@@ -1,0 +1,50 @@
+<!--Lista de andamentos do processo administrativo-->
+
+{% extends 'core/index.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Lista de andamentos</title>
+{% endblock %}
+
+{% block conteudo %}
+<h1>Lista de Andamentos</h1>
+<hr>
+
+<a href="{% url 'cre-and-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Andamento</a>
+
+<br></br> <!--Pula Linha-->
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Ordem</th>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Prazo</th>
+            <th>Usuário</th>        
+        </tr>
+
+        {% for andamento in object_list %}
+        <tr>
+            <td> {{ andamento.id }}</td>
+            <td> {{ andamento.datandamento }}</td>
+            <td> {{ andamento.andamento }}</td>
+            <td> {{ andamento.dataprazo }}</td>
+            <td> {{ user }}</td>
+        </tr>
+
+        {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
+
+        <tr>
+            <td colspan="3">Nenhum andamento registrado</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+
+{% endblock %}

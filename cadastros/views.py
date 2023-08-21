@@ -1,7 +1,8 @@
+from django.views.generic import TemplateView # Módulo para apenas visualizar 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
 
-from .models import ProcessoAdministrativo
+from .models import ProcessoAdministrativo, Andamento
 
 from django.urls import reverse_lazy
 
@@ -9,14 +10,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin # Módulo para control
 from braces.views import GroupRequiredMixin # Para realizar o controle de grupos de permissões de usuários juntamente com o painel admin
 
 
+###### VISUALIZAR ######
+ 
+
+
 ###### CREATE ######
 class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"  # O usuário precisa estar no grupo 'consultores AEG' para ter permissão de realizar cadastros.
     model = ProcessoAdministrativo
-    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo', 'upload']
+    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
-    success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url 
+    success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
+
+
+class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    group_required = u"Consultores AEG"
+    model = Andamento
+    fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
+    template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
+    success_url = reverse_lazy('list-and-proc-adm')
+
 
 
 ###### UPDATE ######
@@ -24,7 +39,7 @@ class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
-    fields = ['pat', 'munic', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'anda', 'datprazo', 'upload']
+    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
 
@@ -44,3 +59,8 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView):
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
 
+
+class AndamentosList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Andamento
+    template_name = 'cadastros/listas/andprocessoadm-listar.html'   
