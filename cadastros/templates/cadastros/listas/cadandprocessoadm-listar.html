@@ -12,7 +12,17 @@
 <h3>Andamentos do Processo: X</h3>
 <hr>
 
-<!--<br></br>-->
+
+<!--Formulário do campo de pesquisa(Filtro)-->
+<form action="?" method="get">
+    <input type="text" name="anda" id="" value="{{ request.GET.anda }}" class="p-1 border" autocomplete="off" placeholder="Nº do Processo">
+    
+    <button type="submit" class="btn btn-success">Buscar</button>
+    
+    <a href="{% url 'list-and-proc-adm' %}" class="btn btn-light">Limpar</a>
+</form>
+
+<br></br>
 
 <div class="table-responsive">
     <table class="table table-striped">

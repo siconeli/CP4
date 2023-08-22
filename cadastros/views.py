@@ -85,6 +85,7 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
     paginate_by = 10 # Número de registros listados na minha list
 
+    # Para filtrar dados através do campo input
     def get_queryset(self):
         buscaprocesso = self.request.GET.get('processo') # processo é o 'name' la do input da pesquisa
 
@@ -103,14 +104,13 @@ class CadAndamentosList(LoginRequiredMixin, ListView):
     # paginate_by = 10
 
     # def get_queryset(self):
+    #     buscaanda = self.request.GET.get('anda')
 
-    #     buscaprocesso = ProcessoAdministrativo.objects.all()
-
-    #     if buscaprocesso:
-    #         andamentos = Andamento.objects.filter(processo__icontains=buscaprocesso)
+    #     if buscaanda:
+    #         andamentos = Andamento.objects.filter(andamento__icontains=buscaanda)
     #     else:
-    #         andamentos = ProcessoAdministrativo.objects.all()
-
+    #         andamentos = Andamento.objects.all()
+        
     #     return andamentos
         
 

@@ -23,7 +23,7 @@ urlpatterns = [
 
     ###### CREATE ######
     path('cadastrar/administrativo/', CadProcessoAdmCreate.as_view(), name='cre-proc-adm'), 
-    path('cadastrar/andamentos/administrativo/<int:pk>/', CadAndamentoCreate.as_view(), name='cre-and-proc-adm' ), 
+    path('cadastrar/andamentos/administrativo/', CadAndamentoCreate.as_view(), name='cre-and-proc-adm' ), 
 
 
     ###### UPDATE ######

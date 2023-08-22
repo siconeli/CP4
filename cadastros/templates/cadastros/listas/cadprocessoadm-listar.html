@@ -24,7 +24,7 @@
 <br></br>
 
 <!--Botão para cadastrar novo processo-->
-<a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>  
+<a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a> <a href="{% url 'cre-and-proc-adm' %}" class="btn btn-warning btn-sm" >+ Novo Andamento</a>
 
 <br></br>
 
@@ -49,7 +49,6 @@
                 <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
             </td>
             <td>
-                <a href="{% url 'cre-and-proc-adm' processo.pk%}" class="btn btn-warning btn-sm" >Novo</a>
                 <a href="{% url 'list-and-proc-adm' %}" class="btn btn-warning btn-sm" >Listar</a>          
             </td>
         </tr>
