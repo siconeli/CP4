@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.views.generic import TemplateView # Módulo apenas para visualizar 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
@@ -29,7 +31,7 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = Andamento
-    fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
+    fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-and-proc-adm')
 
@@ -81,12 +83,34 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
     login_url = reverse_lazy('login')
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
+    paginate_by = 10 # Número de registros listados na minha list
 
+    def get_queryset(self):
+        buscaprocesso = self.request.GET.get('processo') # processo é o 'name' la do input da pesquisa
 
-class AndamentosList(LoginRequiredMixin, ListView):
+        if buscaprocesso:
+            processos = ProcessoAdministrativo.objects.filter(pat__icontains=buscaprocesso)
+        else:
+            processos = ProcessoAdministrativo.objects.all()
+
+        return processos
+        
+
+class CadAndamentosList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Andamento
     template_name = 'cadastros/listas/cadandprocessoadm-listar.html'   
+    # paginate_by = 10
 
+    # def get_queryset(self):
 
+    #     buscaprocesso = ProcessoAdministrativo.objects.all()
+
+    #     if buscaprocesso:
+    #         andamentos = Andamento.objects.filter(processo__icontains=buscaprocesso)
+    #     else:
+    #         andamentos = ProcessoAdministrativo.objects.all()
+
+    #     return andamentos
+        
 

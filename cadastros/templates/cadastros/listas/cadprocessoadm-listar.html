@@ -12,9 +12,22 @@
 <h3>Lista de Processos Administrativos</h3>
 <hr>
 
-<a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>
+<!--Formulário do campo de pesquisa(Filtro)-->
+<form action="?" method="get">
+    <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="p-1 border" autocomplete="off" placeholder="Nº do Processo">
+
+    <button type="submit" class="btn btn-success">Buscar</button>
+
+    <a href="{% url 'list-proc-adm' %}" class="btn btn-light">Limpar</a>
+</form>
 
 <br></br>
+
+<!--Botão para cadastrar novo processo-->
+<a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>  
+
+<br></br>
+
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -22,8 +35,8 @@
             <th>Processo</th>
             <th>Município</th>
             <!--<th>Arquivo</th>-->
-            <th>Andamento</th>
             <th>Alterar/Excluir</th>        
+            <th>Andamento</th>
         </tr>
 
         {% for processo in object_list %}
@@ -31,17 +44,20 @@
             <td> {{ processo.pat }}</td>
             <td> {{ processo.municipio }}</td>
             <!--<td><a href="{{ processo.upload.url }}" class="btn btn-success btn-sm" target="_blank">Download</a></td>-->
-            <td><a href="{% url 'list-and-proc-adm' %}" class="btn btn-warning btn-sm" >Listar</a></td>
             <td>
                 <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Editar</a>
                 <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+            <td>
+                <a href="{% url 'cre-and-proc-adm' processo.pk%}" class="btn btn-warning btn-sm" >Novo</a>
+                <a href="{% url 'list-and-proc-adm' %}" class="btn btn-warning btn-sm" >Listar</a>          
             </td>
         </tr>
 
         {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
 
         <tr>
-            <td colspan="3">Nenhum processo registrado</td>
+            <td colspan="3">Nenhum processo listado</td>
         </tr>
 
         {% endfor %}

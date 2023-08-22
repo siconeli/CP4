@@ -9,28 +9,27 @@
 {% endblock %}
 
 {% block conteudo %}
-<h3>Lista de Andamentos</h3>
+<h3>Andamentos do Processo: X</h3>
 <hr>
 
-<a href="{% url 'cre-and-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Andamento</a>
-
-<br></br> <!--Pula Linha-->
+<!--<br></br>-->
 
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
-            <th>Ordem</th>
+            <th>Processo</th>
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
             <th>Usuário</th>
+
             <th>Alterar/Excluir</th> 
                   
         </tr>
 
         {% for andamento in object_list %}
         <tr>
-            <td> {{ andamento.id }}</td>
+            <td> {{ andamento.processo }}</td>
             <td> {{ andamento.datandamento }}</td>
             <td> {{ andamento.andamento }}</td>
             <td> {{ andamento.dataprazo }}</td>
