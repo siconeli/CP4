@@ -99,18 +99,25 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
 
 class CadAndamentosList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    model = Andamento
+    model = Andamento, ProcessoAdministrativo
     template_name = 'cadastros/listas/cadandprocessoadm-listar.html'   
-    # paginate_by = 10
+    paginate_by = 10
 
-    # def get_queryset(self):
-    #     buscaanda = self.request.GET.get('anda')
+    def get_queryset(self):
+        # buscaanda = self.request.GET.get('anda')  #PRECISO ENTENDER COMO BUSCAR O PROCESSO_ID DO PROCESSO QUE DESEJO
 
-    #     if buscaanda:
-    #         andamentos = Andamento.objects.filter(andamento__icontains=buscaanda)
-    #     else:
-    #         andamentos = Andamento.objects.all()
-        
-    #     return andamentos
+        buscaanda = 7
+
+        if buscaanda:
+            buscaprocesso = Andamento.objects.filter(processo_id=buscaanda)
+            #andamentos = Andamento.objects.filter(processo_id=buscaanda)
+        else:
+            buscaprocesso = Andamento.objects.all()
+
+
+        #buscaprocesso = Andamento.objects.filter(processo_id=1) # É assim que se faz!
+
+        return buscaprocesso
+
         
 

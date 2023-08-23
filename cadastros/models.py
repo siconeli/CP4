@@ -35,6 +35,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datprazo = models.DateField(verbose_name='Data Prazo')
     #upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
 
+
     def __str__(self):
         return f'{self.pat}'
     
@@ -44,7 +45,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
         ('abertura', 'Abertura'), ('fechamento', 'Fechamento'),
     )
 
-    processo = models.ForeignKey(ProcessoAdministrativo, on_delete=models.CASCADE)
+    processo = models.ForeignKey(ProcessoAdministrativo, on_delete=models.CASCADE) # Relacionamento 'One to Many'
     datandamento = models.DateField(verbose_name='Data do Andamento')
     andamento = models.CharField(max_length=50, choices=andamentos, verbose_name='Andamento')
     dataprazo = models.DateField(verbose_name='Prazo')
@@ -54,7 +55,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     complemento = models.CharField(max_length=150)
 
     def __str__(self):
-        return f'{self.andamento}'
+        return f'{self.processo} {self.andamento}'
 
 
 

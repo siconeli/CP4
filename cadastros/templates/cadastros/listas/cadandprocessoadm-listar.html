@@ -27,18 +27,19 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
+            <th>Ordem</th>
             <th>Processo</th>
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
             <th>Usuário</th>
-
             <th>Alterar/Excluir</th> 
                   
         </tr>
 
         {% for andamento in object_list %}
         <tr>
+            <td> {{ andamento.pk }}</td>
             <td> {{ andamento.processo }}</td>
             <td> {{ andamento.datandamento }}</td>
             <td> {{ andamento.andamento }}</td>

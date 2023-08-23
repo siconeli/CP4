@@ -4,10 +4,10 @@ from .models import ProcessoAdministrativo, Andamento
 
 @admin.register(Andamento)
 class AndamentoAdmin(admin.ModelAdmin):
-    list_display = ('andamento', 'datandamento')
+    list_display = ('processo', 'andamento')
 
 
 @admin.register(ProcessoAdministrativo)
 class ProcessoAdministrativoAdmin(admin.ModelAdmin):
-    list_display = ('pat', 'municipio', 'uf')
+    list_display = ('pat')
 
