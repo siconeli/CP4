@@ -1,6 +1,6 @@
-from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import TemplateView # Módulo apenas para visualizar 
+from typing import Any, Dict
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
 
@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin # Módulo para controlar o acesso de um usuário a determinada url, através de autenticação de login
 from braces.views import GroupRequiredMixin # Para realizar o controle de grupos de permissões de usuários juntamente com o painel admin
 
+from .forms import AndamentoForm  # Para cadastrar andamento vinculando ao processo
 
 ###### VISUALIZAR ######
  
@@ -27,13 +28,25 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
 
 
+# View do create de andamentos, preenche automaticamente o Campo processo
 class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # Cadastro Andamento Administrativo
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = Andamento
-    fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
+    form_class = AndamentoForm
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
+
+    # Funções para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
+    def get_context_data(self, **kwargs): 
+        context = super().get_context_data(**kwargs)
+        context['processo_pk'] = self.kwargs.get('processo_pk')
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['processo_pk'] = self.kwargs.get('processo_pk') # Passa a processo_pk para o formulário
+        return kwargs
 
 
 
@@ -58,6 +71,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
 
   
 
+
 ###### DELETE ######
 class CadProcessoAdmDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView): # Delete Processo Administrativo
     login_url = reverse_lazy('login')
@@ -78,11 +92,9 @@ class CadAndamentoDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView): # 
 
 
 ###### LIST ######
-
 # View da lista de processos
-class CadProcessoAdmList(GroupRequiredMixin, LoginRequiredMixin, ListView): # List Processo Administrativo
+class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administrativo
     login_url = reverse_lazy('login')
-    group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
     paginate_by = 10 # Número de registros listados na minha list
@@ -98,13 +110,13 @@ class CadProcessoAdmList(GroupRequiredMixin, LoginRequiredMixin, ListView): # Li
 
         return processos
     
+
 # View da Lista de andamentos do processo
-class CadAndamentosList(GroupRequiredMixin, LoginRequiredMixin, ListView):
+class CadAndamentosList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
-    group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadandprocessoadm-listar.html'  
-
+    Paginate_by = 10
     # Irá buscar os andamentos vinculados ao processo e listar
     def get_queryset(self):
         
