@@ -33,6 +33,7 @@
     <table class="table table-striped">
         <tr>
             <th>Processo</th>
+            <th>ID</th>
             <th>Município</th>
             <!--<th>Arquivo</th>-->
             <th>Alterar/Excluir</th>        
@@ -42,12 +43,18 @@
         {% for processo in object_list %}
         <tr>
             <td> {{ processo.pat }}</td>
+            <td> {{ processo.pk }}</td>
             <td> {{ processo.municipio }}</td>
             <!--<td><a href="{{ processo.upload.url }}" class="btn btn-success btn-sm" target="_blank">Download</a></td>-->
             <td>
                 <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Editar</a>
                 <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
             </td>
+            <td> 
+                <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm">Listar</a>
+            </td>
+
+
         </tr>
 
         {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->

@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import TemplateView # Módulo apenas para visualizar 
@@ -33,30 +34,19 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     model = Andamento
     fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
-    success_url = reverse_lazy('list-and-proc-adm')
+    success_url = reverse_lazy('list-proc-adm')
 
 
 
 
 ###### UPDATE ######
-
-
-# Lista de andamentos dentro do Processo
-class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView, ListView): # Update Processo Administrativo
+class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # Update Processo Administrativo
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
     fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
     template_name = 'cadastros/cadprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
-
-    def get_queryset(self):
-
-        processo = ProcessoAdministrativo.objects.get(pk=9)
-        andamento = processo.andamento_set.all()
-
-        return andamento
-
 
 
 class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # Update Andamento Administrativo
@@ -65,7 +55,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     model = Andamento
     fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
-    success_url = reverse_lazy('list-and-proc-adm')
+    success_url = reverse_lazy('list-proc-adm')
 
   
 
@@ -83,19 +73,22 @@ class CadAndamentoDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView): # 
     group_required = u"Consultores AEG"
     model = Andamento
     template_name = 'cadastros/cadandprocessoadm-deletar.html'
-    success_url = reverse_lazy('list-and-proc-adm')
+    success_url = reverse_lazy('list-proc-adm')
 
 
 
 
 ###### LIST ######
-class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administrativo
+
+# View da lista de processos
+class CadProcessoAdmList(GroupRequiredMixin, LoginRequiredMixin, ListView): # List Processo Administrativo
     login_url = reverse_lazy('login')
+    group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
     paginate_by = 10 # Número de registros listados na minha list
 
-    # Para filtrar dados através do campo input
+    # Para filtrar dados através do campo input (fazendo busca)
     def get_queryset(self):
         buscaprocesso = self.request.GET.get('processo') # processo é o 'name' la do input da pesquisa
 
@@ -106,20 +99,26 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
 
         return processos
     
+# View da Lista de andamentos do processo
+class CadAndamentosList(GroupRequiredMixin, LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    group_required = u"Consultores AEG"
+    model = ProcessoAdministrativo
+    template_name = 'cadastros/listas/cadandprocessoadm-listar.html'  
+
+    # Irá buscar os andamentos vinculados ao processo    
+    def get_queryset(self):
+        
+        busca_pk = self.kwargs.get('pk') # Pega a pk(primary key) da URL
+        
+        processo = ProcessoAdministrativo.objects.get(pk=busca_pk)  # Pega o processo que possui a pk recebida (pk é a primary key do processo)
+        andamentos = processo.andamento_set.all()  # Pega todos os atributos do andamento
+        
+        return andamentos
 
 
-# class CadAndamentosList(GroupRequiredMixin, LoginRequiredMixin, UpdateView, ListView):
-#     login_url = reverse_lazy('login')
-#     model = ProcessoAdministrativo
-#     template_name = 'cadastros/lista/cadandprocessoadm-listar.html'   
-#     paginate_by = 10
 
-#     def get_queryset(self):
-    
-#         processo = ProcessoAdministrativo.objects.get(pk=1)
-#         andamento = processo.andamento_set.all()
 
-#         return andamento
 
 
 

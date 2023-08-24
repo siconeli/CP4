@@ -1,45 +1,34 @@
-<!--Lista de andamentos do processo administrativo-->
+<!-- Formulário de cadastro de Processo Administrativo-->
 
 {% extends 'core/index.html' %}
 
 {% load static %}
 
+{% load crispy_forms_tags %} <!-- Para usar o bootstrap4 para formulários -->
+
 {% block titulo %}
-<title>Lista de andamentos</title>
+<title>Cadastrar Processo Administrativo</title>
 {% endblock %}
 
-{% block conteudo %}
-<h3>Andamentos do Processo: X</h3>
+{% block conteudo %}  
+<h3>Lista de andamentos do Processo</h3>
 <hr>
 
-
-<!--Formulário do campo de pesquisa(Filtro)-->
-<form action="?" method="get">
-    <input type="text" name="anda" id="" value="{{ request.GET.anda }}" class="p-1 border" autocomplete="off" placeholder="Nº do Processo">
-    
-    <button type="submit" class="btn btn-success">Buscar</button>
-    
-    <a href="{% url 'list-and-proc-adm' %}" class="btn btn-light">Limpar</a>
-</form>
-
-<br></br>
-
+<h5>Andamentos do Processo</h5>
+<!--Lista de andamentos-->
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
-            <th>Ordem</th>
             <th>Processo</th>
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
             <th>Usuário</th>
             <th>Alterar/Excluir</th> 
-                  
         </tr>
 
         {% for andamento in object_list %}
         <tr>
-            <td> {{ andamento.pk }}</td>
             <td> {{ andamento.processo }}</td>
             <td> {{ andamento.datandamento }}</td>
             <td> {{ andamento.andamento }}</td>
@@ -62,5 +51,6 @@
     </table>
 </div>
 
+<hr>
 
 {% endblock %}
