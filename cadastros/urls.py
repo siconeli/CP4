@@ -12,7 +12,7 @@ from .views import CadAndamentoDelete
 
 
 from .views import CadProcessoAdmList
-from .views import CadAndamentosList
+
 
 
 
@@ -38,6 +38,6 @@ urlpatterns = [
 
     ###### LIST ######
     path('listar/administrativo/', CadProcessoAdmList.as_view(), name='list-proc-adm'),
-    path('listar/andamentos/administrativo/', CadAndamentosList.as_view(), name='list-and-proc-adm'),
+    # path('editar/administrativo/<int:pk>/', CadAndamentosList.as_view(), name='upd-proc-adm'),
 
 ]

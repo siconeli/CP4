@@ -9,5 +9,5 @@ class AndamentoAdmin(admin.ModelAdmin):
 
 @admin.register(ProcessoAdministrativo)
 class ProcessoAdministrativoAdmin(admin.ModelAdmin):
-    list_display = ('pat')
+    list_display = ('pat',)
 
