@@ -1,11 +1,13 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 
 class Base(models.Model): # Classe para registrar no banco de dados, data de criação e modificação dos registros.
     criados = models.DateField('Criação', auto_now_add=True)
     modificado = models.DateField('Atualização', auto_now=True)
     ativo = models.BooleanField('Ativo?', default=True)
-
+    
     class Meta:
         abstract = True
 
@@ -33,7 +35,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datvalatu = models.DateField(verbose_name='Data Valor Atualizado') 
     datand = models.DateField(verbose_name='Data Andamento') 
     datprazo = models.DateField(verbose_name='Data Prazo')
-    #upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
+    upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
 
 
     def __str__(self):
@@ -56,6 +58,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
 
     def __str__(self):
         return f'{self.processo} {self.andamento}'
+
 
 
 

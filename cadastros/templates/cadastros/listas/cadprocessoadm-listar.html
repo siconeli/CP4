@@ -33,9 +33,8 @@
     <table class="table table-striped">
         <tr>
             <th>Processo</th>
-            <th>ID</th>
             <th>Município</th>
-            <!--<th>Arquivo</th>-->
+            <th>Arquivo</th>
             <th>Alterar/Excluir</th>        
             <th>Andamento</th>
         </tr>
@@ -43,9 +42,8 @@
         {% for processo in object_list %}
         <tr>
             <td> {{ processo.pat }}</td>
-            <td> {{ processo.pk }}</td>
             <td> {{ processo.municipio }}</td>
-            <!--<td><a href="{{ processo.upload.url }}" class="btn btn-success btn-sm" target="_blank">Download</a></td>-->
+            <td><a href="{{ processo.upload.url }}" class="btn btn-success btn-sm" target="_blank">Download</a></td>
             <td>
                 <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Editar</a>
                 <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>

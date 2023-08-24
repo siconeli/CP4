@@ -23,7 +23,6 @@
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
-            <th>Usuário</th>
             <th>Alterar/Excluir</th> 
         </tr>
 
@@ -33,7 +32,6 @@
             <td> {{ andamento.datandamento }}</td>
             <td> {{ andamento.andamento }}</td>
             <td> {{ andamento.dataprazo }}</td>
-            <td> {{ user }}</td> 
             <td>
                 <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-warning btn-sm">Editar</a>
                 <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
