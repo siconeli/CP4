@@ -14,6 +14,11 @@
 <h3>Lista de andamentos do Processo</h3>
 <hr>
 
+<!--Botão para abrir o template de envio de arquivos do processo-->
+<a href="{% url 'index' %}" class="btn btn-warning btn-sm">Abrir</a>
+
+<br></br>
+
 <h5>Andamentos do Processo</h5>
 <!--Lista de andamentos-->
 <div class="table-responsive">
@@ -23,7 +28,7 @@
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
-            <th>Alterar/Excluir</th> 
+            <th>Editar/Excluir</th> 
         </tr>
 
         {% for andamento in object_list %}
