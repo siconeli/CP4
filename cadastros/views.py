@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from typing import Any
 from django.db.models.query import QuerySet
 from django.views.generic import TemplateView # Módulo apenas para visualizar 
@@ -106,7 +105,7 @@ class CadAndamentosList(GroupRequiredMixin, LoginRequiredMixin, ListView):
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadandprocessoadm-listar.html'  
 
-    # Irá buscar os andamentos vinculados ao processo    
+    # Irá buscar os andamentos vinculados ao processo e listar
     def get_queryset(self):
         
         busca_pk = self.kwargs.get('pk') # Pega a pk(primary key) da URL
