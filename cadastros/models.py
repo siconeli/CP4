@@ -55,20 +55,9 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     Funcionario = models.CharField(max_length=50, verbose_name='Funcionário')
     datrecebimento = models.DateField(verbose_name='Confirmado o Recebimento em')
     complemento = models.CharField(max_length=150)
+    arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 1') 
+    arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 2')
 
     def __str__(self):
         return f'{self.processo} {self.andamento}'
 
-
-class ArquivosProcAdm(Base):
-    arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 1') 
-    arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 2') 
-    arq3 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 3') 
-    arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 4') 
-    arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 5') 
-    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 6') 
-    
-
-
-
-    

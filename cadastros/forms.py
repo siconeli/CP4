@@ -7,7 +7,7 @@ from .models import Andamento
 class AndamentoForm(forms.ModelForm):
     class Meta:
         model = Andamento
-        fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
+        fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2']
 
     # Recupera a pk(primary key) do kwargs e define como atributo do formulário
     def __init__(self, *args, **kwargs):

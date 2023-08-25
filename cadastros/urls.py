@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import CadProcessoAdmCreate
 from .views import CadAndamentoCreate
-from .views import CadArquivosAdmCreate
 
 
 from .views import CadProcessoAdmUpdate
@@ -14,7 +13,7 @@ from .views import CadAndamentoDelete
 
 from .views import CadProcessoAdmList
 from .views import CadAndamentosList
-
+from .views import CadArquivosAdmList
 
 
 
@@ -25,7 +24,7 @@ urlpatterns = [
     ###### CREATE ######
     path('cadastrar/processo/adm/', CadProcessoAdmCreate.as_view(), name='cre-proc-adm'), 
     path('cadastrar/andamento/adm/<int:processo_pk>', CadAndamentoCreate.as_view(), name='cre-and-proc-adm'),
-    path('cadastrar/arquivo/andamento/processo/adm/<int:pk>', CadArquivosAdmCreate.as_view(), name='cre-arq-proc-adm'),
+
 
     ###### UPDATE ######
     path('editar/processo/adm/<int:pk>/', CadProcessoAdmUpdate.as_view(), name='upd-proc-adm'),
@@ -40,5 +39,6 @@ urlpatterns = [
     ###### LIST ######
     path('listar/processo/adm/', CadProcessoAdmList.as_view(), name='list-proc-adm'),
     path('listar/andamento/adm/<int:pk>/', CadAndamentosList.as_view(), name='list-and-proc-adm'),
+    path('listar/arquivo/andamento/adm/<int:pk>/', CadArquivosAdmList.as_view(), name='list-arq-and-adm'),
 
 ]

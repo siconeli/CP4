@@ -1,0 +1,49 @@
+<!--Lista de Arquivos do andamento-->
+
+{% extends 'core/index.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Arquivos Andamento</title>
+{% endblock %}
+
+{% block conteudo %}  
+<h3>Arquivos do andamento</h3>
+<hr>
+
+<!--Tabela(lista) de Arquivos do andamento-->
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Arquivo 1</th>
+            <th>Arquivo 2</th>
+        </tr>
+
+        {% for arquivo in arquivos %}
+        <tr>
+            <td>
+                {{ arquivo.arq1.name }}
+                <a href="{{ arquivo.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+            </td>
+            <td>
+                {{ arquivo.arq2.name }}
+                <a href="{{ arquivo.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+            </td>
+
+        </tr>
+
+        {% empty %} <!-- Se não tiver nenhum registro de arquivos, irá retornar a mensagem a baixo -->
+
+        <tr>
+            <td colspan="3">Nenhum arquivo encontrado</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+<hr>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from typing import Any, Dict
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
 
-from .models import ProcessoAdministrativo, Andamento, ArquivosProcAdm
+from .models import ProcessoAdministrativo, Andamento
 
 from django.urls import reverse_lazy
 
@@ -48,12 +48,6 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
         kwargs['processo_pk'] = self.kwargs.get('processo_pk') # Passa a processo_pk para o formulário
         return kwargs
 
-# View do create de arquivos do processo
-class CadArquivosAdmCreate(CreateView):
-    model = ArquivosProcAdm
-    fields = ['arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
-    template_name = 'cadastros/cadarqand-cadastrar.html'
-    success_url = reverse_lazy('list-proc-adm')
 
 
 
@@ -134,8 +128,17 @@ class CadAndamentosList(LoginRequiredMixin, ListView):
         return andamentos
 
 
+class CadArquivosAdmList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Andamento
+    template_name = 'cadastros/listas/cadarquivoand-listar.html'
+    context_object_name = 'arquivos'
 
-
-
-
-
+    def get_queryset(self):
+    
+        # busca_pk = self.kwargs.get('pk') # Pega a pk(primary key) da URL
+        
+        processo = ProcessoAdministrativo.objects.get(pk=3)  # Pega o processo que possui a pk recebida (pk é a primary key do processo)
+        # andamentos = processo.andamento_set.all()  # Pega todos os atributos do andamento
+        
+        return processo
