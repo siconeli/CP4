@@ -23,7 +23,7 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"  # O usuário precisa estar no grupo 'consultores AEG' para ter permissão de realizar cadastros.
     model = ProcessoAdministrativo
-    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo', 'upload']
+    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
 
@@ -56,7 +56,7 @@ class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
-    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo', 'upload'] 
+    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
     template_name = 'cadastros/cadprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
 
@@ -65,7 +65,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = Andamento
-    fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento']
+    fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
 
@@ -132,13 +132,16 @@ class CadArquivosAdmList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Andamento
     template_name = 'cadastros/listas/cadarquivoand-listar.html'
-    context_object_name = 'arquivos'
+    context_object_name = 'arquivos' # Da um nome ao object_list da iteração criada no template
 
     def get_queryset(self):
     
-        # busca_pk = self.kwargs.get('pk') # Pega a pk(primary key) da URL
+        andamento_pk = self.kwargs.get('andamento_pk') # Pega a pk(primary key) da URL
         
-        processo = ProcessoAdministrativo.objects.get(pk=3)  # Pega o processo que possui a pk recebida (pk é a primary key do processo)
-        # andamentos = processo.andamento_set.all()  # Pega todos os atributos do andamento
-        
-        return processo
+        andamento = Andamento.objects.filter(pk=andamento_pk)  # Pega o andamento que possui a pk recebida (pk é a primary key do processo)
+        # Usei o 'filter' para conseguir iterar com o objeto.
+
+        return andamento
+
+
+    

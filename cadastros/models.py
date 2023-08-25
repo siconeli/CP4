@@ -35,8 +35,6 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datvalatu = models.DateField(verbose_name='Data Valor Atualizado') 
     datand = models.DateField(verbose_name='Data Andamento') 
     datprazo = models.DateField(verbose_name='Data Prazo')
-    upload = models.FileField(upload_to='uploads/', verbose_name='Arquivo Processo')  # Para fazer upload de arquivos
-
 
     def __str__(self):
         return f'{self.pat}'
@@ -55,9 +53,13 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     Funcionario = models.CharField(max_length=50, verbose_name='Funcionário')
     datrecebimento = models.DateField(verbose_name='Confirmado o Recebimento em')
     complemento = models.CharField(max_length=150)
-    arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 1') 
-    arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 2')
+    arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True) 
+    arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    arq3 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
 
     def __str__(self):
-        return f'{self.processo} {self.andamento}'
+        return f'Processo: {self.processo} Andamento: {self.andamento} Arquivo: {self.arq1} Arquivo: {self.arq2} Arquivo: {self.arq3} Arquivo: {self.arq4} Arquivo: {self.arq5} Arquivo: {self.arq6}'
 

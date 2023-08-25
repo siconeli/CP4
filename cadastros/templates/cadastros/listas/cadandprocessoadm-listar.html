@@ -25,10 +25,8 @@
             <th>Data</th>
             <th>Tipo</th>
             <th>Prazo</th>
-            <th>Arquivo 1</th>
-            <th>Arquivo 2</th>
             <th>Editar/Excluir</th> 
-            <th>teste</th>
+            <th>Arquivo</th>
         </tr>
 
         {% for andamento in object_list %}
@@ -37,13 +35,11 @@
             <td> {{ andamento.datandamento }}</td>
             <td> {{ andamento.andamento }}</td>
             <td> {{ andamento.dataprazo }}</td>
-            <td><a href="{{ andamento.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Abrir</a></td>
-            <td><a href="{{ andamento.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Abrir</a></td>
             <td>
                 <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-warning btn-sm">Abrir Andamento</a>
                 <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
             </td>
-            <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm">Teste</a>
+            <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm">Listar</a>
             </td>
         </tr>
 

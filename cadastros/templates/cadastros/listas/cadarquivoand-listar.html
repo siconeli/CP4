@@ -8,29 +8,68 @@
 <title>Arquivos Andamento</title>
 {% endblock %}
 
-{% block conteudo %}  
-<h3>Arquivos do andamento</h3>
+{% block conteudo %} 
+
+<h3>Arquivos do andamento: {{ andamento.andamento }}</h3>
 <hr>
+
 
 <!--Tabela(lista) de Arquivos do andamento-->
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
-            <th>Arquivo 1</th>
-            <th>Arquivo 2</th>
+            <th>Arquivo</th>
+            <th>Arquivo</th>
+            <th>Arquivo</th>
+            <th>Arquivo</th>
+            <th>Arquivo</th>
+            <th>Arquivo</th>
         </tr>
 
         {% for arquivo in arquivos %}
         <tr>
-            <td>
-                {{ arquivo.arq1.name }}
-                <a href="{{ arquivo.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-            </td>
-            <td>
-                {{ arquivo.arq2.name }}
-                <a href="{{ arquivo.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-            </td>
+            {% if arquivo.arq1 %}
+                <td>
+                    {{ arquivo.arq1.name }}
+                    <a href="{{ arquivo.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
 
+            {% if arquivo.arq2 %}
+                <td>
+                    {{ arquivo.arq2.name }}
+                    <a href="{{ arquivo.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
+
+            {% if arquivo.arq3 %}
+                <td>
+                    {{ arquivo.arq3.name }}
+                    <a href="{{ arquivo.arq3.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
+
+            {% if arquivo.arq4 %}
+                <td>
+                    {{ arquivo.arq4.name }}
+                    <a href="{{ arquivo.arq4.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
+
+            {% if arquivo.arq5 %}
+                <td>
+                    {{ arquivo.arq5.name }}
+                    <a href="{{ arquivo.arq5.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
+
+            {% if arquivo.arq6 %}
+                <td>
+                    {{ arquivo.arq6.name }}
+                    <a href="{{ arquivo.arq6.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                </td>
+            {% endif %}
+            
         </tr>
 
         {% empty %} <!-- Se não tiver nenhum registro de arquivos, irá retornar a mensagem a baixo -->
