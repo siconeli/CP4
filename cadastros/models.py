@@ -60,7 +60,14 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
         return f'{self.processo} {self.andamento}'
 
 
-
+class ArquivosProcAdm(Base):
+    arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 1') 
+    arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 2') 
+    arq3 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 3') 
+    arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 4') 
+    arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 5') 
+    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo 6') 
+    
 
 
 

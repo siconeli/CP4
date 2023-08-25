@@ -4,7 +4,7 @@ from typing import Any, Dict
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
 
-from .models import ProcessoAdministrativo, Andamento
+from .models import ProcessoAdministrativo, Andamento, ArquivosProcAdm
 
 from django.urls import reverse_lazy
 
@@ -48,6 +48,12 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
         kwargs['processo_pk'] = self.kwargs.get('processo_pk') # Passa a processo_pk para o formulário
         return kwargs
 
+# View do create de arquivos do processo
+class CadArquivosAdmCreate(CreateView):
+    model = ArquivosProcAdm
+    fields = ['arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
+    template_name = 'cadastros/arquivos-andamento.html'
+
 
 
 
@@ -56,7 +62,7 @@ class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
-    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
+    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo', 'upload'] 
     template_name = 'cadastros/cadprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
 

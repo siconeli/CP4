@@ -17,7 +17,7 @@
 
     {% if request.user.is_authenticated %}  <!-- Se o usuário for autenticado(estiver logado): -->
     
-    <div class="container">
+    <div> <!-- class="container"-->
         <div class="bg-light">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <img src="{% static 'img/CP4.png' %}" alt="" width="80">
@@ -32,14 +32,14 @@
                     </li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Novo
+                        Processos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'cre-proc-adm' %}">Novo Processo Administrativo Tributário</a>
-                        <a class="dropdown-item" href="#">Novo Processo Judicial</a>
+                        <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
+                        <!--<a class="dropdown-item" href="#">Novo Processo Judicial</a>-->
                     </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Consultas
                         </a>
@@ -62,7 +62,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Corrigir Pessoa</a>
                         </div>
-                    </li>
+                    </li>-->
     
                     {% if request.user.is_authenticated %}  <!-- Se a requisição tem um usuário que está autenticado, mostra a 'li' a baixo -->
                     <li class="nav-item dropdown">
@@ -87,9 +87,20 @@
             </nav>
           </div>
     </div>
+    
+    <br></br>
 
     <div class="container">
-        <h1>Usuário sem permissão de acesso</h1>
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Usuário sem permissão de acesso!</h4>
+            <p>Seu usuário não possui permissões para gerar um novo registro ou alterar um registro existente, apenas realizar consulta.</p>
+            <hr>
+            <p class="mb-0">Qualquer dúvida, entrar em contato com o Suporte</p>
+        </div>
+    </div>
+
+    <div class="container">
+    <a href="{% url 'list-proc-adm' %}" class="btn btn-warning btn-sm">Voltar</a>
     </div>
     
     {% else %}
