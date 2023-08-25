@@ -52,8 +52,8 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
 class CadArquivosAdmCreate(CreateView):
     model = ArquivosProcAdm
     fields = ['arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
-    template_name = 'cadastros/arquivos-andamento.html'
-
+    template_name = 'cadastros/cadarqand-cadastrar.html'
+    success_url = reverse_lazy('list-proc-adm')
 
 
 
