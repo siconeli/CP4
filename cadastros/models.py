@@ -22,7 +22,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
         ('selviria', 'Selvíria'), ('inocencia', 'Inocência'),
     )
 
-    pat = models.IntegerField(verbose_name='PAT N°', unique=True, help_text='Número real do processo.') # Número do processo
+    pat = models.IntegerField(verbose_name='Processo N°', unique=True, help_text='Número real do processo.') # Número do processo
     municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') 
     uf = models.CharField(max_length=2, choices=ufs, verbose_name='UF') 
     datini = models.DateField(verbose_name='Data Inicial') 
@@ -58,7 +58,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     arq3 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
     arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
     arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
-    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True) # blank=True para remover a obrigatoriedade de preencher o campo. 
 
     def __str__(self):
         return f'Processo: {self.processo} Andamento: {self.andamento} Arquivo: {self.arq1} Arquivo: {self.arq2} Arquivo: {self.arq3} Arquivo: {self.arq4} Arquivo: {self.arq5} Arquivo: {self.arq6}'

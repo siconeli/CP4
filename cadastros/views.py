@@ -56,7 +56,7 @@ class CadProcessoAdmUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = ProcessoAdministrativo
-    fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
+    fields = ['municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo'] 
     template_name = 'cadastros/cadprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
 
