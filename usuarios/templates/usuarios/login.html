@@ -1,63 +1,66 @@
+<!-- Template da página de Login para acesso ao sistema -->
+
+{% extends 'core/index.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sem Permissões</title>
+{% block titulo %}
+<title>Login</title>
+{% endblock %}
 
-</head>
-<body>
-
-    {% if request.user.is_authenticated %}  <!-- Se o usuário for autenticado(estiver logado): -->
-    
-    <div>
-        <div class="dropdown">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <img src="{% static 'img/CP4.png' %}" alt="" width="80">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'index' %}">Início <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Processos
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
-                    </div>
-                    </li>
-                    
-    
-                    {% if request.user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ request.user }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
-                        </div>
-                    </li>
-    
-                    {% else %}
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Entrar</a>
-                    </li>
-    
-                    {% endif %}
-    
+{% block menu %}
+<nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+        <img src="{% static 'img/CP4.png' %}" alt="" width="60">
+        <a class="navbar-brand" href="{% url 'index' %}">Controle de Processos</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+        <img src="{% static 'img/CP4.png' %}" alt="" width="60">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Início</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Processo
+                </a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a></li>
                 </ul>
-                </div>
-            </nav>
-          </div>
+            </li>
+
+            {% if request.user.is_authenticated %} <!--Se o usuário estiver logado(autenticado) mostrar opção 'Sair'-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ request.user }}
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                </ul>
+            </li>
+
+            {% else %} <!-- Senão opção 'Entrar' -->
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'login' %}">Entrar</a></li>
+            </ul>
+
+            {% endif %}
+            
+            </ul>
+        </div>
+        </div>
     </div>
+    </nav>
+{% endblock %}
+
+
 
 
     
@@ -79,23 +82,6 @@
     </div>
     
     {% else %}
-
-    <!-- Básico sem html e css -->
-    <!-- <div class="row">
-        <div class="col-md-4 mx-auto">
-            <form action="" method="post">
-                <h3>Entrar</h3>
-                
-                <hr>
-    
-                {% csrf_token %}
-    
-    
-                <button type="submit" class="btn btn-light mt-3">Entrar</button>
-                
-            </form>
-        </div>
-    </div> -->
 
     <!-- Painel de Login principal -->
     <section class="vh-100 gradient-custom">
