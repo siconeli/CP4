@@ -1,5 +1,5 @@
 {% load static %}
-{% load bootstrap4 %} 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,11 +10,14 @@
     <title>Controle de Processos</title>
     {% endblock %}
 
-    {% bootstrap_css %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+
 </head>
 <body>
 
-    <div > <!--class="container" (para deixar o menu como container)-->
+    <!--<div >
         {% block menu %}
         <div class="bg-light">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -34,26 +37,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a>
-                        <!--<a class="dropdown-item" href="#">Processos Judiciais</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Processos Tributários Arquivados</a>
-                        <a class="dropdown-item" href="#">Processos Judiciais Arquivados</a>
-                        </div>-->
                     </li>
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Cadastros
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Cadastro de Tipos de Andamento</a>
-                        <a class="dropdown-item" href="#">Cadastro de Varas/Comarcas</a>
-                        <a class="dropdown-item" href="#">Cadastro de Ações</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Corrigir Pessoa</a>
-                        </div>
-                    </li>-->
 
-                    {% if request.user.is_authenticated %}  <!-- Se a requisição tem um usuário que está autenticado, mostra a 'li' a baixo -->
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ request.user }}
@@ -63,7 +49,7 @@
                         </div>
                     </li>
 
-                    {% else %}  <!-- Se não, mostra a 'li' a baixo -->
+                    {% else %}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Login</a>
@@ -76,7 +62,55 @@
             </nav>
           </div>
         {% endblock %}
-    </div>
+    </div>-->
+
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <img src="{% static 'img/CP4.png' %}" alt="" width="60">
+            <a class="navbar-brand" href="#">Controle de Processos</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Início</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Processo
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a></li>
+                    <!-- <li><a class="dropdown-item" href="#">Outra opção</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Outra opção</a></li> -->
+                  </ul>
+                </li>
+
+                {% if request.user.is_authenticated %} <!--Se o usuário estiver logado(autenticado) mostrar está opção no menu-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {{ request.user }}
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+                    </ul>
+                  </li>
+                {% endif%}
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </nav>
 
     <div class="container">
         {% block conteudo %}    
@@ -92,6 +126,9 @@
     </div>
     {% endblock %}
 
-    {% bootstrap_javascript jquery='full' %}
+    <!-- Bootstrap JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
