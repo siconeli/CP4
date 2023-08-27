@@ -22,19 +22,19 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
         ('selviria', 'Selvíria'), ('inocencia', 'Inocência'),
     )
 
-    pat = models.IntegerField(verbose_name='Processo N°', unique=True, help_text='Número real do processo.') # Número do processo
-    municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') 
-    uf = models.CharField(max_length=2, choices=ufs, verbose_name='UF') 
-    datini = models.DateField(verbose_name='Data Inicial') 
-    datfin = models.DateField(verbose_name='Data Final')
-    datdivat = models.DateField(verbose_name='Data Dívida Ativa')
-    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atributo') 
-    valmul = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor da Multa') 
-    valcred = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Crédito')
-    valatu = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atualizado')
-    datvalatu = models.DateField(verbose_name='Data Valor Atualizado') 
-    datand = models.DateField(verbose_name='Data Andamento') 
-    datprazo = models.DateField(verbose_name='Data Prazo')
+    pat = models.IntegerField(verbose_name='Processo N°', unique=True, blank=True) # Número do processo
+    municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município', blank=True) 
+    uf = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True) 
+    datini = models.DateField(verbose_name='Data Inicial', blank=True) 
+    datfin = models.DateField(verbose_name='Data Final', blank=True)
+    datdivat = models.DateField(verbose_name='Data Dívida Ativa', blank=True)
+    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atributo', blank=True) 
+    valmul = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor da Multa', blank=True) 
+    valcred = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Crédito', blank=True)
+    valatu = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atualizado', blank=True)
+    datvalatu = models.DateField(verbose_name='Data Valor Atualizado', blank=True) 
+    datand = models.DateField(verbose_name='Data Andamento', blank=True) 
+    datprazo = models.DateField(verbose_name='Data Prazo', blank=True)
 
     def __str__(self):
         return f'{self.pat}'

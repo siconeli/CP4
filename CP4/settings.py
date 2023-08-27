@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l#8yh-^9#n*&*k6plcs!uvgg1xk)cpjma89jk^cu0+u&av9ts='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # Modo desenvolvimento
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    
     'stdimage',
     'core.apps.CoreConfig', # Minha aplicação 'core'
     'cadastros.apps.CadastrosConfig', # Minha aplicação 'cadastros'
@@ -46,7 +45,6 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig', # Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
 
 ]
-
 
 
 
@@ -129,9 +127,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-
-STATIC_URL = 'static/'
-STATIC_ROOT = str(BASE_DIR / 'staticfiles')
+# Configuração dos arquivos estáticos: css, js, imagens
+STATIC_URL = '/static/' # Usado durante o desenvolvimento
+STATIC_ROOT = str(BASE_DIR / 'staticfiles') # Usado durante a produção
 
 
 # Arquivos de Media/Upload

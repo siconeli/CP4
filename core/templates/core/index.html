@@ -6,12 +6,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    
     {% block titulo %}
     <title>CP-Aeg</title>
     {% endblock %}
+    
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <!-- Meu arquivo CSS próprio -->
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 
 </head>
 <body>
@@ -19,23 +24,25 @@
     {% block menu %}
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <img src="{% static 'img/CP4.png' %}" alt="" width="60">
-            <a class="navbar-brand" href="{% url 'index' %}">Controle de Processos</a>
+            <div id="img-menu">
+              <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="60">
+            </div>
+            <h3>Controle de Processos</h3>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-            <img src="{% static 'img/CP4.png' %}" alt="" width="60">
+            <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="80">
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Início</a>
+                  <a class="nav-link active" id="texto-navbar-menu" aria-current="page" href="{% url 'index' %}">Início</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" id="texto-navbar-menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Processo
                   </a>
                   <ul class="dropdown-menu">
@@ -45,7 +52,7 @@
 
                 {% if request.user.is_authenticated %} <!--Se o usuário estiver logado(autenticado) mostrar opção 'Sair'-->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="texto-navbar-menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ request.user }}
                     </a>
                     <ul class="dropdown-menu">
@@ -72,6 +79,11 @@
         <h1>Página Inicial</h1>
         <hr>
         <h3> Aeg - Assessoria e Consultoria Tributária</h3>
+
+        <div class="container">
+          <img src="{% static 'img/lobo.png' %}" alt="" width="500">
+        </div>
+
         {% endblock %}
     </div>
 

@@ -1,0 +1,21 @@
+body {
+    background-color: whitesmoke;
+}
+
+/* Corpo do Menu */
+.container-fluid {
+    background-color: #0098DB;
+}
+
+/* Navbar lateral do menu */
+#offcanvasNavbar {
+    background-color: #0098DB;
+}
+
+/* Texto do navbar lateral do menu */
+#texto-navbar-menu {
+    color: white;
+}
+
+
+
