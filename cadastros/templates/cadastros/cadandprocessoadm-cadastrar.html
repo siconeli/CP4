@@ -12,13 +12,16 @@
 <h3>Cadastrar Andamento Adm</h3>
 <hr>
 
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        
+        {% csrf_token %}
 
-    {{ form.as_p}}
+        {{ form.as_p}}
 
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
 
 <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
 <div class="container mt-4">

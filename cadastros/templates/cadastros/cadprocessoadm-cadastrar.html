@@ -8,19 +8,24 @@
 <title>Cadastrar Processo Adm</title>
 {% endblock %}
 
-{% block conteudo %}  
+{% block conteudo %} 
+ 
 <h3>Cadastro de Processo Administrativo</h3>
 <hr>
 
-<form action="" method="post" enctype="multipart/form-data">
+<div class="container">
 
-    {% csrf_token %}
+    <form action="" method="post" enctype="multipart/form-data">
 
-    {{ form.as_p}}
+        {% csrf_token %}
 
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-    
-</form>
+        {{ form.as_p}}
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        
+    </form>
+
+</div>
 
 <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
 <div class="container mt-4">
