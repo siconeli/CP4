@@ -24,16 +24,14 @@
     {% block menu %}
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <div id="img-menu">
-              <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="60">
-            </div>
+              <img src="{% static 'img/arquivo.png' %}" alt="" width="60">
             <h3>Controle de Processos</h3>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-            <img src="{% static 'img/logo-aeg-semfundo.png' %}" alt="" width="80">
+            <img src="{% static 'img/arquivo.png' %}" alt="" width="80">
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -62,7 +60,7 @@
   
                 {% else %} <!-- Senão opção 'Entrar' -->
 
-                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+                <a class="nav-link active" id="texto-navbar-menu" aria-current="page" href="{% url 'login' %}">Login</a>
 
                 {% endif %}
                 
@@ -74,18 +72,14 @@
     {% endblock %}
 
 
-    <div class="container">
-        {% block conteudo %}    
-        <h1>Página Inicial</h1>
-        <hr>
-        <h3> Aeg - Assessoria e Consultoria Tributária</h3>
-
-        <div class="container">
-          <img src="{% static 'img/lobo.png' %}" alt="" width="500">
-        </div>
-
-        {% endblock %}
+    {% block conteudo %}    
+    <div id="pag-inicio">
+      <h1>Página Inicial</h1>
+      <hr>
+      <h3> Aeg - Assessoria e Consultoria Tributária</h3>
+      <!-- <img src="{% static 'img/lobo.png' %}" alt=""  height="" width="1000"> -->
     </div>
+    {% endblock %}
 
     {% block rodape %}
     <div class="bg-light">
