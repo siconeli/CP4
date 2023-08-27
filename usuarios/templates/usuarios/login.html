@@ -1,5 +1,3 @@
-<!-- Template da página de Login para acesso ao sistema -->
-
 {% extends 'core/index.html' %}
 
 {% load static %}
@@ -8,120 +6,66 @@
 <title>Login</title>
 {% endblock %}
 
-{% block menu %}
-<nav class="navbar bg-body-tertiary fixed-top">
-    <div class="container-fluid">
-        <img src="{% static 'img/CP4.png' %}" alt="" width="60">
-        <a class="navbar-brand" href="{% url 'index' %}">Controle de Processos</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-        <img src="{% static 'img/CP4.png' %}" alt="" width="60">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Início</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Processo
-                </a>
-                <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'list-proc-adm' %}">Processos Administrativos Tributários</a></li>
-                </ul>
-            </li>
+{% block conteudo %}
 
-            {% if request.user.is_authenticated %} <!--Se o usuário estiver logado(autenticado) mostrar opção 'Sair'-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ request.user }}
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
-                </ul>
-            </li>
+{% if request.user.is_authenticated %}
 
-            {% else %} <!-- Senão opção 'Entrar' -->
+<br></br>
+<br></br>
 
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'login' %}">Entrar</a></li>
-            </ul>
-
-            {% endif %}
-            
-            </ul>
-        </div>
-        </div>
+<!-- Painel de aviso 'Sem permissão de acesso' -->
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Usuário sem permissão de acesso!</h4>
+        <p>Seu usuário não possui permissões para gerar um novo registro ou alterar um registro existente, apenas realizar consulta.</p>
+        <hr>
+        <p class="mb-0">Qualquer dúvida, entrar em contato com o Suporte</p>
     </div>
-    </nav>
-{% endblock %}
+</div>
 
+<div class="container">
+<a href="{% url 'list-proc-adm' %}" class="btn btn-warning btn-sm">Voltar</a>
+</div>
 
+{% else %}
 
+<!-- Painel de Login principal -->
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
 
-    
+                        <div class="mb-md-1 mt-md-1 pb-1">
 
-    <br></br>
+                            <!-- <h2 class="fw-bold mb-2 ">CP-Aeg</h2> -->
+                            <img src="{% static 'img/CP4.png' %}" alt="" width="60">
+                            <p class="text-white-50 mb-5">Por favor entre com seu usuário e senha</p>
+                            <form action="" method="post">
+                        
+                                {% csrf_token %}
 
-    <!-- Painel de aviso 'Sem permissão de acesso' -->
-    <div class="container">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Usuário sem permissão de acesso!</h4>
-            <p>Seu usuário não possui permissões para gerar um novo registro ou alterar um registro existente, apenas realizar consulta.</p>
-            <hr>
-            <p class="mb-0">Qualquer dúvida, entrar em contato com o Suporte</p>
-        </div>
-    </div>
+                                {{ form.as_p }}
 
-    <div class="container">
-    <a href="{% url 'list-proc-adm' %}" class="btn btn-warning btn-sm">Voltar</a>
-    </div>
-    
-    {% else %}
+                                <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
+                            </form>             
 
-    <!-- Painel de Login principal -->
-    <section class="vh-100 gradient-custom">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
-    
-                            <div class="mb-md-1 mt-md-1 pb-1">
-    
-                                <h2 class="fw-bold mb-2 ">CP-Aeg</h2>
-                                <p class="text-white-50 mb-5">Por favor entre com seu usuário e senha</p>
-                                <form action="" method="post">
-                            
-                                    {% csrf_token %}
-    
-                                    {{ form.as_p }}
-    
-                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
-                                </form>             
-    
-                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                    <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                    <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                    <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                                </div>
+                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
-    </section>
-    
-    {% endif %}
+        </div>
+    </div>
+</section>
 
+{% endif %}
 
-</body>
-</html>
-
+{% endblock %}
 

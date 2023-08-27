@@ -5,7 +5,7 @@
 {% load static %}
 
 {% block titulo %}
-<title>Cadastrar Processo Administrativo</title>
+<title>Cadastrar Processo Adm</title>
 {% endblock %}
 
 {% block conteudo %}  
@@ -21,6 +21,19 @@
     <button type="submit" class="btn btn-primary">Cadastrar</button>
     
 </form>
+
+<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
+<div class="container mt-4">
+    <button class="btn btn-danger" id="btnVoltar">Cancelar</button>
+</div>
+
+<script>
+    // Adicione um evento de clique ao botão
+    document.getElementById("btnVoltar").addEventListener("click", function() {
+        // Utilize a função window.history.back() para voltar para a página anterior
+        window.history.back();
+    });
+</script>
 
 
 {% endblock %}

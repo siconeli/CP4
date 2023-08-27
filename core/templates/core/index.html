@@ -53,11 +53,9 @@
                     </ul>
                 </li>
   
-                {% else %} <!-- Senão opçãp 'Emtrar' -->
+                {% else %} <!-- Senão opção 'Entrar' -->
 
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{% url 'login' %}">Entrar</a></li>
-                </ul>
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
 
                 {% endif %}
                 

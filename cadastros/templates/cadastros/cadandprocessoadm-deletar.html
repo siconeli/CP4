@@ -26,4 +26,17 @@
     
 </form>
 
+<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
+<div class="container mt-4">
+    <button class="btn btn-secondary" id="btnVoltar">Cancelar</button>
+</div>
+
+<script>
+    // Adicione um evento de clique ao botão
+    document.getElementById("btnVoltar").addEventListener("click", function() {
+        // Utilize a função window.history.back() para voltar para a página anterior
+        window.history.back();
+    });
+</script>
+
 {% endblock %}
