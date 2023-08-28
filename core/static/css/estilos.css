@@ -1,5 +1,6 @@
 body {
     background-color: whitesmoke;
+    margin: 0;
 }
 
 /* Corpo do Menu */
@@ -17,10 +18,10 @@ body {
     color: white;
 }
 
-#pag-inicio{
-    background-color: black;
-    /* width: ; */
-    height: 50;
+/* Imagem tela cheia da página principal */
+#pagina-principal {
+    width: 100vw;
+    height: 100vh;
+    background: url('../img/pagina-principal.png');
+    background-size: cover;
 }
-
-
