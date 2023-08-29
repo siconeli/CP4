@@ -15,7 +15,8 @@ from .forms import AndamentoForm  # Para preencher o campo processo automaticame
 
 ###### VISUALIZAR ######
  
-
+# class ExemploView(TemplateView):
+#     template_name = 'exemplo.html'
 
 
 ###### CREATE ######
@@ -27,6 +28,16 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
 
+    # Para o botão da página de editar cadastro, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['botao'] = 'Cadastrar'
+
+        return context
+        
+       
+    
 
 # View do create de andamentos, preenche automaticamente o Campo processo
 class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # Cadastro Andamento Administrativo
@@ -41,6 +52,7 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
         context['processo_pk'] = self.kwargs.get('processo_pk')
+        context['botao'] = 'Cadastrar' # Para o botão da página de cadastrar andamento, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
         return context
 
     def get_form_kwargs(self):
@@ -69,6 +81,13 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
 
+    # Para o botão da página de editar andamento, ter o nome 'Salvar' e não 'Cadastrar', pois utilizo o mesmo template para cadastrar e fazer update.
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['botao'] = 'Salvar'
+
+        return context
   
 
 
@@ -128,6 +147,7 @@ class CadAndamentosList(LoginRequiredMixin, ListView):
         return andamentos
 
 
+# View da Lista de arquivos do andamento
 class CadArquivosAdmList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Andamento
