@@ -133,8 +133,13 @@ STATIC_ROOT = str(BASE_DIR / 'staticfiles') # Usado durante a produção
 
 
 # Arquivos de Media/Upload
-MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR / 'media') #cria a pasta 'media' para onde irão todos os arquivos enviados
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = str(BASE_DIR / 'media') #cria a pasta 'media' para onde irão todos os arquivos enviados
+
+MEDIA_URL = '/uploads/' # Busca o arquivo na pasta uploads dentro do Servidor TrueNAS, quando é realizado um download.
+MEDIA_ROOT = ('//10.0.0.55/Geral/') # Encaminha o arquivo para o Servidor TrueNAS, quando é realizado um upload.
+
+
 
 
 # Default primary key field type
