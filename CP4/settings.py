@@ -132,10 +132,11 @@ STATIC_URL = '/static/' # Usado durante o desenvolvimento
 STATIC_ROOT = str(BASE_DIR / 'staticfiles') # Usado durante a produção
 
 
-# Arquivos de Media/Upload
+# Arquivos de Media (Para salvar em endereço Local na mesma máquina do código)
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = str(BASE_DIR / 'media') #cria a pasta 'media' para onde irão todos os arquivos enviados
 
+# Arquivos de Media (Para salvar os arquivos em um servidor externo, acessado via IP)
 MEDIA_URL = '/uploads/' # Busca o arquivo na pasta uploads dentro do Servidor TrueNAS, quando é realizado um download.
 MEDIA_ROOT = ('//10.0.0.55/Geral/') # Encaminha o arquivo para o Servidor TrueNAS, quando é realizado um upload.
 
