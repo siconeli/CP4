@@ -26,16 +26,7 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     model = ProcessoAdministrativo
     fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo']
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
-    success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
-
-    # Para o botão da página de editar cadastro, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-
-    #     context['botao'] = 'Cadastrar'
-
-    #     return context
-        
+    success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url        
        
     
 
@@ -78,17 +69,9 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     group_required = u"Consultores AEG"
     model = Andamento
     fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
-    template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
+    template_name = 'cadastros/cadandprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
 
-    # # Para o botão da página de editar andamento, ter o nome 'Salvar' e não 'Cadastrar', pois utilizo o mesmo template para cadastrar e fazer update.
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-
-    #     context['botao'] = 'Salvar'
-
-    #     return context
-  
 
 
 ###### DELETE ######
