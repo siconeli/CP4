@@ -8,6 +8,10 @@ body {
     background-color: #0098DB;
 }
 
+#text-menu {
+    color: white;
+}
+
 /* Navbar lateral do menu */
 #offcanvasNavbar {
     background-color: #0098DB;
@@ -22,6 +26,6 @@ body {
 #pagina-principal {
     width: 100vw;
     height: 100vh;
-    background: url('../img/fundo-tela-inicio.png');
+    background: url('../img/fundo.png');
     background-size: cover;
 }
