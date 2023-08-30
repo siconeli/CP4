@@ -9,70 +9,20 @@
 {% endblock %}
 
 {% block conteudo %} 
+<br>
+<br>
+<br>
+<br>
 
-<!-- <div class="container p-5">
-    <div class="row mb-3">
-        <div class="col">
-            <form action="" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
 
-                {% csrf_token %}
+    {% csrf_token %}
 
-                {{ form.as_p}}
-
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-                
-                
-            </form>
-        </div>
-    </div>
-</div> -->
-
-<div class="container p-5 ">
-    <br>
-    <br>
-    <h3> Cadastro de Processo Administrativo</h3>
-    <hr>
-    <br>
-    <form action="" method="post" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col">
-                <label for="formGroupExampleInput">N° Processo</label>
-                <input type="text" name="processo" class="form-control" placeholder="Digite o número do processo">
-            </div>
-            <div class="col">
-                <label for="formGroupExampleInput">Data Andamento</label>
-                <input class="form-control" type="text" name="processo" placeholder="Input só de leitura, aqui..." namereadonly>
-            </div>
-            <div class="col">
-                <label for="formGroupExampleInput">Selecione o Andamento</label>
-                <select name="datandamento" class="form-control">
-                    <option>{{ andamento }}</option>
-                </select>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="formGroupExampleInput">Label exemplo</label>
-                <input class="form-control" type="text" name="processo" placeholder="Input só de leitura, aqui..." namereadonly>
-            </div>
-        </div>    
-        <br>
-        <div>
-            <button type="submit" class="btn btn-primary btn-sm">Cadastrar</button>
-            <button class="btn btn-danger btn-sm" id="btnVoltar">Cancelar</button>
-        </div>
-    </form>
-</div>
-
-
-
-
-
-
-
-
-
+    {{ form.as_p}}
+    
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+<button class="btn btn-danger btn-sm" id="btnVoltar">Cancelar</button>
 
 
 <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->

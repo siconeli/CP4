@@ -4,90 +4,92 @@
 
 {% load static %}
 
-{% load widget_tweaks %}  <!--# Biblioteca Widget - Muito importante - Torna possível eu criar um formulário HTML próprio sincronizado com as Class Based Views.-->
-
 {% block titulo %}
 <title>Cadastrar Andamento Adm</title>
 {% endblock %}
 
 {% block conteudo %}
+<h3>Cadastrar Andamento Adm</h3>
+<hr>
+
 <div class="container p-5 ">
     <br>
     <br>
-    <h3> Cadastro de Andamento</h3>
+    <h3> Cadastro de Processo Administrativo</h3>
     <hr>
     <br>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form method="post">
         {% csrf_token %}
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput">N° Processo</label>
-                {% render_field form.processo class="form-control w-25" %}
+                <input class="form-control" type="text" name="processo" placeholder="" readonly>
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Andamento</label>
-                {% render_field form.andamento class="form-control" %}
+                <input class="form-control" type="text" name="datandamento" placeholder="Data do andamento">
             </div>
-        </div>
-        <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput">Andamento</label>
-                {% render_field form.datandamento class="form-control" %}
+                <select name="andamento" class="form-control">
+                    <option>Selecione o andamento</option>
+                </select>
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Prazo</label>
-                {% render_field form.dataprazo class="form-control" %}
+                <input class="form-control" type="text" name="dataprazo" placeholder="Data do prazo">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput">Localização</label>
-                {% render_field form.Funcionario class="form-control" %}
+                <input class="form-control" type="text" name="locprocesso" placeholder="Digite a localização">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Funcionário</label>
-                {% render_field form.Funcionario class="form-control" %}
+                <input class="form-control" type="text" name="Funcionario" placeholder="Digite o funcionário">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Recebimento</label>
-                {% render_field form.datrecebimento class="form-control" %}
+                <input class="form-control" type="text" name="datrecebimento" placeholder="Data do recebimento">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Complemento</label>
-                {% render_field form.complemento class="form-control" %}
+                <input class="form-control" type="text" name="complemento" placeholder="Digite o complemento">
             </div>
         </div>    
         <br>
         <div class="row">
             <div class="col">
                 <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq1 class="form-control" %}
+                <input class="form-control" type="text" name="arq1" placeholder="Digite a localização">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq2 class="form-control" %}
+                <input class="form-control" type="text" name="arq2" placeholder="Digite o funcionário">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq3 class="form-control" %}
-            </div> 
-        </div>
-        <br>
-        <div class="row">
-            <div class="col">
-                <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq4 class="form-control" %}
+                <input class="form-control" type="text" name="arq3" placeholder="Data do recebimento">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq5 class="form-control" %}     
+                <input class="form-control" type="text" name="arq4" placeholder="Digite o complemento">
             </div>
             <div class="col">
                 <label for="formGroupExampleInput">Arquivo</label>
-                {% render_field form.arq6 class="form-control" %}   
-            </div> 
-        </div>
+                <input class="form-control" type="text" name="arq5" placeholder="Digite o complemento">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput">Arquivo</label>
+                <input class="form-control" type="text" name="arq6" placeholder="">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput">Arquivo</label>
+                <input class="form-control" type="text" name="complemento" placeholder="">
+            </div>
+        </div>  
         <br>  
         <div>
             <button type="submit" class="btn btn-primary btn-sm">Cadastrar</button>

@@ -29,12 +29,12 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url
 
     # Para o botão da página de editar cadastro, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super().get_context_data(*args, **kwargs)
 
-        context['botao'] = 'Cadastrar'
+    #     context['botao'] = 'Cadastrar'
 
-        return context
+    #     return context
         
        
     
@@ -81,13 +81,13 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')
 
-    # Para o botão da página de editar andamento, ter o nome 'Salvar' e não 'Cadastrar', pois utilizo o mesmo template para cadastrar e fazer update.
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+    # # Para o botão da página de editar andamento, ter o nome 'Salvar' e não 'Cadastrar', pois utilizo o mesmo template para cadastrar e fazer update.
+    # def get_context_data(self, *args, **kwargs):
+    #     context = super().get_context_data(*args, **kwargs)
 
-        context['botao'] = 'Salvar'
+    #     context['botao'] = 'Salvar'
 
-        return context
+    #     return context
   
 
 
