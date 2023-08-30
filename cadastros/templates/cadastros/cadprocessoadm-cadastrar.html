@@ -13,7 +13,7 @@
 <h3>Cadastro de Processo Administrativo</h3>
 <hr>
 
-<div class="container p-5">
+<!-- <div class="container p-5">
     <div class="row mb-3">
         <div class="col">
             <form action="" method="post" enctype="multipart/form-data">
@@ -28,7 +28,48 @@
             </form>
         </div>
     </div>
+</div> -->
+
+
+<br></br>
+<br></br>
+
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col">
+                <label for="formGroupExampleInput">N° Processo</label>
+                <input type="text" name="processo" class="form-control" placeholder="Digite o número do processo">
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput">Data Andamento</label>
+                <select name="datandamento" class="form-control">
+                    <option>{{ andamento }}</option>
+                  </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="formGroupExampleInput">Label exemplo</label>
+                <input class="form-control" type="text" name="processo" placeholder="Input só de leitura, aqui..." namereadonly>
+            </div>
+            <div class="col">
+                <label for="formGroupExampleInput">Label exemplo</label>
+                <input class="form-control" type="text" name="processo" placeholder="Input só de leitura, aqui..." namereadonly>
+            </div>
+        </div>    
+    </form>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
 <div class="container mt-5">
