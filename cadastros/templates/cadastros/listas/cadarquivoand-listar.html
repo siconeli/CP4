@@ -9,96 +9,93 @@
 {% endblock %}
 
 {% block conteudo %} 
+<div class="container p-5">
+    <br>
+    <br>
+    <h3>Arquivos do Andamento</h3>
+    <hr>
+    <br>
 
-<div class="container">
-<h3>Arquivos do andamento: {{ andamento.andamento }}</h3>
+    <!--Tabela(lista) de Arquivos do andamento-->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Arquivo</th>
+                <th>Arquivo</th>
+                <th>Arquivo</th>
+                <th>Arquivo</th>
+                <th>Arquivo</th>
+                <th>Arquivo</th>
+            </tr>
 
-<hr>
+            {% for arquivo in arquivos %}
+            <tr>
+                {% if arquivo.arq1 %}
+                    <td>
+                        {{ arquivo.arq1.name }}
+                        <a href="{{ arquivo.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
 
-<!--Tabela(lista) de Arquivos do andamento-->
-<div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>Arquivo</th>
-            <th>Arquivo</th>
-            <th>Arquivo</th>
-            <th>Arquivo</th>
-            <th>Arquivo</th>
-            <th>Arquivo</th>
-        </tr>
+                {% if arquivo.arq2 %}
+                    <td>
+                        {{ arquivo.arq2.name }}
+                        <a href="{{ arquivo.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
 
-        {% for arquivo in arquivos %}
-        <tr>
-            {% if arquivo.arq1 %}
-                <td>
-                    {{ arquivo.arq1.name }}
-                    <a href="{{ arquivo.arq1.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
+                {% if arquivo.arq3 %}
+                    <td>
+                        {{ arquivo.arq3.name }}
+                        <a href="{{ arquivo.arq3.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
 
-            {% if arquivo.arq2 %}
-                <td>
-                    {{ arquivo.arq2.name }}
-                    <a href="{{ arquivo.arq2.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
+                {% if arquivo.arq4 %}
+                    <td>
+                        {{ arquivo.arq4.name }}
+                        <a href="{{ arquivo.arq4.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
 
-            {% if arquivo.arq3 %}
-                <td>
-                    {{ arquivo.arq3.name }}
-                    <a href="{{ arquivo.arq3.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
+                {% if arquivo.arq5 %}
+                    <td>
+                        {{ arquivo.arq5.name }}
+                        <a href="{{ arquivo.arq5.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
 
-            {% if arquivo.arq4 %}
-                <td>
-                    {{ arquivo.arq4.name }}
-                    <a href="{{ arquivo.arq4.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
+                {% if arquivo.arq6 %}
+                    <td>
+                        {{ arquivo.arq6.name }}
+                        <a href="{{ arquivo.arq6.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
+                    </td>
+                {% endif %}
+                
+            </tr>
 
-            {% if arquivo.arq5 %}
-                <td>
-                    {{ arquivo.arq5.name }}
-                    <a href="{{ arquivo.arq5.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
+            {% empty %} <!-- Se não tiver nenhum registro de arquivos, irá retornar a mensagem a baixo -->
 
-            {% if arquivo.arq6 %}
-                <td>
-                    {{ arquivo.arq6.name }}
-                    <a href="{{ arquivo.arq6.url }}" class="btn btn-success btn-sm" target="_blank">Download</a>
-                </td>
-            {% endif %}
-            
-        </tr>
+            <tr>
+                <td colspan="3">Nenhum arquivo encontrado</td>
+            </tr>
 
-        {% empty %} <!-- Se não tiver nenhum registro de arquivos, irá retornar a mensagem a baixo -->
+            {% endfor %}
 
-        <tr>
-            <td colspan="3">Nenhum arquivo encontrado</td>
-        </tr>
+        </table>
+    </div>
 
-        {% endfor %}
+    <br>
+    <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
+    <button class="btn btn-secondary btn-sm" id="btnVoltar">Voltar</button>
 
-    </table>
-</div>
-
-<hr>
-
-
-<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-<div class="container mt-4">
-    <button class="btn btn-secondary" id="btnVoltar">Voltar</button>
-</div>
-
-<script>
-    // Adicione um evento de clique ao botão
-    document.getElementById("btnVoltar").addEventListener("click", function() {
-        // Utilize a função window.history.back() para voltar para a página anterior
-        window.history.back();
-    });
-</script>
+    <script>
+        // Adicione um evento de clique ao botão
+        document.getElementById("btnVoltar").addEventListener("click", function() {
+            // Utilize a função window.history.back() para voltar para a página anterior
+            window.history.back();
+        });
+    </script>
 
 </div>
 {% endblock %}

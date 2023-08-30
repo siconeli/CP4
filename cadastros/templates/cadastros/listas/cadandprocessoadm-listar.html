@@ -1,4 +1,4 @@
-<!-- Formulário de cadastro de Processo Administrativo-->
+<!-- Lista de andamentos do Processo Administrativo-->
 
 {% extends 'core/index.html' %}
 
@@ -9,63 +9,62 @@
 {% endblock %}
 
 {% block conteudo %}  
-<h3>Lista de andamentos do Processo</h3>
-<hr>
+<div class="container p-5">
+    <br>
+    <br>
+    <h3>Andamentos do Processo</h3>
+    <hr>
+    <br>
 
-<!--<br></br>-->
-<div class="container">
-<h5>Andamentos do Processo</h5>
-<!--Lista de andamentos-->
-<div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th>Processo</th>
-            <th>Data</th>
-            <th>Tipo</th>
-            <th>Prazo</th>
-            <th>Editar/Excluir</th> 
-            <th>Arquivo</th>
-        </tr>
+    <!--Lista de andamentos-->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Processo</th>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Prazo</th>
+                <th>Editar/Excluir</th> 
+                <th>Arquivo</th>
+            </tr>
 
-        {% for andamento in object_list %}
-        <tr>
-            <td> {{ andamento.processo }}</td>
-            <td> {{ andamento.datandamento }}</td>
-            <td> {{ andamento.andamento }}</td>
-            <td> {{ andamento.dataprazo }}</td>
-            <td>
-                <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-warning btn-sm">Abrir Andamento</a>
-                <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
-            </td>
-            <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm">Listar</a>
-            </td>
-        </tr>
+            {% for andamento in object_list %}
+            <tr>
+                <td> {{ andamento.processo }}</td>
+                <td> {{ andamento.datandamento }}</td>
+                <td> {{ andamento.andamento }}</td>
+                <td> {{ andamento.dataprazo }}</td>
+                <td>
+                    <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-warning btn-sm">Abrir Andamento</a>
+                    <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+                <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm">Listar</a>
+                </td>
+            </tr>
 
-        {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
+            {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
 
-        <tr>
-            <td colspan="3">Nenhum andamento registrado</td>
-        </tr>
+            <tr>
+                <td colspan="3">Nenhum andamento registrado</td>
+            </tr>
 
-        {% endfor %}
+            {% endfor %}
 
-    </table>
-</div>
+        </table>
+    </div>
 
-<hr>
-
-<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-<div class="container mt-4">
-    <button class="btn btn-secondary" id="btnVoltar">Voltar</button>
-</div>
-
-<script>
-    // Adicione um evento de clique ao botão
-    document.getElementById("btnVoltar").addEventListener("click", function() {
-        // Utilize a função window.history.back() para voltar para a página anterior
-        window.history.back();
-    });
-</script>
+    <br>
+    <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
+    <button class="btn btn-secondary btn-sm" id="btnVoltar">Voltar</button>
+    
+    <script>
+        // Adicione um evento de clique ao botão
+        document.getElementById("btnVoltar").addEventListener("click", function() {
+            // Utilize a função window.history.back() para voltar para a página anterior
+            window.history.back();
+        });
+    </script>
 
 </div>
+
 {% endblock %}
