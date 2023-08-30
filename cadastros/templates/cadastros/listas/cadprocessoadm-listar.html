@@ -10,26 +10,29 @@
 
 {% block conteudo %} 
 
-<br></br>
-<br></br>
-<br></br>
 
-<div class="container">
-    
-<h3>Processos Administrativos</h3>
-<hr>
-<br></br>
+<div class="container p-5">
+    <br>
+    <br>
+    <h3>Processos Administrativos</h3>
+    <hr>
+    <br>
 
-<!--Formulário do campo de pesquisa(Filtro)-->
-<form action="?" method="get">
-    <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="p-1 border" autocomplete="off" placeholder="Nº do Processo">
 
-    <button type="submit" class="btn btn-success">Buscar</button>
+    <!--Formulário do campo de pesquisa(Filtro)-->
+    <form action="?" method="get">
+        <div class="row">
+            <div class="col">
+                <label for="formGroupExampleInput">Buscar processo</label>
+                <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-25" autocomplete="off" placeholder="Nº">
+                <br>
+                <button type="submit" class="btn btn-success btn-sm">Buscar</button>
+                <a href="{% url 'list-proc-adm' %}" class="btn btn-warning btn-sm">Limpar</a>
+            </div>
+        </div>
+    </form>
 
-    <a href="{% url 'list-proc-adm' %}" class="btn btn-light">Limpar</a>
-</form>
-
-<br></br>
+    <br></br>
 
 <!--Botão para cadastrar novo processo-->
 <a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>
@@ -70,8 +73,6 @@
 
     </table>
 </div>
-
-<hr>
 
 </div>
 

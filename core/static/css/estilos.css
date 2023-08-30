@@ -22,6 +22,6 @@ body {
 #pagina-principal {
     width: 100vw;
     height: 100vh;
-    background: url('../img/pagina-principal.png');
+    background: url('../img/fundo-tela-inicio.png');
     background-size: cover;
 }
