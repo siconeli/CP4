@@ -20,7 +20,6 @@ from .views import CadArquivosAdmList
 urlpatterns = [
     ###### VIEW ######
 
-
     ###### CREATE ######
     path('cadastrar/processo/adm/', CadProcessoAdmCreate.as_view(), name='cre-proc-adm'), 
     path('cadastrar/andamento/adm/<int:processo_pk>', CadAndamentoCreate.as_view(), name='cre-and-proc-adm'),
