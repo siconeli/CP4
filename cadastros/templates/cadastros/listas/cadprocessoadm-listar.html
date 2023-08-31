@@ -23,7 +23,7 @@
                            Cadastrar Processo
                         </div>
                         <div class="card-body">
-                            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">Novo</a>
+                            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm"><i class="bi bi-check-lg" style="font-size: 15px;"><!--Cadastrar Processo (usando ícone)--></i> Novo</a>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                                     <input type="text" name="processo" value="{{ request.GET.processo }}" class="form-control w-50" 
                                     autocomplete="off" placeholder="N°">
                                     <div class="input-group-append">
-                                        <button class="btn btn-dark btn-sm" type="submit">Buscar</button>
+                                        <button class="btn btn-dark btn-sm" type="submit"><i class="bi bi-zoom-in" style="font-size: 15px;"><!--Buscar Processo (usando ícone)--></i></button>
                                         <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
                                     </div>
                                 </div>
@@ -76,11 +76,11 @@
                                 <td> {{ processo.municipio }}</td>
                                 <td>
                                     <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear-fill" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
-                                    <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                                    <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill" style="font-size: 15px;"><!--Excluir Processo (usando ícone)--></i></a>
                                 </td>
                                 <td> 
-                                    <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" >+ Novo </a>
-                                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Listar</a>
+                                    <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" ><i class="bi bi-plus-circle" style="font-size: 15px;"><!--Novo Andamento (usando ícone)--></i></a>
+                                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-inboxes" style="font-size: 15px;"><!--Listar Andamentos (usando ícone)--></i></a>
                                 </td>
                             </tr>
 
