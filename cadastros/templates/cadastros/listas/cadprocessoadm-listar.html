@@ -16,21 +16,43 @@
             <h3>Processos Administrativos</h3>
             <br>
             <!--Formulário do campo de pesquisa(Filtro)-->
-            <div class="card w-25">
-                <div class="card-header">
-                Buscar Processo
-                </div>
-                <div class="card-body">
-                    <form action="?" method="get">
-                        <div class="row">
-                            <div class="col">
-                                <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-50" autocomplete="off" placeholder="Nº">
-                                <br>
-                                <button type="submit" class="btn btn-info btn-sm">Buscar</button>
-                                <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
-                            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                        Buscar Processo
                         </div>
-                    </form>
+                        <div class="card-body">
+                            <form action="?" method="get">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                        <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-50" autocomplete="off" placeholder="Nº">
+                                        <button type="submit" class="btn btn-dark btn-sm">Buscar</button>
+                                        <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
+                                        <!-- <br> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                           Cadastrar Processo
+                        </div>
+                        <div class="card-body">
+                            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">+ Novo Processo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                <!--Apenas para ocupar espaço e enquadrar os cards da maneira que quero  -->
+                </div>
+                <div class="col">
+                    <!--Apenas para ocupar espaço e enquadrar os cards da maneira que quero  -->
                 </div>
             </div>
             <br>
@@ -38,12 +60,7 @@
                 <div class="card-header">
                 Lista de Processos
                 </div>
-                <div class="card-body">
-                    <!--Botão para cadastrar novo processo-->
-                    <!-- <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">+ Novo Processo</a> -->
-
-                    <!-- <br></br> -->
-
+                <div class="card-body">                 
                     <!--Tabela(lista) de Processos-->
                     <div class="table-responsive">
                         <table class="table table-hover table-dark">
