@@ -11,7 +11,7 @@
 {% block conteudo %} 
 <div class="container p-5">
     <br><br>
-    <div class="card">
+    <div class="card" style="height: 40rem;">
         <div class="card-body">
             <h3>Processos Administrativos</h3>
             <br>
@@ -19,32 +19,30 @@
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">
-                        Buscar Processo
+                        <div class="card-header text-white" style="background-color: black;">
+                           Cadastrar Processo
                         </div>
                         <div class="card-body">
-                            <form action="?" method="get">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                        <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-50" autocomplete="off" placeholder="Nº">
-                                        <button type="submit" class="btn btn-dark btn-sm">Buscar</button>
-                                        <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
-                                        <!-- <br> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">Novo</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">
-                           Cadastrar Processo
+                        <div class="card-header text-white" style="background-color: black;">
+                        Buscar Processo
                         </div>
                         <div class="card-body">
-                            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">+ Novo Processo</a>
+                            <form action="?" method="get">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" name="processo" value="{{ request.GET.processo }}" class="form-control w-50" 
+                                    autocomplete="off" placeholder="N°">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-dark btn-sm" type="submit">Buscar</button>
+                                        <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,16 +52,17 @@
                 <div class="col">
                     <!--Apenas para ocupar espaço e enquadrar os cards da maneira que quero  -->
                 </div>
+
             </div>
             <br>
-            <div class="card">
-                <div class="card-header">
+            <div class="card" style="height: 26rem;">
+                <div class="card-header text-white" style="background-color: black;">
                 Lista de Processos
                 </div>
                 <div class="card-body">                 
                     <!--Tabela(lista) de Processos-->
                     <div class="table-responsive">
-                        <table class="table table-hover table-dark">
+                        <table class="table table-hover table-light">
                             <tr class="table-secondary">
                                 <th>Processo</th>
                                 <th>Município</th>
@@ -76,7 +75,7 @@
                                 <td> {{ processo.pat }}</td>
                                 <td> {{ processo.municipio }}</td>
                                 <td>
-                                    <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm">Abrir Processo</a>
+                                    <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear-fill" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
                                     <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
                                 </td>
                                 <td> 
