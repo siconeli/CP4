@@ -11,65 +11,76 @@
 {% block conteudo %} 
 <div class="container p-5">
     <br>
-    <br>
+    <hr>
     <h3>Processos Administrativos</h3>
     <hr>
-    <br>
-
 
     <!--Formulário do campo de pesquisa(Filtro)-->
-    <form action="?" method="get">
-        <div class="row">
-            <div class="col">
-                <label for="formGroupExampleInput">Buscar processo</label>
-                <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-25" autocomplete="off" placeholder="Nº">
-                <br>
-                <button type="submit" class="btn btn-success btn-sm">Buscar</button>
-                <a href="{% url 'list-proc-adm' %}" class="btn btn-warning btn-sm">Limpar</a>
+    <div class="card">
+        <div class="card-header">
+        Buscar Processo
+        </div>
+        <div class="card-body">
+            <form action="?" method="get">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="processo" id="" value="{{ request.GET.processo }}" class="form-control w-25" autocomplete="off" placeholder="Nº">
+                        <br>
+                        <button type="submit" class="btn btn-info btn-sm">Buscar</button>
+                        <a href="{% url 'list-proc-adm' %}" class="btn btn-light btn-sm">Limpar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+        <div class="card-header">
+        Lista de Processos
+        </div>
+        <div class="card-body">
+            <!--Botão para cadastrar novo processo-->
+            <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm">+ Novo Processo</a>
+
+            <br></br>
+
+            <!--Tabela(lista) de Processos-->
+            <div class="table-responsive">
+                <table class="table table-hover table-dark">
+                    <tr class="table-secondary">
+                        <th>Processo</th>
+                        <th>Município</th>
+                        <th>Editar/Excluir</th>        
+                        <th>Andamento</th>
+                    </tr>
+
+                    {% for processo in object_list %}
+                    <tr>
+                        <td> {{ processo.pat }}</td>
+                        <td> {{ processo.municipio }}</td>
+                        <td>
+                            <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm">Abrir Processo</a>
+                            <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                        </td>
+                        <td> 
+                            <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" >+ Novo </a>
+                            <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Listar</a>
+                        </td>
+                    </tr>
+
+                    {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
+
+                    <tr>
+                        <td colspan="3">Nenhum processo encontrado</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </table>
             </div>
         </div>
-    </form>
-
-    <br></br>
-
-    <!--Botão para cadastrar novo processo-->
-    <a href="{% url 'cre-proc-adm' %}" class="btn btn-warning btn-sm">+ Novo Processo</a>
-
-    <br></br>
-
-    <!--Tabela(lista) de Processos-->
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <tr>
-                <th>Processo</th>
-                <th>Município</th>
-                <th>Editar/Excluir</th>        
-                <th>Andamento</th>
-            </tr>
-
-            {% for processo in object_list %}
-            <tr>
-                <td> {{ processo.pat }}</td>
-                <td> {{ processo.municipio }}</td>
-                <td>
-                    <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-warning btn-sm">Abrir Processo</a>
-                    <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
-                </td>
-                <td> 
-                    <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm" >+ Novo </a>
-                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm">Listar</a>
-                </td>
-            </tr>
-
-            {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
-
-            <tr>
-                <td colspan="3">Nenhum processo encontrado</td>
-            </tr>
-
-            {% endfor %}
-
-        </table>
     </div>
 </div>
 

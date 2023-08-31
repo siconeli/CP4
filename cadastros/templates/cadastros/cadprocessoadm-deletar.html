@@ -8,33 +8,30 @@
 {% endblock %}
 
 {% block conteudo %}  
+<div class="container p-5 ">
+    <br>
+    <br>
+    <h3> Excluir Processo</h3>
+    <hr>
+    <br>
+    <p class="lead">Confirme para excluir o registro difinitivamente</p>
 
-<div class="container">
-<p class="lead">
-    Confirme para excluir o registro difinitivamente.
-</p>
-<hr>
+    <form action="" method="post">
+        <p> 
+            Deseja excluir o Processo: <b>{{ object }}</b> 
+        </p>
+        {% csrf_token %}
 
-<form action="" method="post">
-    <p> 
-        Deseja excluir o Processo: <b>{{ object }}</b> 
-    </p>
-
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit" class="btn btn-danger">Excluir</button>
-    
-</form>
-
-<hr>
-
-<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-<div class="container mt-5">
-    <button class="btn btn-secondary" id="btnVoltar">Cancelar</button>
+        <div>
+            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+        </div>
+    </form>
+    <br>
+    <hr>
+    <button class="btn btn-secondary btn-sm" id="btnVoltar">Cancelar</button>
 </div>
 
+<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
 <script>
     // Adicione um evento de clique ao botão
     document.getElementById("btnVoltar").addEventListener("click", function() {
@@ -42,7 +39,5 @@
         window.history.back();
     });
 </script>
-
-</div>
 
 {% endblock %}

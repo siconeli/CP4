@@ -1,36 +1,97 @@
-<!-- Formulário de cadastro de Processo Administrativo-->
+<!-- Formulário de edição de Processo Administrativo-->
 
 {% extends 'core/index.html' %}
 
 {% load static %}
 
+{% load widget_tweaks %} 
+
 {% block titulo %}
-<title>Editar Processo Adm</title>
+<title>Cadastrar Processo Adm</title>
 {% endblock %}
 
-{% block conteudo %}  
-<h3>Cadastro de Processo Administrativo</h3>
-<hr>
+{% block conteudo %} 
 
-<div class="container">
-
+<div class="container p-5 ">
+    <br>
+    <br>
+    <h3> Editar Processo</h3>
+    <hr>
+    <br>
     <form action="" method="post" enctype="multipart/form-data">
-
         {% csrf_token %}
-
-        {{ form.as_p}}
-
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        
+        <div class="row">
+            <div class="col">
+                <label for="municipio">Município</label>
+                {% render_field form.municipio class="form-control" id="municipio" %}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="uf">UF</label>
+                {% render_field form.uf class="form-control" id="uf" %}
+            </div>
+            <div class="col">
+                <label for="datini">Data Inicial</label>
+                {% render_field form.datini class="form-control" id="datini" %}
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="datfin">Data Final</label>
+                {% render_field form.datfin class="form-control" id="datfin" %}
+            </div>
+            <div class="col">
+                <label for="datdivat">Data Dívida Ativa</label>
+                {% render_field form.datdivat class="form-control" id="datdivat" %}
+            </div>
+            <div class="col">
+                <label for="valtrib">Valor do Atributo</label>
+                {% render_field form.valtrib class="form-control" id="valtrib" %}
+            </div>
+            <div class="col">
+                <label for="valmul">Valor da Multa</label>
+                {% render_field form.valmul class="form-control" id="valmul" %}
+            </div>
+        </div>    
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="valcred">Valor do Crédito</label>
+                {% render_field form.valcred class="form-control"id="valcred" %}
+            </div>
+            <div class="col">
+                <label for="valatu">Valor do Atualizado</label>
+                {% render_field form.valatu class="form-control" id="valatu" %}
+            </div>  
+            <div class="col">
+                <label for="datvalatu">Data Valor do Atualizado</label>
+                {% render_field form.datvalatu class="form-control" id="datvalatu" %}
+            </div> 
+            <div class="col">
+                <label for="datand">Data Andamento</label>
+                {% render_field form.datand class="form-control" id="datand" %}
+            </div> 
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="datprazo">Data Prazo</label>
+                {% render_field form.datprazo class="form-control" id="datprazo" %}
+            </div> 
+        </div>
+        <br>  
+        <div>
+            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
+            <button class="btn btn-danger btn-sm" id="btnVoltar">Cancelar</button>
+        </div>
     </form>
 </div>
 
 
 <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-<div class="container mt-4">
-    <button class="btn btn-danger" id="btnVoltar">Cancelar</button>
-</div>
-
 <script>
     // Adicione um evento de clique ao botão
     document.getElementById("btnVoltar").addEventListener("click", function() {

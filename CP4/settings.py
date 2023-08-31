@@ -129,7 +129,7 @@ USE_TZ = True
 
 # Configuração dos arquivos estáticos: css, js, imagens
 STATIC_URL = '/static/' # Usado durante o desenvolvimento
-STATIC_ROOT = str(BASE_DIR / 'staticfiles') # Usado durante a produção
+# STATIC_ROOT = str(BASE_DIR / 'staticfiles') # Usado durante a produção
 
 
 # Arquivos de Media (Para salvar em endereço Local na mesma máquina do código)

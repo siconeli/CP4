@@ -5,7 +5,8 @@ body {
 
 /* Corpo do Menu */
 .container-fluid {
-    background-color: #0098DB;
+    /* background-color: #0098DB; */
+    background-color: black;
 }
 
 #text-menu {
@@ -14,7 +15,9 @@ body {
 
 /* Navbar lateral do menu */
 #offcanvasNavbar {
-    background-color: #0098DB;
+    /* background-color: #0098DB; */
+    background-color: black;
+
 }
 
 /* Texto do navbar lateral do menu */
@@ -29,3 +32,5 @@ body {
     background: url('../img/fundo.png');
     background-size: cover;
 }
+
+#foda {

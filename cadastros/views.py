@@ -99,7 +99,7 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
     login_url = reverse_lazy('login')
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadprocessoadm-listar.html'
-    paginate_by = 10 # Número de registros listados na minha list
+    paginate_by = 4 # Número de registros listados na minha list
 
     # Para filtrar dados através do campo input (fazendo busca)
     def get_queryset(self):
