@@ -66,7 +66,7 @@
                             <tr class="table-secondary">
                                 <th>Processo</th>
                                 <th>Município</th>
-                                <th>Editar/Excluir</th>        
+                                <th>Ver/Editar/Excluir</th>        
                                 <th>Andamento</th>
                             </tr>
 
@@ -75,12 +75,13 @@
                                 <td> {{ processo.pat }}</td>
                                 <td> {{ processo.municipio }}</td>
                                 <td>
+                                    <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-info btn-sm"><i class="bi bi-eye" style="font-size: 15px;"><!--Visualizar Processo (usando ícone)--></i></a>
                                     <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
                                     <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Processo (usando ícone)--></i></a>
                                 </td>
                                 <td> 
                                     <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" ><i class="bi bi-plus-circle" style="font-size: 15px;"><!--Novo Andamento (usando ícone)--></i></a>
-                                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-inboxes" style="font-size: 15px;"><!--Listar Andamentos (usando ícone)--></i></a>
+                                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-card-checklist" style="font-size: 15px;"><!--Listar Andamentos (usando ícone)--></i></a>
                                 </td>
                             </tr>
 
