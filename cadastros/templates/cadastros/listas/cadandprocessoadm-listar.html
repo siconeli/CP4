@@ -35,10 +35,10 @@
                 <td> {{ andamento.andamento }}</td>
                 <td> {{ andamento.dataprazo }}</td>
                 <td>
-                    <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm">Abrir Andamento</a>
-                    <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
+                    <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
                 </td>
-                <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm">Listar</a>
+                <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-folder-check" style="font-size: 15px;"><!--Listar Arquivos do andamento (usando ícone)--></i></a>
                 </td>
             </tr>
 
