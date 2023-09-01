@@ -22,10 +22,10 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
         ('selviria', 'Selvíria'), ('inocencia', 'Inocência'),
     )
 
-    pat = models.IntegerField(verbose_name='Processo N°', unique=True) # Número do processo
+    pat = models.IntegerField(verbose_name='Número', unique=True) # Número do processo
     municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') 
     uf = models.CharField(max_length=2, choices=ufs, verbose_name='UF') 
-    datini = models.DateField(verbose_name='Data Inicial') 
+    datini = models.DateField(verbose_name='Data Inicial', blank=True, null=True) 
     datfin = models.DateField(verbose_name='Data Final')
     datdivat = models.DateField(verbose_name='Data Dívida Ativa')
     valtrib = models.DecimalField(decimal_places=2 , max_digits=9, verbose_name='Valor do Atributo') 

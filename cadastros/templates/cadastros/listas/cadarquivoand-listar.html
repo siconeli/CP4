@@ -70,24 +70,16 @@
                         {{ arquivo.arq6.name }}
                         <a href="{{ arquivo.arq6.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
                     </td>
-                {% endif %}
-                
+                {% endif %}                
             </tr>
-
-            {% empty %} <!-- Se não tiver nenhum registro de arquivos, irá retornar a mensagem a baixo -->
-
-            <tr>
-                <td colspan="3">Nenhum arquivo encontrado</td>
-            </tr>
-
             {% endfor %}
 
         </table>
     </div>
 
     <br>
-    <!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-    <button class="btn btn-secondary btn-sm" id="btnVoltar">Voltar</button>
+    <!--Código CSS + JavaScript para criar botão de voltar para a página anterior -->
+    <button class="btn btn-secondary btn-sm" id="btnVoltar"><i class="bi bi-arrow-left" style="font-size: 15px;"><!--Icone--></i></button>
 
     <script>
         // Adicione um evento de clique ao botão

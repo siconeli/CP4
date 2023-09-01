@@ -11,16 +11,18 @@
 {% block conteudo %} 
 <div class="container p-5">
     <br><br>
-    <div class="card" style="height: 40rem;">
+    <div class="card" style="height: 41rem;">
         <div class="card-body">
-            <h3>Processos Administrativos</h3>
+            <div class="card-header text-white" style="background-color: black;">
+                <h5 style="text-align: center;">Processos Administrativos</h5>
+             </div>
             <br>
             <!--Formulário do campo de pesquisa(Filtro)-->
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: black;">
-                           Cadastrar Processo
+                        <div class="card-header text-white" style="background-color: black; text-align: center;" >
+                           <h6>Cadastrar Processo</h6>
                         </div>
                         <div class="card-body">
                             <a href="{% url 'cre-proc-adm' %}" class="btn btn-success btn-sm"><i class="bi bi-check-lg" style="font-size: 15px;"><!--Cadastrar Processo (usando ícone)--></i> Novo</a>
@@ -29,8 +31,8 @@
                 </div>
                 <div class="col">
                     <div class="card">
-                        <div class="card-header text-white" style="background-color: black;">
-                        Buscar Processo
+                        <div class="card-header text-white" style="background-color: black; text-align: center;" >
+                        <h6>Buscar Processo</h6>
                         </div>
                         <div class="card-body">
                             <form action="?" method="get">
@@ -56,8 +58,8 @@
             </div>
             <br>
             <div class="card" style="height: 26rem;">
-                <div class="card-header text-white" style="background-color: black;">
-                Lista de Processos
+                <div class="card-header text-white" style="background-color: black; text-align: center;">
+                <h6>Lista de Processos</h6>
                 </div>
                 <div class="card-body">                 
                     <!--Tabela(lista) de Processos-->

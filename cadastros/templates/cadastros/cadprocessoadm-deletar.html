@@ -8,36 +8,29 @@
 {% endblock %}
 
 {% block conteudo %}  
-<div class="container p-5 ">
-    <br>
-    <br>
-    <h3> Excluir Processo</h3>
-    <hr>
-    <br>
-    <p class="lead">Confirme para excluir o registro difinitivamente</p>
+<div class="container p-5">
+    <br><br>
+    <div class="card">
+        <div class="card-header text-white" style="background-color: rgba(190, 0, 0, 0.849);">
+            <h5 style="text-align: center;">Excluir Processo</h5>
+         </div>
+        <div class="card-body">
+            <h6>Confirme para excluir o registro difinitivamente <i class="bi bi-exclamation-triangle-fill" style="font-size: 15px;"><!--Icone--></i></h6>
 
-    <form action="" method="post">
-        <p> 
-            Deseja excluir o Processo: <b>{{ object }}</b> 
-        </p>
-        {% csrf_token %}
+            <form action="" method="post">
+                <p> 
+                    Deseja excluir o processo: <b>{{ object }}</b> ? 
+                </p>
+                {% csrf_token %}
 
-        <div>
-            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                <div>
+                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
     <br>
-    <hr>
-    <button class="btn btn-secondary btn-sm" id="btnVoltar">Cancelar</button>
+    <a href="{% url 'list-proc-adm' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left" style="font-size: 15px;"><!--Icone--></i></a>
 </div>
-
-<!--Código CSS + JavaScript para criar botão de voltar para a página anterior-->
-<script>
-    // Adicione um evento de clique ao botão
-    document.getElementById("btnVoltar").addEventListener("click", function() {
-        // Utilize a função window.history.back() para voltar para a página anterior
-        window.history.back();
-    });
-</script>
 
 {% endblock %}
