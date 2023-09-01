@@ -10,55 +10,54 @@
 
 {% block conteudo %}  
 <div class="container p-5">
-    <br>
-    <br>
-    <h3>Andamentos do Processo</h3>
-    <hr>
-    <br>
+    <br><br>
+    <div class="card">
+        <div class="card-header text-white" style="background-color: black;">
+            <h5 style="text-align: center;">Andamentos do Processo</h5>
+         </div>
+        <div class="card-body">
+            <!--Lista de andamentos-->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Processo</th>
+                        <th>Data</th>
+                        <th>Tipo</th>
+                        <th>Prazo</th>
+                        <th>Ver/Editar/Excluir</th> 
+                        <th>Arquivo</th>
+                    </tr>
 
-    <!--Lista de andamentos-->
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <tr>
-                <th>Processo</th>
-                <th>Data</th>
-                <th>Tipo</th>
-                <th>Prazo</th>
-                <th>Ver/Editar/Excluir</th> 
-                <th>Arquivo</th>
-            </tr>
+                    {% for andamento in object_list %}
+                    <tr>
+                        <td> {{ andamento.processo }}</td>
+                        <td> {{ andamento.datandamento }}</td>
+                        <td> {{ andamento.andamento }}</td>
+                        <td> {{ andamento.dataprazo }}</td>
+                        <td>
+                            <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-info btn-sm"><i class="bi bi-eye" style="font-size: 15px;"><!--Visualizar Andamento (usando ícone)--></i></a>
+                            <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
+                            <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
+                        </td>
+                        <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-folder-check" style="font-size: 15px;"><!--Listar Arquivos do andamento (usando ícone)--></i></a>
+                        </td>
+                    </tr>
 
-            {% for andamento in object_list %}
-            <tr>
-                <td> {{ andamento.processo }}</td>
-                <td> {{ andamento.datandamento }}</td>
-                <td> {{ andamento.andamento }}</td>
-                <td> {{ andamento.dataprazo }}</td>
-                <td>
-                    <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-info btn-sm"><i class="bi bi-eye" style="font-size: 15px;"><!--Visualizar Andamento (usando ícone)--></i></a>
-                    <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
-                    <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
-                </td>
-                <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-folder-check" style="font-size: 15px;"><!--Listar Arquivos do andamento (usando ícone)--></i></a>
-                </td>
-            </tr>
+                    {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
 
-            {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
+                    <tr>
+                        <td colspan="3">Nenhum andamento registrado</td>
+                    </tr>
 
-            <tr>
-                <td colspan="3">Nenhum andamento registrado</td>
-            </tr>
+                    {% endfor %}
 
-            {% endfor %}
-
-        </table>
+                </table>
+            </div>           
+        </div>
     </div>
-
     <br>
-
     <a href="{% url 'list-proc-adm' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left" style="font-size: 15px;"><!--Icone--></i></a>
-
-
+</div>    
     <!-- Código CSS + JavaScript para criar botão de voltar para a página anterior
     <button class="btn btn-secondary btn-sm" id="btnVoltar">Voltar</button>
     
@@ -70,6 +69,6 @@
         });
     </script> -->
 
-</div>
+
 
 {% endblock %}

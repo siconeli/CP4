@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block conteudo %} 
-
 <div class="container p-5">
     <br><br>
     <div class="card">
@@ -19,7 +18,6 @@
             <h5 style="text-align: center;">Cadastro de Processo</h5>
          </div>
         <div class="card-body">
-            
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row w-25">
@@ -100,13 +98,13 @@
                         {% render_field form.datprazo class="form-control" id="datprazo"%}
                     </div> 
                 </div>
-                <br>  
-                <div>
-                    <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
-                    <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm">Cancelar</a>
-                </div>
             </form>
         </div>
+    </div>
+    <br>
+    <div>
+        <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
+        <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm">Cancelar</a>
     </div>
 </div>
 
