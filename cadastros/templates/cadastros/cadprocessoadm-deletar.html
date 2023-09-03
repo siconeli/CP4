@@ -18,10 +18,10 @@
             <h6>Confirme para excluir o registro difinitivamente <i class="bi bi-exclamation-triangle-fill" style="font-size: 15px;"><!--Icone--></i></h6>
 
             <form action="" method="post">
+                {% csrf_token %}
                 <p> 
                     Deseja excluir o processo: <b>{{ object }}</b> ? 
                 </p>
-                {% csrf_token %}
 
                 <div>
                     <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
