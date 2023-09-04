@@ -14,7 +14,7 @@
 <div class="container p-5">
     <br><br>
     <div class="card">
-        <div class="card-header text-white" style="background-color: black;">
+        <div class="card-header text-white" style="background-color: #0098DB;">
             <h5 style="text-align: center;">Cadastro de Processo</h5>
          </div>
         <div class="card-body">
@@ -99,9 +99,10 @@
                     </div> 
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
-                <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm">Cancelar</a>
+                <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-lg" style="font-size: 15px;"><!--Icone--></i></button>
             </form>
+            <br>
+            <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm"><i class="bi bi-x-lg" style="font-size: 15px;"><!--Icone--></i></a>
         </div>
     </div>
 </div>
