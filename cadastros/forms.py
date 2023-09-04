@@ -9,6 +9,7 @@ class CadProcessoAdmForm(forms.ModelForm):
         model = ProcessoAdministrativo
         fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo']
 
+
 class AndamentoForm(forms.ModelForm):
     class Meta:
         model = Andamento

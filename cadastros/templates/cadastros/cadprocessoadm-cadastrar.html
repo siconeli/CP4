@@ -98,13 +98,11 @@
                         {% render_field form.datprazo class="form-control" id="datprazo"%}
                     </div> 
                 </div>
+                <br>
+                <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
+                <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm">Cancelar</a>
             </form>
         </div>
-    </div>
-    <br>
-    <div>
-        <button type="submit" class="btn btn-success btn-sm">Cadastrar</button>
-        <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm">Cancelar</a>
     </div>
 </div>
 
