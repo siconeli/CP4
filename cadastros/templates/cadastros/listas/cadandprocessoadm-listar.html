@@ -24,7 +24,7 @@
                         <th>Data</th>
                         <th>Tipo</th>
                         <th>Prazo</th>
-                        <th>Ver/Editar/Excluir</th> 
+                        <th>Abrir/Excluir</th> 
                         <th>Arquivo</th>
                     </tr>
 
@@ -35,7 +35,6 @@
                         <td> {{ andamento.andamento }}</td>
                         <td> {{ andamento.dataprazo }}</td>
                         <td>
-                            <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-info btn-sm"><i class="bi bi-eye" style="font-size: 15px;"><!--Visualizar Andamento (usando ícone)--></i></a>
                             <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
                             <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
                         </td>

@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import CadProcessoAdmCreate
 from .views import CadAndamentoCreate
 
@@ -19,6 +20,7 @@ from .views import CadArquivosAdmList
 
 urlpatterns = [
     ###### VIEW ######
+
 
     ###### CREATE ######
     path('cadastrar/processo/adm/', CadProcessoAdmCreate.as_view(), name='cre-proc-adm'), 

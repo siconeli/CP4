@@ -14,9 +14,6 @@ from braces.views import GroupRequiredMixin # Para realizar o controle de grupos
 from .forms import CadProcessoAdmForm, AndamentoForm  # Para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
 
 ###### VISUALIZAR ######
- 
-# class ExemploView(TemplateView):
-#     template_name = 'exemplo.html'
 
 
 ###### CREATE ######
@@ -71,8 +68,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
-
-
+        
 
 ###### DELETE ######
 class CadProcessoAdmDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView): # Delete Processo Administrativo
@@ -119,6 +115,7 @@ class CadAndamentosList(LoginRequiredMixin, ListView):
     model = ProcessoAdministrativo
     template_name = 'cadastros/listas/cadandprocessoadm-listar.html'  
     Paginate_by = 10
+
     # Irá buscar os andamentos vinculados ao processo e listar
     def get_queryset(self):
         
