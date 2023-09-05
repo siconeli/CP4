@@ -7,13 +7,13 @@ from .models import ProcessoAdministrativo, Andamento
 class CadProcessoAdmForm(forms.ModelForm):
     class Meta:
         model = ProcessoAdministrativo
-        fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo']
+        fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo', 'nomecontribuinte', 'pessoa', 'doc', 'nomefantasia', 'email', 'logradouro', 'numero', 'complemento', 'bairro', 'municipiocontri', 'ufcontri', 'cep', 'tel', 'cel']
 
 
 class AndamentoForm(forms.ModelForm):
     class Meta:
         model = Andamento
-        fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
+        fields = ['processo', 'datandamento', 'andamento', 'dataprazo', 'locprocesso', 'funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
 
     # Funções para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
     # Recupera a pk(primary key) do kwargs e define como atributo do formulário
