@@ -27,8 +27,8 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     )
 
     # Campos do processo administrativo
-    pat = models.IntegerField(verbose_name='número', unique=True) # Número do processo
-    municipio = models.CharField(max_length=50, choices=municipios) 
+    pat = models.IntegerField(unique=True, verbose_name='número',) # Número do processo
+    municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') 
     uf = models.CharField(max_length=2, choices=ufs) 
     datini = models.DateField(blank=True, null=True) 
     datfin = models.DateField(blank=True, null=True)
@@ -40,7 +40,6 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datvalatu = models.DateField(blank=True, null=True) 
     datand = models.DateField(blank=True, null=True) 
     datprazo = models.DateField(blank=True, null=True)
-
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa, blank=True, null=True) # Física / Jurídica
     doc = models.IntegerField(unique=True) # CPF / CNPJ
@@ -49,12 +48,12 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     logradouro = models.CharField(max_length=50, blank=True, null=True) # Rua
     numero = models.IntegerField(blank=True, null=True) # Número
     complemento = models.CharField(max_length=50, blank=True, null=True) # Complemento
-    bairro = models.CharField(max_length=50, blank=True, null=True)
-    municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) 
-    ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) 
-    cep = models.IntegerField(blank=True, null=True)
-    tel = models.IntegerField(blank=True, null=True)
-    cel = models.IntegerField(blank=True, null=True)
+    bairro = models.CharField(max_length=50, blank=True, null=True) # Bairro
+    municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) # Município Contribuinte
+    ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) # UF Contribuinte
+    cep = models.IntegerField(blank=True, null=True) # CEP
+    tel = models.IntegerField(blank=True, null=True) # Telefone
+    cel = models.IntegerField(blank=True, null=True) # Celular
 
     def __str__(self):
         return f'{self.pat}'
