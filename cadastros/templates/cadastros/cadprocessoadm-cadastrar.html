@@ -20,16 +20,8 @@
         <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <h5>Processo</h5>
                 <hr>
-                Processo
-                <br><br>
-                <div class="row w-25">
-                    <div class="col">
-                        <br>
-                        <label for="pat">Pat N°</label>
-                        {% render_field form.pat class="form-control" id="pat"%}
-                    </div>
-                </div>
                 <br>
                 <div class="row">
                     <div class="col">
@@ -40,56 +32,75 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="row">
+                <div class="row"> <!-- w-50 (colocar para diminuir o tamanho do campo input)-->
                     <div class="col">
-                        <label for="municipio">Município</label>
+                        <label for="pat">Pat N° <b>*</b></label>
+                        {% render_field form.pat class="form-control" id="pat"%}
+                    </div>
+                    <div class="col">
+                        <label for="municipio">Município <b>*</b></label>
                         {% render_field form.municipio class="form-control" id="municipio"%}
                     </div>
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
-                        <label for="uf">UF</label>
+                        <label for="uf">UF <b>*</b></label>
                         {% render_field form.uf class="form-control" id="uf"%}
                     </div>
-                    <div class="col">
-                        <label for="datini">Data Inicial</label>
-                        {% render_field form.datini class="form-control" id="datini"%}
-                    </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
-                        <label for="datfin">Data Final</label>
+                        <label for="datini">Período</label>
+                        {% render_field form.datini class="form-control" id="datini"%}
+                    </div>
+                    <div class="col">
+                        <label for="datfin"><!--Período Final--></label>
                         {% render_field form.datfin class="form-control" id="datfin"%}
                     </div>
                     <div class="col">
-                        <label for="datdivat">Data Dívida Ativa</label>
+                        <label for="datdivat">D.A</label>
                         {% render_field form.datdivat class="form-control" id="datdivat"%}
                     </div>
+                    <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
                     <div class="col">
-                        <label for="valtrib">Valor do Atributo</label>
+
+                    </div> 
+                    <div class="col">
+
+                    </div> 
+                    <div class="col">
+
+                    </div> 
+                     -->
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="valtrib">Valor do Tributo</label>
                         {% render_field form.valtrib class="form-control" id="valtrib"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
                         {% render_field form.valmul class="form-control" id="valmul"%}
                     </div>
-                </div>    
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="valcred">Valor do Crédito</label>
                         {% render_field form.valcred class="form-control" id="valcred"%}
                     </div>
+                    <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
+                    <div class="col">
+
+                    </div> 
+                    -->
                     <div class="col">
                         <label for="valatu">Valor do Atualizado</label>
                         {% render_field form.valatu class="form-control" id="valatu"%}
                     </div>  
                     <div class="col">
-                        <label for="datvalatu">Data Valor do Atualizado</label>
+                        <label for="datvalatu">Data Valor Atualizado</label>
                         {% render_field form.datvalatu class="form-control" id="datvalatu"%}
                     </div> 
+                </div>    
+                <!-- <div class="row">
                     <div class="col">
                         <label for="datand">Data Andamento</label>
                         {% render_field form.datand class="form-control" id="datand"%}
@@ -101,33 +112,33 @@
                         <label for="datprazo">Data prazo</label>
                         {% render_field form.datprazo class="form-control" id="datprazo"%}
                     </div> 
-                </div>
-                <br>
+                </div> -->
+                <br><br>
+                <h5>Contribuinte</h5>
                 <hr>
-                <p>Contribuinte</p>
                 <br>
                 <div class="row">
                     <div class="col">
-                        <label for="nomecontribuinte">Nome / Razão Social</label>
+                        <label for="nomecontribuinte">Nome / Razão Social <b>*</b></label>
                         {% render_field form.nomecontribuinte class="form-control" id="nomecontribuinte"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
-                        <label for="pessoa">Tipo de Pessoa</label>
+                        <label for="pessoa">Tipo de Pessoa <b>*</b></label>
                         {% render_field form.pessoa class="form-control" id="pessoa"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
-                        <label for="doc">CPF / CNPJ</label>
+                        <label for="doc">CPF / CNPJ <b>*</b></label>
                         {% render_field form.doc class="form-control" id="doc"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
+                    <div class="col">
+                        <!-- Espaço entre os campos -->
+                    </div> 
+                    <div class="col">
+                        <!-- Espaço entre os campos -->
+                    </div> 
                     <div class="col">
                         {% if form.doc.errors %} <!-- Se a validação 'unique' do atributo 'doc' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
                         <div class="alert alert-danger" role="alert" style="height: 45px; width: 455px;">
@@ -136,15 +147,11 @@
                         {% endif %}
                     </div>
                 </div>
-                <br>
                 <div class="row">
                     <div class="col">
                         <label for="nomefantasia">Nome Fantasia</label>
                         {% render_field form.nomefantasia class="form-control" id="nomefantasia"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="email">E-mail</label>
                         {% render_field form.email class="form-control" id="email"%}
@@ -156,16 +163,10 @@
                         <label for="logradouro">Logradouro</label>
                         {% render_field form.logradouro class="form-control" id="logradouro"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="numero">Número</label>
                         {% render_field form.numero class="form-control" id="numero"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="complemento">Complemento</label>
                         {% render_field form.complemento class="form-control" id="complemento"%}
@@ -177,23 +178,14 @@
                         <label for="bairro">Bairro</label>
                         {% render_field form.bairro class="form-control" id="bairro"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="municipiocontri">Município</label>
                         {% render_field form.municipiocontri class="form-control" id="municipiocontri"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="ufcontri">UF</label>
                         {% render_field form.ufcontri class="form-control" id="ufcontri"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="cep">CEP</label>
                         {% render_field form.cep class="form-control" id="cep"%}
@@ -205,19 +197,15 @@
                         <label for="tel">Telefone</label>
                         {% render_field form.tel class="form-control" id="tel"%}
                     </div> 
-                </div>
-                <br>
-                <div class="row">
                     <div class="col">
                         <label for="cel">Celular</label>
                         {% render_field form.cel class="form-control" id="cel"%}
                     </div> 
                 </div>
-                <br>
+                <br><br>
                 <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-lg" style="font-size: 15px;"><!--Icone--></i></button>
+                <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm"><i class="bi bi-x-lg" style="font-size: 15px;"><!--Icone--></i></a>
             </form>
-            <br>
-            <a href="{% url 'list-proc-adm' %}" class="btn btn-danger btn-sm"><i class="bi bi-x-lg" style="font-size: 15px;"><!--Icone--></i></a>
         </div>
     </div>
 </div>

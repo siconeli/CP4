@@ -7,7 +7,7 @@ from .models import ProcessoAdministrativo, Andamento
 class CadProcessoAdmForm(forms.ModelForm):
     class Meta:
         model = ProcessoAdministrativo
-        fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'datand', 'datprazo', 'nomecontribuinte', 'pessoa', 'doc', 'nomefantasia', 'email', 'logradouro', 'numero', 'complemento', 'bairro', 'municipiocontri', 'ufcontri', 'cep', 'tel', 'cel']
+        fields = ['pat', 'municipio', 'uf', 'datini', 'datfin', 'datdivat', 'valtrib', 'valmul', 'valcred', 'valatu', 'datvalatu', 'nomecontribuinte', 'pessoa', 'doc', 'nomefantasia', 'email', 'logradouro', 'numero', 'complemento', 'bairro', 'municipiocontri', 'ufcontri', 'cep', 'tel', 'cel']
 
 
 class AndamentoForm(forms.ModelForm):

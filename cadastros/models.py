@@ -28,20 +28,18 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
 
     # Campos do processo administrativo
     pat = models.IntegerField(unique=True, verbose_name='número',) # Número do processo
-    municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') 
-    uf = models.CharField(max_length=2, choices=ufs) 
-    datini = models.DateField(blank=True, null=True) 
-    datfin = models.DateField(blank=True, null=True)
-    datdivat = models.DateField(blank=True, null=True)
-    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) 
-    valmul = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) 
-    valcred = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True)
-    valatu = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True)
-    datvalatu = models.DateField(blank=True, null=True) 
-    datand = models.DateField(blank=True, null=True) 
-    datprazo = models.DateField(blank=True, null=True)
+    municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') # Município
+    uf = models.CharField(max_length=2, choices=ufs) # UF 
+    datini = models.DateField(blank=True, null=True) # Data Inicial do Período do processo
+    datfin = models.DateField(blank=True, null=True) # Data final do Período do processo
+    datdivat = models.DateField(blank=True, null=True) # Data dívida ativa
+    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True)  # Valor do atributo
+    valmul = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor da multa
+    valcred = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor do crédito
+    valatu = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor do atualizado
+    datvalatu = models.DateField(blank=True, null=True) # Data valor atualizado
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
-    pessoa = models.CharField(max_length=50, choices=tipopessoa, blank=True, null=True) # Física / Jurídica
+    pessoa = models.CharField(max_length=50, choices=tipopessoa) # Física / Jurídica
     doc = models.IntegerField(verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
     nomefantasia = models.CharField(max_length=50, blank=True, null=True) # Nome Fantasia
     email = models.EmailField(max_length=50, blank=True, null=True) # E-mail
