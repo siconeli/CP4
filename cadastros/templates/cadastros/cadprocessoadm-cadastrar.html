@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="valtrib">Valor do Tributo</label>
-                        {% render_field form.valtrib class="form-control" placeholder="R$" id="valtrib"%}
+                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$" id="valtrib"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
@@ -192,10 +192,10 @@
 
 {% block scripts %}
 
+
 <!-- Importação do arquivo dentro da pasta static/js para usar máscaras nos campos input -->
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 <!-- Configuração de máscaras nos campos inputs, buscando o campo através do ID -->
 <script>
@@ -207,16 +207,6 @@
         $("#cel").mask('(00) 00000-0000');
     })
     
-    //Configuração de máscaras de 'VALOR EM REAL(DINHEIRO)' nos campos inputs, buscando o campo através do ID
-    $(document).ready(function() {
-        $('valtrib').maskMoney({
-            thousands: '.',  // Separador de milhar
-            decimal: ',',    // Separador decimal
-            allowZero: true,  // Permite valor zero
-            prefix: 'R$ ',    // Prefixo (pode ser 'R$ ', 'US$ ', etc.)
-            affixesStay: false  // O prefixo/sufixo não é fixo no campo
-        });
-    });
 </script>
 
 
