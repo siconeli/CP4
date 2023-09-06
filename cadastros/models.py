@@ -27,20 +27,20 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     )
 
     # Campos do processo administrativo
-    pat = models.CharField(unique=True, verbose_name='número', max_length=10) # Número do processo
+    pat = models.CharField(unique=True, verbose_name='N°', max_length=10) # Número do processo
     municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') # Município
     uf = models.CharField(max_length=2, choices=ufs) # UF 
     datini = models.DateField(blank=True, null=True) # Data Inicial do Período do processo
     datfin = models.DateField(blank=True, null=True) # Data final do Período do processo
     datdivat = models.DateField(blank=True, null=True) # Data dívida ativa
-    valtrib = models.CharField(max_length=16, blank=True, null=True)  # Valor do atributo
-    valmul = models.CharField(max_length=16, blank=True, null=True) # Valor da multa
-    valcred = models.CharField(max_length=16, blank=True, null=True) # Valor do crédito
-    valatu = models.CharField(max_length=16, blank=True, null=True) # Valor do atualizado
+    valtrib = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)  # Valor do atributo
+    valmul = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor da multa
+    valcred = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor do crédito
+    valatu = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor do atualizado
     datvalatu = models.DateField(blank=True, null=True) # Data valor atualizado
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa) # Física / Jurídica
-    doc = models.IntegerField(verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
+    doc = models.CharField(max_length=14, verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
     nomefantasia = models.CharField(max_length=50, blank=True, null=True) # Nome Fantasia
     email = models.EmailField(max_length=50, blank=True, null=True) # E-mail
     logradouro = models.CharField(max_length=50, blank=True, null=True) # Rua
@@ -49,9 +49,9 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     bairro = models.CharField(max_length=50, blank=True, null=True) # Bairro
     municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) # Município Contribuinte
     ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) # UF Contribuinte
-    cep = models.IntegerField(blank=True, null=True) # CEP
-    tel = models.IntegerField(blank=True, null=True) # Telefone
-    cel = models.IntegerField(blank=True, null=True) # Celular
+    cep = models.CharField(max_length=10, blank=True, null=True) # CEP
+    tel = models.CharField(max_length=10, blank=True, null=True) # Telefone
+    cel = models.CharField(max_length=10, blank=True, null=True) # Celular
 
     def __str__(self):
         return f'{self.pat}'

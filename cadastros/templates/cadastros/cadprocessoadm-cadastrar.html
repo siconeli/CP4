@@ -35,7 +35,7 @@
                 <div class="row"> <!-- w-50 (colocar para diminuir o tamanho do campo input)-->
                     <div class="col">
                         <label for="pat">Pat N° <b>*</b></label>
-                        {% render_field form.pat class="form-control" id="pat"%}
+                        {% render_field form.pat class="form-control" placeholder="     /    " id="pat"%}
                     </div>
                     <div class="col">
                         <label for="municipio">Município <b>*</b></label>
@@ -76,23 +76,23 @@
                 <div class="row">
                     <div class="col">
                         <label for="valtrib">Valor do Tributo</label>
-                        {% render_field form.valtrib class="form-control" id="valtrib"%}
+                        {% render_field form.valtrib class="form-control" placeholder="R$" id="valtrib"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
-                        {% render_field form.valmul class="form-control" id="valmul"%}
+                        {% render_field form.valmul class="form-control" placeholder="R$" id="valmul"%}
                     </div>
                     <div class="col">
                         <label for="valcred">Valor do Crédito</label>
-                        {% render_field form.valcred class="form-control" id="valcred"%}
+                        {% render_field form.valcred class="form-control" placeholder="R$" id="valcred"%}
                     </div>
                     <div class="col">
                         <label for="valatu">Valor do Atualizado</label>
-                        {% render_field form.valatu class="form-control" id="valatu"%}
+                        {% render_field form.valatu class="form-control" placeholder="R$" id="valatu"%}
                     </div>  
                     <div class="col">
                         <label for="datvalatu">Data Valor Atualizado</label>
-                        {% render_field form.datvalatu class="form-control" type="date" id="datvalatu"%}
+                        {% render_field form.datvalatu class="form-control" type="date" placeholder="R$" id="datvalatu"%}
                     </div> 
                 </div>    
                 <br><br>
@@ -130,7 +130,7 @@
                     </div> 
                     <div class="col">
                         <label for="email">E-mail</label>
-                        {% render_field form.email class="form-control" id="email"%}
+                        {% render_field form.email class="form-control" placeholder="@" id="email"%}
                     </div> 
                 </div>
                 <br>
@@ -164,18 +164,18 @@
                     </div> 
                     <div class="col">
                         <label for="cep">CEP</label>
-                        {% render_field form.cep class="form-control" id="cep"%}
+                        {% render_field form.cep class="form-control" placeholder="     -   " id="cep"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="tel">Telefone</label>
-                        {% render_field form.tel class="form-control" id="tel"%}
+                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel"%}
                     </div> 
                     <div class="col">
                         <label for="cel">Celular</label>
-                        {% render_field form.cel class="form-control" id="cel"%}
+                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel"%}
                     </div> 
                 </div>
                 <br><br>
@@ -195,19 +195,32 @@
 <!-- Importação do arquivo dentro da pasta static/js para usar máscaras nos campos input -->
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+
+<!-- Configuração de máscaras nos campos inputs, buscando o campo através do ID -->
 <script>
     $(document).ready(function(){
-        $("#pat").mask("00000/0000");
-        $("#valtrib").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
-        $("#valmul").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
-        $("#valcred").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
-        $("#valatu").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
-
-        
-
-        
+        $("#pat").mask("00000/0000", {reverse: true});
+        $("#doc").mask('000.000.000-00', {reverse: true});  //Como criar um if para usar uma mascara para CNPJ se o tipo pessoa for jurídica
+        $("#cep").mask('00000-000');
+        $("#tel").mask('(00) 0000-0000');
+        $("#cel").mask('(00) 00000-0000');
     })
+    
+    //Configuração de máscaras de 'VALOR EM REAL(DINHEIRO)' nos campos inputs, buscando o campo através do ID
+    $(document).ready(function() {
+        $('valtrib').maskMoney({
+            thousands: '.',  // Separador de milhar
+            decimal: ',',    // Separador decimal
+            allowZero: true,  // Permite valor zero
+            prefix: 'R$ ',    // Prefixo (pode ser 'R$ ', 'US$ ', etc.)
+            affixesStay: false  // O prefixo/sufixo não é fixo no campo
+        });
+    });
 </script>
+
+
+
 
 {% endblock %}
 
