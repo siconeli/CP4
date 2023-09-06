@@ -210,5 +210,25 @@
     </div>
 </div>
 
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<!-- Importação do arquivo dentro da pasta static/js para usar máscaras nos campos input -->
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+        $("#datini").mask("00/00/0000", {placeholder: "__/__/____"});
+        $("#datfin").mask("00/00/0000", {placeholder: "__/__/____"});
+
+
+        
+    })
+</script>
 
 {% endblock %}
+
