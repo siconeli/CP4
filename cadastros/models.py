@@ -27,16 +27,16 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     )
 
     # Campos do processo administrativo
-    pat = models.IntegerField(unique=True, verbose_name='número',) # Número do processo
+    pat = models.CharField(unique=True, verbose_name='número', max_length=10) # Número do processo
     municipio = models.CharField(max_length=50, choices=municipios, verbose_name='Município') # Município
     uf = models.CharField(max_length=2, choices=ufs) # UF 
     datini = models.DateField(blank=True, null=True) # Data Inicial do Período do processo
     datfin = models.DateField(blank=True, null=True) # Data final do Período do processo
     datdivat = models.DateField(blank=True, null=True) # Data dívida ativa
-    valtrib = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True)  # Valor do atributo
-    valmul = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor da multa
-    valcred = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor do crédito
-    valatu = models.DecimalField(decimal_places=2 , max_digits=9, blank=True, null=True) # Valor do atualizado
+    valtrib = models.CharField(max_length=16, blank=True, null=True)  # Valor do atributo
+    valmul = models.CharField(max_length=16, blank=True, null=True) # Valor da multa
+    valcred = models.CharField(max_length=16, blank=True, null=True) # Valor do crédito
+    valatu = models.CharField(max_length=16, blank=True, null=True) # Valor do atualizado
     datvalatu = models.DateField(blank=True, null=True) # Data valor atualizado
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa) # Física / Jurídica

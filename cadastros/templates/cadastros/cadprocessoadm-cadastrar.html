@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col">
                         {% if form.pat.errors %} <!-- Se a validação 'unique' do atributo 'pat' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
-                        <div class="alert alert-danger" role="alert" style="height: 45px; width: 450px;">
+                        <div class="alert alert-danger" role="alert" style="height: 50px; width: px;">
                             <h6>{{ form.pat.errors }}</h6>
                         </div>
                         {% endif %}
@@ -50,15 +50,15 @@
                 <div class="row">
                     <div class="col">
                         <label for="datini">Período</label>
-                        {% render_field form.datini class="form-control" id="datini"%}
+                        {% render_field form.datini class="form-control" type="date" id="datini"%}
                     </div>
                     <div class="col">
                         <label for="datfin"><!--Período Final--></label>
-                        {% render_field form.datfin class="form-control" id="datfin"%}
+                        {% render_field form.datfin class="form-control" type="date" id="datfin"%}
                     </div>
                     <div class="col">
                         <label for="datdivat">D.A</label>
-                        {% render_field form.datdivat class="form-control" id="datdivat"%}
+                        {% render_field form.datdivat class="form-control" type="date" id="datdivat"%}
                     </div>
                     <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
                     <div class="col">
@@ -86,33 +86,15 @@
                         <label for="valcred">Valor do Crédito</label>
                         {% render_field form.valcred class="form-control" id="valcred"%}
                     </div>
-                    <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
-                    <div class="col">
-
-                    </div> 
-                    -->
                     <div class="col">
                         <label for="valatu">Valor do Atualizado</label>
                         {% render_field form.valatu class="form-control" id="valatu"%}
                     </div>  
                     <div class="col">
                         <label for="datvalatu">Data Valor Atualizado</label>
-                        {% render_field form.datvalatu class="form-control" id="datvalatu"%}
+                        {% render_field form.datvalatu class="form-control" type="date" id="datvalatu"%}
                     </div> 
                 </div>    
-                <!-- <div class="row">
-                    <div class="col">
-                        <label for="datand">Data Andamento</label>
-                        {% render_field form.datand class="form-control" id="datand"%}
-                    </div> 
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <label for="datprazo">Data prazo</label>
-                        {% render_field form.datprazo class="form-control" id="datprazo"%}
-                    </div> 
-                </div> -->
                 <br><br>
                 <h5>Contribuinte</h5>
                 <hr>
@@ -141,7 +123,7 @@
                     </div> 
                     <div class="col">
                         {% if form.doc.errors %} <!-- Se a validação 'unique' do atributo 'doc' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
-                        <div class="alert alert-danger" role="alert" style="height: 45px; width: 455px;">
+                        <div class="alert alert-danger" role="alert"  style="height: 70px; width: px;">
                             <h6>{{ form.doc.errors }}</h6>
                         </div>
                         {% endif %}
@@ -221,10 +203,13 @@
 
 <script>
     $(document).ready(function(){
+        $("#pat").mask("00000/0000");
+        $("#valtrib").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
+        $("#valmul").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
+        $("#valcred").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
+        $("#valatu").mask('000.000.000.000.000,00', {reverse: true, placeholder: "R$"});
 
-        $("#datini").mask("00/00/0000", {placeholder: "__/__/____"});
-        $("#datfin").mask("00/00/0000", {placeholder: "__/__/____"});
-
+        
 
         
     })
