@@ -42,7 +42,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datprazo = models.DateField(blank=True, null=True)
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa, blank=True, null=True) # Física / Jurídica
-    doc = models.IntegerField(unique=True) # CPF / CNPJ
+    doc = models.IntegerField(verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
     nomefantasia = models.CharField(max_length=50, blank=True, null=True) # Nome Fantasia
     email = models.EmailField(max_length=50, blank=True, null=True) # E-mail
     logradouro = models.CharField(max_length=50, blank=True, null=True) # Rua

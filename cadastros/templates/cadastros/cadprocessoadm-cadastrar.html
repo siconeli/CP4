@@ -20,9 +20,13 @@
         <div class="card-body">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                <hr>
+                Processo
+                <br><br>
                 <div class="row w-25">
                     <div class="col">
-                        <label for="pat">Processo</label>
+                        <br>
+                        <label for="pat">Pat N°</label>
                         {% render_field form.pat class="form-control" id="pat"%}
                     </div>
                 </div>
@@ -121,6 +125,16 @@
                         <label for="doc">CPF / CNPJ</label>
                         {% render_field form.doc class="form-control" id="doc"%}
                     </div> 
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        {% if form.doc.errors %} <!-- Se a validação 'unique' do atributo 'doc' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
+                        <div class="alert alert-danger" role="alert" style="height: 45px; width: 455px;">
+                            <h6>{{ form.doc.errors }}</h6>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
                 <br>
                 <div class="row">
