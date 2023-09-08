@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block conteudo %} 
-
 <div class="container p-5">
     <br><br>
     <div class="card">
@@ -26,6 +25,19 @@
                 <br>
                 <div class="row">
                     <div class="col">
+                        {% if form.pat.errors %} <!-- Se a validação 'unique' do atributo 'pat' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
+                        <div class="alert alert-danger" role="alert" style="height: 50px; width: px;">
+                            <h6>{{ form.pat.errors }}</h6>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row"> <!-- w-50 (colocar para diminuir o tamanho do campo input)-->
+                    <div class="col">
+                        <label for="pat">Pat N° <b>*</b></label>
+                        {% render_field form.pat class="form-control" placeholder="     /    " id="pat"%}
+                    </div>
+                    <div class="col">
                         <label for="municipio">Município <b>*</b></label>
                         {% render_field form.municipio class="form-control" id="municipio"%}
                     </div>
@@ -38,15 +50,15 @@
                 <div class="row">
                     <div class="col">
                         <label for="datini">Período</label>
-                        {% render_field form.datini class="form-control" id="datini"%}
+                        {% render_field form.datini class="form-control" type="date" id="datini"%}
                     </div>
                     <div class="col">
                         <label for="datfin"><!--Período Final--></label>
-                        {% render_field form.datfin class="form-control" id="datfin"%}
+                        {% render_field form.datfin class="form-control" type="date" id="datfin"%}
                     </div>
                     <div class="col">
                         <label for="datdivat">D.A</label>
-                        {% render_field form.datdivat class="form-control" id="datdivat"%}
+                        {% render_field form.datdivat class="form-control" type="date" id="datdivat"%}
                     </div>
                     <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
                     <div class="col">
@@ -64,47 +76,38 @@
                 <div class="row">
                     <div class="col">
                         <label for="valtrib">Valor do Tributo</label>
-                        {% render_field form.valtrib class="form-control" id="valtrib"%}
+                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$"  id="valtrib"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
-                        {% render_field form.valmul class="form-control" id="valmul"%}
+                        {% render_field form.valmul class="form-control" placeholder="R$" id="valmul"%}
                     </div>
                     <div class="col">
                         <label for="valcred">Valor do Crédito</label>
-                        {% render_field form.valcred class="form-control" id="valcred"%}
+                        {% render_field form.valcred class="form-control" placeholder="R$" id="valcred"%}
                     </div>
-                    <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
-                    <div class="col">
-
-                    </div> 
-                    -->
                     <div class="col">
                         <label for="valatu">Valor do Atualizado</label>
-                        {% render_field form.valatu class="form-control" id="valatu"%}
+                        {% render_field form.valatu class="form-control" placeholder="R$" id="valatu"%}
                     </div>  
                     <div class="col">
                         <label for="datvalatu">Data Valor Atualizado</label>
-                        {% render_field form.datvalatu class="form-control" id="datvalatu"%}
+                        {% render_field form.datvalatu class="form-control" type="date" placeholder="R$" id="datvalatu"%}
                     </div> 
                 </div>    
-                <!-- <div class="row">
-                    <div class="col">
-                        <label for="datand">Data Andamento</label>
-                        {% render_field form.datand class="form-control" id="datand"%}
-                    </div> 
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <label for="datprazo">Data prazo</label>
-                        {% render_field form.datprazo class="form-control" id="datprazo"%}
-                    </div> 
-                </div> -->
                 <br><br>
                 <h5>Contribuinte</h5>
                 <hr>
                 <br>
+                <div class="row">
+                    <div class="col">
+                        {% if form.doc.errors %} <!-- Se a validação 'unique' do atributo 'doc (CPJ / CNPJ)' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
+                        <div class="alert alert-danger" role="alert"  style="height: 50px; width: px;">
+                            <h6>{{ form.doc.errors }}</h6>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <label for="nomecontribuinte">Nome / Razão Social <b>*</b></label>
@@ -122,27 +125,12 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <!-- Espaço entre os campos -->
-                    </div> 
-                    <div class="col">
-                        <!-- Espaço entre os campos -->
-                    </div> 
-                    <div class="col">
-                        {% if form.doc.errors %} <!-- Se a validação 'unique' do atributo 'doc' retornar erro de registro já utilizado, irá abrir um alerta informando que o registro já existe-->
-                        <div class="alert alert-danger" role="alert" style="height: 45px; width: 455px;">
-                            <h6>{{ form.doc.errors }}</h6>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                         <label for="nomefantasia">Nome Fantasia</label>
                         {% render_field form.nomefantasia class="form-control" id="nomefantasia"%}
                     </div> 
                     <div class="col">
                         <label for="email">E-mail</label>
-                        {% render_field form.email class="form-control" id="email"%}
+                        {% render_field form.email class="form-control" placeholder="@" id="email" autocomplete="on"%}
                     </div> 
                 </div>
                 <br>
@@ -176,18 +164,18 @@
                     </div> 
                     <div class="col">
                         <label for="cep">CEP</label>
-                        {% render_field form.cep class="form-control" id="cep"%}
+                        {% render_field form.cep class="form-control" placeholder="     -   " id="cep"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="tel">Telefone</label>
-                        {% render_field form.tel class="form-control" id="tel"%}
+                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel" autocomplete="on"%}
                     </div> 
                     <div class="col">
                         <label for="cel">Celular</label>
-                        {% render_field form.cel class="form-control" id="cel"%}
+                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel" autocomplete="on"%}
                     </div> 
                 </div>
                 <br><br>
@@ -197,4 +185,47 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<!-- Importação do arquivo dentro da pasta static/js para usar máscaras nos campos input -->
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+
+<!-- Configuração de máscaras nos campos inputs, buscando o campo através do ID -->
+<script>
+    $(document).ready(function(){
+        $("#pat").mask("00000/0000", {reverse: true});
+        $("#cep").mask('00000-000');
+        $("#tel").mask('(00) 0000-0000');
+        $("#cel").mask('(00) 00000-0000');
+        $('#valtrib').mask("000,000,000.00", {reverse: true});
+        $('#valmul').mask("000,000,000.00", {reverse: true});
+        $('#valcred').mask("000,000,000.00", {reverse: true});
+        $('#valatu').mask("000,000,000.00", {reverse: true});
+
+
+        // Função para aplicar máscara de CPF ou CNPJ de acordo com a seleção do campo select de 'Tipo pessoa'
+        function aplicarMascara(){
+            var opcaoSelecionada = $('#pessoa').val();
+            var campoDoc = $('#doc');
+
+            if(opcaoSelecionada === 'fisica'){
+                campoDoc.mask('000.000.000-00', {reverse: true});
+            } else {
+                campoDoc.mask('00.000.000/0000-00', {reverse: true});
+            }
+
+        }
+
+        aplicarMascara();
+        $('#pessoa').change(aplicarMascara);
+                
+    })
+    
+</script>
+
 {% endblock %}

@@ -76,7 +76,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="valtrib">Valor do Tributo</label>
-                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$" id="valtrib"%}
+                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$"  id="valtrib"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
@@ -130,7 +130,7 @@
                     </div> 
                     <div class="col">
                         <label for="email">E-mail</label>
-                        {% render_field form.email class="form-control" placeholder="@" id="email"%}
+                        {% render_field form.email class="form-control" placeholder="@" id="email" autocomplete="on"%}
                     </div> 
                 </div>
                 <br>
@@ -171,11 +171,11 @@
                 <div class="row">
                     <div class="col">
                         <label for="tel">Telefone</label>
-                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel"%}
+                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel" autocomplete="on"%}
                     </div> 
                     <div class="col">
                         <label for="cel">Celular</label>
-                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel"%}
+                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel" autocomplete="on"%}
                     </div> 
                 </div>
                 <br><br>
@@ -192,7 +192,6 @@
 
 {% block scripts %}
 
-
 <!-- Importação do arquivo dentro da pasta static/js para usar máscaras nos campos input -->
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>
 
@@ -201,10 +200,32 @@
 <script>
     $(document).ready(function(){
         $("#pat").mask("00000/0000", {reverse: true});
-        $("#doc").mask('000.000.000-00', {reverse: true});  //Como criar um if para usar uma mascara para CNPJ se o tipo pessoa for jurídica
         $("#cep").mask('00000-000');
         $("#tel").mask('(00) 0000-0000');
         $("#cel").mask('(00) 00000-0000');
+        $('#valtrib').mask("000,000,000.00", {reverse: true});
+        $('#valmul').mask("000,000,000.00", {reverse: true});
+        $('#valcred').mask("000,000,000.00", {reverse: true});
+        $('#valatu').mask("000,000,000.00", {reverse: true});
+
+        // Função para aplicar máscara de CPF ou CNPJ de acordo com a seleção do campo select de 'Tipo pessoa'
+        function aplicarMascara(){
+            var opcaoSelecionada = $('#pessoa').val();
+            var campoDoc = $('#doc');
+
+            if(opcaoSelecionada === 'fisica'){
+                campoDoc.mask('000.000.000-00', {reverse: true});
+            } else {
+                campoDoc.mask('00.000.000/0000-00', {reverse: true});
+            }
+
+        }
+
+        aplicarMascara();
+        $('#pessoa').change(aplicarMascara);
+
+        
+                
     })
     
 </script>

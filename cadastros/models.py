@@ -33,14 +33,14 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datini = models.DateField(blank=True, null=True) # Data Inicial do Período do processo
     datfin = models.DateField(blank=True, null=True) # Data final do Período do processo
     datdivat = models.DateField(blank=True, null=True) # Data dívida ativa
-    valtrib = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)  # Valor do atributo
-    valmul = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor da multa
-    valcred = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor do crédito
-    valatu = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True) # Valor do atualizado
+    valtrib = models.CharField(max_length=10, blank=True, null=True)  # Valor do atributo
+    valmul = models.CharField(max_length=10, blank=True, null=True) # Valor da multa
+    valcred = models.CharField(max_length=10, blank=True, null=True) # Valor do crédito
+    valatu = models.CharField(max_length=10, blank=True, null=True) # Valor do atualizado
     datvalatu = models.DateField(blank=True, null=True) # Data valor atualizado
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa) # Física / Jurídica
-    doc = models.CharField(max_length=14, verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
+    doc = models.CharField(max_length=20, verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
     nomefantasia = models.CharField(max_length=50, blank=True, null=True) # Nome Fantasia
     email = models.EmailField(max_length=50, blank=True, null=True) # E-mail
     logradouro = models.CharField(max_length=50, blank=True, null=True) # Rua
@@ -50,8 +50,8 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) # Município Contribuinte
     ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) # UF Contribuinte
     cep = models.CharField(max_length=10, blank=True, null=True) # CEP
-    tel = models.CharField(max_length=10, blank=True, null=True) # Telefone
-    cel = models.CharField(max_length=10, blank=True, null=True) # Celular
+    tel = models.CharField(max_length=20, blank=True, null=True) # Telefone
+    cel = models.CharField(max_length=20, blank=True, null=True) # Celular
 
     def __str__(self):
         return f'{self.pat}'
@@ -61,7 +61,8 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     andamentos = (
         ('abertura', 'Abertura'), ('fechamento', 'Fechamento'),
     )
-
+    
+    # Campos do Andamento do processo adminsitrativo
     processo = models.ForeignKey(ProcessoAdministrativo, on_delete=models.CASCADE) # Relacionamento 'One to Many'
     datandamento = models.DateField(verbose_name='Data do Andamento')
     andamento = models.CharField(max_length=50, choices=andamentos, verbose_name='Andamento')
