@@ -35,7 +35,7 @@
                 <div class="row"> <!-- w-50 (colocar para diminuir o tamanho do campo input)-->
                     <div class="col">
                         <label for="pat">Pat N° <b>*</b></label>
-                        {% render_field form.pat class="form-control" placeholder="     /    " id="pat"%}
+                        {% render_field form.pat class="form-control" placeholder="     /    " id="pat" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="municipio">Município <b>*</b></label>
@@ -50,15 +50,15 @@
                 <div class="row">
                     <div class="col">
                         <label for="datini">Período</label>
-                        {% render_field form.datini class="form-control" type="date" id="datini"%}
+                        {% render_field form.datini class="form-control" type="date" id="datini" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="datfin"><!--Período Final--></label>
-                        {% render_field form.datfin class="form-control" type="date" id="datfin"%}
+                        {% render_field form.datfin class="form-control" type="date" id="datfin" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="datdivat">D.A</label>
-                        {% render_field form.datdivat class="form-control" type="date" id="datdivat"%}
+                        {% render_field form.datdivat class="form-control" type="date" id="datdivat" autocomplete="off"%}
                     </div>
                     <!-- Para criar espaço entre as colunas e moldar do jeito que preciso
                     <div class="col">
@@ -76,23 +76,23 @@
                 <div class="row">
                     <div class="col">
                         <label for="valtrib">Valor do Tributo</label>
-                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$"  id="valtrib"%}
+                        {% render_field form.valtrib class="mask-money form-control" placeholder="R$"  id="valtrib" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="valmul">Valor da Multa</label>
-                        {% render_field form.valmul class="form-control" placeholder="R$" id="valmul"%}
+                        {% render_field form.valmul class="form-control" placeholder="R$" id="valmul" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="valcred">Valor do Crédito</label>
-                        {% render_field form.valcred class="form-control" placeholder="R$" id="valcred"%}
+                        {% render_field form.valcred class="form-control" placeholder="R$" id="valcred" autocomplete="off"%}
                     </div>
                     <div class="col">
                         <label for="valatu">Valor do Atualizado</label>
-                        {% render_field form.valatu class="form-control" placeholder="R$" id="valatu"%}
+                        {% render_field form.valatu class="form-control" placeholder="R$" id="valatu" autocomplete="off"%}
                     </div>  
                     <div class="col">
                         <label for="datvalatu">Data Valor Atualizado</label>
-                        {% render_field form.datvalatu class="form-control" type="date" placeholder="R$" id="datvalatu"%}
+                        {% render_field form.datvalatu class="form-control" type="date" placeholder="R$" id="datvalatu" autocomplete="off"%}
                     </div> 
                 </div>    
                 <br><br>
@@ -111,71 +111,71 @@
                 <div class="row">
                     <div class="col">
                         <label for="nomecontribuinte">Nome / Razão Social <b>*</b></label>
-                        {% render_field form.nomecontribuinte class="form-control" id="nomecontribuinte"%}
+                        {% render_field form.nomecontribuinte class="form-control" id="nomecontribuinte" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="pessoa">Tipo de Pessoa <b>*</b></label>
-                        {% render_field form.pessoa class="form-control" id="pessoa"%}
+                        {% render_field form.pessoa class="form-control" id="pessoa" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="doc">CPF / CNPJ <b>*</b></label>
-                        {% render_field form.doc class="form-control" id="doc"%}
+                        {% render_field form.doc class="form-control" id="doc" autocomplete="off"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="nomefantasia">Nome Fantasia</label>
-                        {% render_field form.nomefantasia class="form-control" id="nomefantasia"%}
+                        {% render_field form.nomefantasia class="form-control" id="nomefantasia" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="email">E-mail</label>
-                        {% render_field form.email class="form-control" placeholder="@" id="email" autocomplete="on"%}
+                        {% render_field form.email class="form-control" placeholder="@" id="email" autocomplete="off" autocomplete="off"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="logradouro">Logradouro</label>
-                        {% render_field form.logradouro class="form-control" id="logradouro"%}
+                        {% render_field form.logradouro class="form-control" id="logradouro" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="numero">Número</label>
-                        {% render_field form.numero class="form-control" id="numero"%}
+                        {% render_field form.numero class="form-control" id="numero" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="complemento">Complemento</label>
-                        {% render_field form.complemento class="form-control" id="complemento"%}
+                        {% render_field form.complemento class="form-control" id="complemento" autocomplete="off"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="bairro">Bairro</label>
-                        {% render_field form.bairro class="form-control" id="bairro"%}
+                        {% render_field form.bairro class="form-control" id="bairro" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="municipiocontri">Município</label>
-                        {% render_field form.municipiocontri class="form-control" id="municipiocontri"%}
+                        {% render_field form.municipiocontri class="form-control" id="municipiocontri" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="ufcontri">UF</label>
-                        {% render_field form.ufcontri class="form-control" id="ufcontri"%}
+                        {% render_field form.ufcontri class="form-control" id="ufcontri" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="cep">CEP</label>
-                        {% render_field form.cep class="form-control" placeholder="     -   " id="cep"%}
+                        {% render_field form.cep class="form-control" placeholder="     -   " id="cep" autocomplete="off"%}
                     </div> 
                 </div>
                 <br>
                 <div class="row">
                     <div class="col">
                         <label for="tel">Telefone</label>
-                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel" autocomplete="on"%}
+                        {% render_field form.tel class="form-control" placeholder="( )     -    " id="tel" autocomplete="off"%}
                     </div> 
                     <div class="col">
                         <label for="cel">Celular</label>
-                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel" autocomplete="on"%}
+                        {% render_field form.cel class="form-control" placeholder="( )      -    " id="cel" autocomplete="off"%}
                     </div> 
                 </div>
                 <br><br>
