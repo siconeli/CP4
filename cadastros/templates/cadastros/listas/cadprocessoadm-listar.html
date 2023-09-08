@@ -11,13 +11,11 @@
 {% block conteudo %} 
 <div class="container p-5">
     <br><br>
-    <div class="card" style="height: 41rem;">
+    <div class="card">
+        <div class="card-header text-white" style="background-color: #0098DB;">
+            <h5 style="text-align: center;">Processos Administrativos</h5>
+        </div>
         <div class="card-body">
-            <div class="card-header text-white" style="background-color: #0098DB;">
-                <h5 style="text-align: center;">Processos Administrativos</h5>
-             </div>
-            <br>
-            <!--Formulário do campo de pesquisa(Filtro)-->
             <div class="row">
                 <div class="col">
                     <div class="card">
@@ -29,7 +27,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <!--Formulário do campo de pesquisa(Filtro)-->
+                <!-- <div class="col">
                     <div class="card">
                         <div class="card-header text-white" style="background-color: #0098DB; text-align: center;" >
                         <h6>Buscar Processo</h6>
@@ -40,14 +39,14 @@
                                     <input type="text" name="processo" value="{{ request.GET.processo }}" class="form-control w-50" 
                                     autocomplete="off" placeholder="N°">
                                     <div class="input-group-append">
-                                        <button class="btn btn-dark btn-sm" type="submit"><i class="bi bi-zoom-in" style="font-size: 15px;"><!--Buscar Processo (usando ícone)--></i></button>
-                                        <a href="{% url 'list-proc-adm' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-repeat" style="font-size: 15px;"><!--Limpar Processos (usando ícone)--></i></a>
+                                        <button class="btn btn-dark btn-sm" type="submit"><i class="bi bi-zoom-in" style="font-size: 15px;">< Buscar Processo (usando ícone)</i></button>
+                                        <a href="{% url 'list-proc-adm' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-repeat" style="font-size: 15px;">Limpar Processos (usando ícone)</i></a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                 <!--Apenas para ocupar espaço e enquadrar os cards da maneira que quero  -->
                 </div>
@@ -57,43 +56,41 @@
 
             </div>
             <br>
-            <div class="card" style="height: 26rem;">
+            <div class="card">
                 <div class="card-header text-white" style="background-color: #0098DB; text-align: center;">
                 <h6>Lista de Processos</h6>
                 </div>
                 <div class="card-body">                 
                     <!--Tabela(lista) de Processos-->
                     <div class="table-responsive">
-                        <table class="table table-hover table-light">
-                            <tr class="table-secondary">
-                                <th>Processo</th>
-                                <th>Município</th>
-                                <th>Abrir/Excluir</th>        
-                                <th>Andamento</th>
-                            </tr>
+                        <table class="table table-hover table-light" id="tabela-listar">
+                            <thead>
+                                <tr class="table-secondary">
+                                    <th>Processo</th>
+                                    <th>Município</th>
+                                    <th>Abrir/Excluir</th>        
+                                    <th>Andamento</th>
+                                </tr>
+                            </thead>
 
-                            {% for processo in object_list %}
-                            <tr>
-                                <td> {{ processo.pat }}</td>
-                                <td> {{ processo.municipio }}</td>
-                                <td>
-                                    <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
+                            <tbody>
+                                {% for processo in object_list %}
+                                <tr>
+                                    <td> {{ processo.pat }}</td>
+                                    <td> {{ processo.municipio }}</td>
+                                    <td>
+                                        <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
 
-                                    <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Processo (usando ícone)--></i></a>
-                                </td>
-                                <td> 
-                                    <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" ><i class="bi bi-plus-circle" style="font-size: 15px;"><!--Novo Andamento (usando ícone)--></i></a>
-                                    <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-card-checklist" style="font-size: 15px;"><!--Listar Andamentos (usando ícone)--></i></a>
-                                </td>
-                            </tr>
+                                        <a href="{% url 'del-proc-adm' processo.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Processo (usando ícone)--></i></a>
+                                    </td>
+                                    <td> 
+                                        <a href="{% url 'cre-and-proc-adm' processo.pk %}" class="btn btn-success btn-sm" ><i class="bi bi-plus-circle" style="font-size: 15px;"><!--Novo Andamento (usando ícone)--></i></a>
+                                        <a href="{% url 'list-and-proc-adm' processo.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-card-checklist" style="font-size: 15px;"><!--Listar Andamentos (usando ícone)--></i></a>
+                                    </td>
+                                </tr>
 
-                            {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
-
-                            <tr>
-                                <td colspan="3">Nenhum processo encontrado</td>
-                            </tr>
-
-                            {% endfor %}
+                                {% endfor %}
+                            </tbody>
 
                         </table>
                     </div>
@@ -111,6 +108,49 @@
 
 <!-- Importação JS da minha 'datatable' presente na lista de processos administrativos -->
 <script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/datatables.min.js"></script>
+
+<script>
+    // Para transformar minha lista em um datatable
+    $(document).ready(function(){
+        // $('#tabela-listar').DataTable();
+    
+        // });
+
+        $('#tabela-listar').DataTable({
+            responsive: true,
+            // "bSort": false,
+            "aaSorting": [],
+            "pageLength": 5,
+            "language": {
+                "decimal": "",
+                "emptyTable": "Nenhum processo registrado",
+                "info": "Mostrando de _START_ até _END_ de _TOTAL_ processos",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 processos",
+                "infoFiltered": "(Filtrado de _MAX_ processos no total)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ processos",
+                "loadingRecords": "A carregar dados...",
+                "processing": "A processar...",
+                "search": "Buscar:",
+                "zeroRecords": "Nenhum processo encontrado",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": ordem crescente",
+                    "sortDescending": ": ordem decrescente"
+                }
+            }
+        });
+
+    });
+
+</script>
+
 
 
 {% endblock %} 
