@@ -59,7 +59,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
 
 class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     andamentos = (
-        ('abertura', 'Abertura'), ('fechamento', 'Fechamento'),
+        ('abertura', 'Abertura'), ('parecerfiscal', 'Parecer Fiscal'), ('decisao1instancia', 'Decisão 1ª Instância'), ('suspensoparafiscalizacaofutura', 'Suspenso Para Fiscalização Futura'), ('autodeinfracaoetermodeintimacao-aiti.', 'Auto de Infração e Termo de Intimação - AITI.'), ('termodeintimacaofiscal-tif.', 'Termo de Intimação Fiscal - TIF.'), ('decisaode2instancia', 'Decisão de 2ª Instância'), ('cobrancadedocumentacao', 'Cobrança de Documentação'), ('recusovoluntario', 'Recurso Voluntário'), ('fimdocontratocomaassessoria', 'Fim do Contrato com a Assessoria'), ('manifestacao', 'Manifestação'), ('recebimentodoar', 'Recebimento do AR'), ('despacho', 'Despacho'), ('aguardandopagamento', 'Aguardando Pagamento'), ('apresentacaodedocumentacaoparaanalise', 'Apresentação de Documentação para Análise'), ('aguardandoar', 'Aguardando AR'), ('oficio', 'Ofício'), ('revelia', 'Revelia'), ('execucao', 'Execução'), ('confissaodedividaparcelamento', 'Confissão de Dívida (Parcelamento)'), ('reenviodedocumento', 'Reenvio de Documento'), ('parecerjuridico', 'Parecer Juridico'), ('certidao', 'Certidão'), ('encaminhado', 'Encaminhado'),
     )
     
     # Campos do Andamento do processo adminsitrativo
