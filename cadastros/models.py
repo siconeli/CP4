@@ -62,10 +62,11 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
         ('abertura', 'Abertura'), ('parecerfiscal', 'Parecer Fiscal'), ('decisao1instancia', 'Decisão 1ª Instância'), ('suspensoparafiscalizacaofutura', 'Suspenso Para Fiscalização Futura'), ('autodeinfracaoetermodeintimacao-aiti.', 'Auto de Infração e Termo de Intimação - AITI.'), ('termodeintimacaofiscal-tif.', 'Termo de Intimação Fiscal - TIF.'), ('decisaode2instancia', 'Decisão de 2ª Instância'), ('cobrancadedocumentacao', 'Cobrança de Documentação'), ('recusovoluntario', 'Recurso Voluntário'), ('fimdocontratocomaassessoria', 'Fim do Contrato com a Assessoria'), ('manifestacao', 'Manifestação'), ('recebimentodoar', 'Recebimento do AR'), ('despacho', 'Despacho'), ('aguardandopagamento', 'Aguardando Pagamento'), ('apresentacaodedocumentacaoparaanalise', 'Apresentação de Documentação para Análise'), ('aguardandoar', 'Aguardando AR'), ('oficio', 'Ofício'), ('revelia', 'Revelia'), ('execucao', 'Execução'), ('confissaodedividaparcelamento', 'Confissão de Dívida (Parcelamento)'), ('reenviodedocumento', 'Reenvio de Documento'), ('parecerjuridico', 'Parecer Juridico'), ('certidao', 'Certidão'), ('encaminhado', 'Encaminhado'),
     )
     
-    # Campos do Andamento do processo adminsitrativo
+    # Campos do Andamento do processo administrativo
     processo = models.ForeignKey(ProcessoAdministrativo, on_delete=models.CASCADE) # Relacionamento 'One to Many'
     datandamento = models.DateField(verbose_name='Data do Andamento')
     andamento = models.CharField(max_length=50, choices=andamentos, verbose_name='Andamento')
+    dias = models.IntegerField()
     dataprazo = models.DateField(verbose_name='Prazo')
     locprocesso = models.CharField(max_length=50, verbose_name='Localização do Processo')
     funcionario = models.CharField(max_length=50, verbose_name='Funcionário')

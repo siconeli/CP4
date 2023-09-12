@@ -65,7 +65,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     login_url = reverse_lazy('login')
     group_required = u"Consultores AEG"
     model = Andamento
-    fields = ['datandamento', 'andamento', 'dataprazo', 'locprocesso', 'Funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
+    fields = ['processo', 'datandamento', 'andamento', 'dias', 'dataprazo', 'locprocesso', 'funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
         
