@@ -69,6 +69,15 @@
                                 <tr class="table-secondary">
                                     <th>Processo</th>
                                     <th>Município</th>
+                                    <th>Contribuinte</th>
+                                    <th>CPF/CNPJ</th>
+                                    <!-- <th>Localização</th> -->
+                                    <!-- <th>Prazo</th> -->
+                                    <!-- <th>Andamento</th> -->
+                                    <!-- <th>Data do Andamento</th> -->
+                                    <!-- <th>AITI</th> -->
+                                    <th>Tipo de Pessoa</th>
+
                                     <th>Abrir/Excluir</th>        
                                     <th>Andamento</th>
                                 </tr>
@@ -77,8 +86,11 @@
                             <tbody>
                                 {% for processo in object_list %}
                                 <tr>
-                                    <td> {{ processo.pat }}</td>
-                                    <td> {{ processo.municipio }}</td>
+                                    <td>{{ processo.pat }}</td>
+                                    <td>{{ processo.municipio }}</td>
+                                    <td>{{ processo.nomecontribuinte }}</td>
+                                    <td>{{ processo.doc }}</td>
+                                    <td>{{ processo.pessoa }}</td>
                                     <td>
                                         <a href="{% url 'upd-proc-adm' processo.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Processo (usando ícone)--></i></a>
 

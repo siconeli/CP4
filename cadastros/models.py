@@ -19,11 +19,11 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     )
 
     municipios = (
-        ('selviria', 'Selvíria'), ('inocencia', 'Inocência'),
+        ('Selvíria', 'Selvíria'), ('Inocência', 'Inocência'),
     )
 
     tipopessoa = (
-        ('fisica', 'Física'), ('juridica', 'Jurídica'),
+        ('Física', 'Física'), ('Jurídica', 'Jurídica'),
     )
 
     # Campos do processo administrativo
@@ -33,10 +33,10 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     datini = models.DateField(blank=True, null=True) # Data Inicial do Período do processo
     datfin = models.DateField(blank=True, null=True) # Data final do Período do processo
     datdivat = models.DateField(blank=True, null=True) # Data dívida ativa
-    valtrib = models.CharField(max_length=10, blank=True, null=True)  # Valor do atributo
-    valmul = models.CharField(max_length=10, blank=True, null=True) # Valor da multa
-    valcred = models.CharField(max_length=10, blank=True, null=True) # Valor do crédito
-    valatu = models.CharField(max_length=10, blank=True, null=True) # Valor do atualizado
+    valtrib = models.CharField(max_length=14, blank=True, null=True)  # Valor do atributo
+    valmul = models.CharField(max_length=14, blank=True, null=True) # Valor da multa
+    valcred = models.CharField(max_length=14, blank=True, null=True) # Valor do crédito
+    valatu = models.CharField(max_length=14, blank=True, null=True) # Valor do atualizado
     datvalatu = models.DateField(blank=True, null=True) # Data valor atualizado
     nomecontribuinte = models.CharField(max_length=50)  # Nome / Razão Social
     pessoa = models.CharField(max_length=50, choices=tipopessoa) # Física / Jurídica
