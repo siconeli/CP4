@@ -21,19 +21,23 @@
                 <table class="table table-striped">
                     <tr>
                         <th>Processo</th>
+                        <!-- <th>Ordem</th> -->
                         <th>Data</th>
                         <th>Tipo</th>
                         <th>Prazo</th>
+                        <th>Usuário</th>
                         <th>Abrir/Excluir</th> 
                         <th>Arquivo</th>
                     </tr>
 
                     {% for andamento in object_list %}
                     <tr>
-                        <td> {{ andamento.processo }}</td>
-                        <td> {{ andamento.datandamento }}</td>
-                        <td> {{ andamento.andamento }}</td>
-                        <td> {{ andamento.dataprazo }}</td>
+                        <td>{{ andamento.processo }}</td>
+                        <!-- <td>{{ andamento.id }}</td> -->
+                        <td>{{ andamento.datandamento }}</td>
+                        <td>{{ andamento.andamento }}</td>
+                        <td>{{ andamento.dataprazo }}</td>
+                        <td>{{ user }}</td>
                         <td>
                             <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
                             <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>

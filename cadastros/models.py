@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 from django.contrib.auth.models import User
 
@@ -65,7 +66,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     # Campos do Andamento do processo administrativo
     processo = models.ForeignKey(ProcessoAdministrativo, on_delete=models.CASCADE) # Relacionamento 'One to Many'
     datandamento = models.DateField(verbose_name='Data do Andamento')
-    andamento = models.CharField(max_length=50, choices=andamentos, verbose_name='Andamento')
+    andamento = models.CharField(max_length=100, choices=andamentos, verbose_name='Andamento')
     dias = models.IntegerField()
     dataprazo = models.DateField(verbose_name='Prazo')
     locprocesso = models.CharField(max_length=50, verbose_name='Localização do Processo')
