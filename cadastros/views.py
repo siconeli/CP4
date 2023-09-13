@@ -6,7 +6,7 @@ from django.views.generic.list import ListView # Módulo para listar
 
 from .models import ProcessoAdministrativo, Andamento
 
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin # Módulo para controlar o acesso de um usuário a determinada url, através de autenticação de login
 from braces.views import GroupRequiredMixin # Para realizar o controle de grupos de permissões de usuários juntamente com o painel admin
@@ -67,7 +67,15 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     model = Andamento
     fields = ['processo', 'datandamento', 'andamento', 'dias', 'dataprazo', 'locprocesso', 'funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
     template_name = 'cadastros/cadandprocessoadm-editar.html'
-    success_url = reverse_lazy('list-proc-adm')
+    # success_url = reverse_lazy('list-and-proc-adm')
+
+    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update.
+    def get_success_url(self):
+
+        processo_pk = 5
+
+        return reverse('list-and-proc-adm', args=[processo_pk])
+
 
 
 ###### DELETE ######

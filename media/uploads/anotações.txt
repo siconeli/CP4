@@ -1,0 +1,19 @@
+SERVIDOR DE APLICAÇÃO (WINDOWS): 
+-> Onde fica a aplicação do CP3
+-> IP: 100.100.100.62 | 10.0.0.62
+-> Para acessar o servidor por conexão remota, usar o IP: 10.0.0.62 e colocar usuário e senha que utilizo para desbloquear o mesmo. (administrador|sistemasaeg)
+
+-> O aplicativo 'ServerApplication.exe' deve estar em execução, para o CP3 funcionar.
+C:\Arquivos de programas\Processos\ServerApplication.exe
+-> O aplicativo 'Borland' também precisa estar com seu serviço iniciado.
+
+
+SERVIDOR DE BACKUPS E ARQUIVOS (LINUX):
+-> Onde fica os dados do CP3 e as pastas de arquivos dos consultores
+-> IP: 10.0.0.1
+
+SERVIDOR GTI(PowerEdge R420):
+Onde fica o sistema GTI
+
+PARA ACESSAR O CP3 ONLINE:
+URL: 100.100.100.62:8888
