@@ -40,7 +40,7 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
         context['processo_pk'] = self.kwargs.get('processo_pk')
-        context['botao'] = 'Cadastrar' # Para o botão da página de cadastrar andamento, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
+        # context['botao'] = 'Cadastrar' # Para o botão da página de cadastrar andamento, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
         return context
 
     def get_form_kwargs(self):
@@ -68,7 +68,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     fields = ['processo', 'datandamento', 'andamento', 'dias', 'dataprazo', 'locprocesso', 'funcionario', 'datrecebimento', 'complemento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6']
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     success_url = reverse_lazy('list-proc-adm')
-        
+
 
 ###### DELETE ######
 class CadProcessoAdmDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView): # Delete Processo Administrativo
@@ -98,15 +98,15 @@ class CadProcessoAdmList(LoginRequiredMixin, ListView): # List Processo Administ
     # paginate_by = 6 # Número de registros listados na minha list
 
     # Para filtrar dados através do campo input (fazendo busca)
-    def get_queryset(self):
-        buscaprocesso = self.request.GET.get('processo') # processo é o 'name' la do input da pesquisa
+    # def get_queryset(self):
+    #     buscaprocesso = self.request.GET.get('processo') # processo é o 'name' la do input da pesquisa
 
-        if buscaprocesso:
-            processos = ProcessoAdministrativo.objects.filter(pat__icontains=buscaprocesso)
-        else:
-            processos = ProcessoAdministrativo.objects.all()
+    #     if buscaprocesso:
+    #         processos = ProcessoAdministrativo.objects.filter(pat__icontains=buscaprocesso)
+    #     else:
+    #         processos = ProcessoAdministrativo.objects.all()
 
-        return processos
+    #     return processos
     
 
 # View da Lista de andamentos do processo
@@ -119,9 +119,9 @@ class CadAndamentosList(LoginRequiredMixin, ListView):
     # Irá buscar os andamentos vinculados ao processo e listar
     def get_queryset(self):
         
-        busca_pk = self.kwargs.get('pk') # Pega a pk(primary key) da URL
+        busca_pk_processo = self.kwargs.get('processo_pk') # Pega a pk(primary key) da URL, pk do processo
         
-        processo = ProcessoAdministrativo.objects.get(pk=busca_pk)  # Pega o processo que possui a pk recebida (pk é a primary key do processo)
+        processo = ProcessoAdministrativo.objects.get(pk=busca_pk_processo)  # Pega o processo que possui a pk recebida (pk é a primary key do processo)
         andamentos = processo.andamento_set.all()  # Pega todos os atributos do andamento
         
         return andamentos

@@ -39,7 +39,7 @@ urlpatterns = [
 
     ###### LIST ######
     path('listar/processo/adm/', CadProcessoAdmList.as_view(), name='list-proc-adm'),
-    path('listar/andamento/adm/<int:pk>/', CadAndamentosList.as_view(), name='list-and-proc-adm'),
+    path('listar/andamento/adm/<int:processo_pk>/', CadAndamentosList.as_view(), name='list-and-proc-adm'),
     path('listar/arquivo/andamento/adm/<int:andamento_pk>/', CadArquivosAdmList.as_view(), name='list-arq-and-adm'),
 
 ]
