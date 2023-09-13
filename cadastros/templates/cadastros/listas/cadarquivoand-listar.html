@@ -18,67 +18,65 @@
         <div class="card-body">
             <!--Tabela(lista) de Arquivos do andamento-->
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Arquivos</th>
-                        <!-- <th>Arquivo</th>
-                        <th>Arquivo</th>
-                        <th>Arquivo</th>
-                        <th>Arquivo</th>
-                        <th>Arquivo</th> -->
-                    </tr>
-
-                    {% for arquivo in arquivos %}
-                    <tr>
-                        {% if arquivo.arq1 %}
-                            <td>
-                                {{ arquivo.arq1.name }}
-                                <a href="{{ arquivo.arq1.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        {% if arquivo.arq2 %}
-                            <td>
-                                {{ arquivo.arq2.name }}
-                                <a href="{{ arquivo.arq2.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        {% if arquivo.arq3 %}
-                            <td>
-                                {{ arquivo.arq3.name }}
-                                <a href="{{ arquivo.arq3.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        {% if arquivo.arq4 %}
-                            <td>
-                                {{ arquivo.arq4.name }}
-                                <a href="{{ arquivo.arq4.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        {% if arquivo.arq5 %}
-                            <td>
-                                {{ arquivo.arq5.name }}
-                                <a href="{{ arquivo.arq5.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}
-                    </tr>
-                    <tr>
-                        {% if arquivo.arq6 %}
-                            <td>
-                                {{ arquivo.arq6.name }}
-                                <a href="{{ arquivo.arq6.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                            </td>
-                        {% endif %}                
-                    </tr>
-                    {% endfor %}
-
+                <br>
+                <table class="table table-striped" id="tabela-listar-arquivo">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th>Arquivos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for arquivo in arquivos %}
+                            {% if arquivo.arq1 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq1.name }}
+                                        <a href="{{ arquivo.arq1.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if arquivo.arq2 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq2.name }}
+                                        <a href="{{ arquivo.arq2.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if arquivo.arq3 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq3.name }}
+                                        <a href="{{ arquivo.arq3.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if arquivo.arq4 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq4.name }}
+                                        <a href="{{ arquivo.arq4.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if arquivo.arq5 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq5.name }}
+                                        <a href="{{ arquivo.arq5.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                            {% if arquivo.arq6 %}
+                                <tr>
+                                    <td>
+                                        {{ arquivo.arq6.name }}
+                                        <a href="{{ arquivo.arq6.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
+                                    </td>
+                                </tr>
+                            {% endif %}                
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
 
@@ -86,13 +84,62 @@
     <!--Código CSS + JavaScript para criar botão de voltar para a página anterior -->
     <button class="btn btn-secondary btn-sm" id="btnVoltar"><i class="bi bi-arrow-left" style="font-size: 15px;"><!--Icone--></i></button>
 
-    <script>
-        // Adicione um evento de clique ao botão
-        document.getElementById("btnVoltar").addEventListener("click", function() {
-            // Utilize a função window.history.back() para voltar para a página anterior
-            window.history.back();
-        });
-    </script>
-
 </div>
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+    // Adicione um evento de clique ao botão
+    document.getElementById("btnVoltar").addEventListener("click", function() {
+        // Utilize a função window.history.back() para voltar para a página anterior
+        window.history.back();
+    });
+</script>
+
+<!-- Importação JS da minha 'datatable' -->
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/datatables.min.js"></script>
+
+<script>
+    // Para transformar minha lista em um datatable
+    $(document).ready(function(){
+        // $('#tabela-listar').DataTable();
+    
+        // });
+
+        $('#tabela-listar-arquivo').DataTable({
+            responsive: true,
+            // "bSort": false,
+            "aaSorting": [],
+            "pageLength": 5,
+            "language": {
+                "decimal": "",
+                "emptyTable": "Nenhum arquivo anexado",
+                "info": "Mostrando de _START_ até _END_ de _TOTAL_ arquivos",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 arquivos",
+                "infoFiltered": "(Filtrado de _MAX_ arquivos no total)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ arquivos",
+                "loadingRecords": "A carregar dados...",
+                "processing": "A processar...",
+                "search": "Buscar:",
+                "zeroRecords": "Nenhum andamento encontrado",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": ordem crescente",
+                    "sortDescending": ": ordem decrescente"
+                }
+            }
+        });
+
+    });
+
+</script>
+
 {% endblock %}
