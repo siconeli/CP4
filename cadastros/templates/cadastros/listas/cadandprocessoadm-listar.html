@@ -18,42 +18,43 @@
         <div class="card-body">
             <!--Lista de andamentos-->
             <div class="table-responsive">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Processo</th>
-                        <!-- <th>Ordem</th> -->
-                        <th>Data</th>
-                        <th>Tipo</th>
-                        <th>Prazo</th>
-                        <th>Usuário</th>
-                        <th>Abrir/Excluir</th> 
-                        <th>Arquivo</th>
-                    </tr>
+                <br>
+                <table class="table table-striped" id="tabela-listar-andamento">
+                    <thead>
+                        <tr class="table-secondary">
+                            <th>Processo</th>
+                            <!-- <th>Ordem</th> -->
+                            <th>Data</th>
+                            <th>Tipo</th>
+                            <th>Prazo</th>
+                            <th>Usuário</th>
+                            <th>Abrir/Excluir</th> 
+                            <th>Arquivo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    {% for andamento in object_list %}
-                    <tr>
-                        <td>{{ andamento.processo }}</td>
-                        <!-- <td>{{ andamento.id }}</td> -->
-                        <td>{{ andamento.datandamento }}</td>
-                        <td>{{ andamento.andamento }}</td>
-                        <td>{{ andamento.dataprazo }}</td>
-                        <td>{{ user }}</td>
-                        <td>
-                            <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
-                            <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
-                        </td>
-                        <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-folder-check" style="font-size: 15px;"><!--Listar Arquivos do andamento (usando ícone)--></i></a>
-                        </td>
-                    </tr>
-
-                    {% empty %} <!-- Se não tiver nenhum registro de processos, irá retornar a mensagem a baixo -->
-
-                    <tr>
-                        <td colspan="3">Nenhum andamento registrado</td>
-                    </tr>
-
-                    {% endfor %}
-
+                        {% for andamento in object_list %}
+                        <tr>
+                            <td>{{ andamento.processo }}</td>
+                            <!-- <td>{{ andamento.id }}</td> -->
+                            <td>{{ andamento.datandamento }}</td>
+                            <td>{{ andamento.andamento }}</td>
+                            {% if andamento.dataprazo == Null %}
+                                <td><!--Campo ficará vazio pois a data do prazo não foi selecionada --></td>
+                            {% else %}
+                                <td>{{ andamento.dataprazo }}</td>
+                            {% endif%}
+                            <td>{{ user }}</td>
+                            <td>
+                                <a href="{% url 'upd-and-proc-adm' andamento.pk %}" class="btn btn-primary btn-sm"><i class="bi bi-gear" style="font-size: 15px;"><!--Editar Andamento (usando ícone)--></i></a>
+                                <a href="{% url 'del-and-proc-adm' andamento.pk %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" style="font-size: 15px;"><!--Excluir Andamento (usando ícone)--></i></a>
+                            </td>
+                            <td><a href="{% url 'list-arq-and-adm' andamento.pk %}" class="btn btn-warning btn-sm"><i class="bi bi-folder-check" style="font-size: 15px;"><!--Listar Arquivos do andamento (usando ícone)--></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
                 <a href="{% url 'list-proc-adm' %}" class="btn btn-secondary btn-sm"><i class="bi bi-arrow-left" style="font-size: 15px;"><!--Icone--></i></a>
             </div>           
@@ -61,17 +62,55 @@
     </div>
     <br>
 </div>    
-    <!-- Código CSS + JavaScript para criar botão de voltar para a página anterior
-    <button class="btn btn-secondary btn-sm" id="btnVoltar">Voltar</button>
-    
-    <script>
-        // Adicione um evento de clique ao botão
-        document.getElementById("btnVoltar").addEventListener("click", function() {
-            // Utilize a função window.history.back() para voltar para a página anterior
-            window.history.back();
-        });
-    </script> -->
 
+{% endblock %}
+
+{% block scripts %}
+
+<!-- Importação JS da minha 'datatable' -->
+<script src="https://cdn.datatables.net/v/bs5/dt-1.13.6/datatables.min.js"></script>
+
+<script>
+    // Para transformar minha lista em um datatable
+    $(document).ready(function(){
+        // $('#tabela-listar').DataTable();
+    
+        // });
+
+        $('#tabela-listar-andamento').DataTable({
+            responsive: true,
+            // "bSort": false,
+            "aaSorting": [],
+            "pageLength": 5,
+            "language": {
+                "decimal": "",
+                "emptyTable": "Nenhum andamento registrado",
+                "info": "Mostrando de _START_ até _END_ de _TOTAL_ andamentos",
+                "infoEmpty": "Mostrando de 0 até 0 de 0 andamentos",
+                "infoFiltered": "(Filtrado de _MAX_ andamentos no total)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ andamentos",
+                "loadingRecords": "A carregar dados...",
+                "processing": "A processar...",
+                "search": "Buscar:",
+                "zeroRecords": "Nenhum andamento encontrado",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": ordem crescente",
+                    "sortDescending": ": ordem decrescente"
+                }
+            }
+        });
+
+    });
+
+</script>
 
 
 {% endblock %}
