@@ -1,5 +1,5 @@
 from django.db.models.query import QuerySet
-from django.views.generic import TemplateView # Módulo apenas para visualizar 
+# from django.views.generic import View # Módulo apenas para visualizar 
 from typing import Any, Dict
 from django.views.generic.edit import CreateView, UpdateView, DeleteView # Módulo para criar, atualizar e deletar
 from django.views.generic.list import ListView # Módulo para listar
@@ -12,6 +12,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin # Módulo para control
 from braces.views import GroupRequiredMixin # Para realizar o controle de grupos de permissões de usuários juntamente com o painel admin
 
 from .forms import CadProcessoAdmForm, AndamentoForm  # Para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
+
+
+# Importações do WeasyPrint (Gerar relatórios)
+from django.core.files.storage import FileSystemStorage
+from django.template.loader import render_to_string
+from django.http import HttpResponse
+from weasyprint import HTML
+
 
 ###### VISUALIZAR ######
 
@@ -159,3 +167,10 @@ class CadArquivosAdmList(LoginRequiredMixin, ListView):
 
 
     
+    
+###### RELATÓRIOS ######
+class CadAndamentoView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Andamento
+    template_name = 'relatorios/relatorio.html'
+

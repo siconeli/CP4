@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+</head>
+<body>
+    <table></table>
+        <thead>
+            <tr>
+                <th>Processo</th>
+                <th>Data do Andamento</th>
+                <th>Tipo</th>
+                <th>Prazo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for andamento in object_list %}
+            <tr>
+                <td>{{ andamento.processo }}</td>
+                <td>{{ andamento.datandamento }}</td>
+                <td>{{ andamento.andamento }}</td>
+                <td>{{ andamento.dataprazo }}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
