@@ -34,12 +34,12 @@
                 </div>
                 <div class="row"> <!-- w-50 (colocar para diminuir o tamanho do campo input)-->
                     <div class="col">
-                        <label for="municipio">Município <b>*</b></label>
-                        {% render_field form.municipio class="form-control" id="municipio"%}
-                    </div>
-                    <div class="col">
                         <label for="uf">UF <b>*</b></label>
                         {% render_field form.uf class="form-control" id="uf"%}
+                    </div>
+                    <div class="col">
+                        <label for="municipio">Município <b>*</b></label>
+                        {% render_field form.municipio class="form-control" id="municipio"%}
                     </div>
                 </div>
                 <br>
@@ -132,13 +132,16 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <label for="endereco">Endereço</label>
+                        <label for="endereco">Logradouro / N° / Bairro</label>
                         {% render_field form.endereco class="form-control" id="endereco"%}
                     </div> 
                     <!-- <div class="col">
                         <label for="numero">Número</label>
                         {% render_field form.numero class="form-control" id="numero"%}
                     </div>  -->
+                </div>
+                <br>
+                <div class="row">
                     <div class="col">
                         <label for="complemento">Complemento</label>
                         {% render_field form.complemento class="form-control" id="complemento"%}
@@ -151,12 +154,12 @@
                         {% render_field form.bairro class="form-control" id="bairro"%}
                     </div>  -->
                     <div class="col">
-                        <label for="municipiocontri">Município</label>
-                        {% render_field form.municipiocontri class="form-control" id="municipiocontri"%}
-                    </div> 
-                    <div class="col">
                         <label for="ufcontri">UF</label>
                         {% render_field form.ufcontri class="form-control" id="ufcontri"%}
+                    </div> 
+                    <div class="col">
+                        <label for="municipiocontri">Município</label>
+                        {% render_field form.municipiocontri class="form-control" id="municipiocontri"%}
                     </div> 
                     <div class="col">
                         <label for="cep">CEP</label>

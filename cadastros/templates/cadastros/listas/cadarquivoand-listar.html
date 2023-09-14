@@ -51,30 +51,6 @@
                                     </td>
                                 </tr>
                             {% endif %}
-                            {% if arquivo.arq4 %}
-                                <tr>
-                                    <td>
-                                        {{ arquivo.arq4.name }}
-                                        <a href="{{ arquivo.arq4.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                                    </td>
-                                </tr>
-                            {% endif %}
-                            {% if arquivo.arq5 %}
-                                <tr>
-                                    <td>
-                                        {{ arquivo.arq5.name }}
-                                        <a href="{{ arquivo.arq5.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                                    </td>
-                                </tr>
-                            {% endif %}
-                            {% if arquivo.arq6 %}
-                                <tr>
-                                    <td>
-                                        {{ arquivo.arq6.name }}
-                                        <a href="{{ arquivo.arq6.url }}" class="btn btn-info btn-sm" target="_blank"><i class="bi bi-download" style="font-size: 15px;"><!--Icone de download--></i></a>
-                                    </td>
-                                </tr>
-                            {% endif %}                
                         {% endfor %}
                     </tbody>
                 </table>

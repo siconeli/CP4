@@ -25,6 +25,10 @@
                         <label for="processo">Processo</label>
                         {% render_field form.processo class="form-control" id="processo"%}
                     </div>
+
+                </div>
+                <br>
+                <div class="row">
                     <div class="col">
                         <label for="datandamento">Data do Andamento</label>
                         {% render_field form.datandamento class="form-control" id="datandamento"%}
@@ -47,10 +51,10 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col">
+                    <!-- <div class="col">
                         <label for="locprocesso">Localização do Processo</label>
                         {% render_field form.locprocesso class="form-control" id="locprocesso"%}
-                    </div>
+                    </div> -->
                     <div class="col">
                         <label for="funcionario">Funcionário</label>
                         {% render_field form.funcionario class="form-control" id="funcionario"%}
@@ -82,21 +86,6 @@
                         {% render_field form.arq3 class="form-control" id="arq3"%}
                     </div> 
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <!-- <label for="arq4">Arquivo</label> -->
-                        {% render_field form.arq4 class="form-control" id="arq4"%}
-                    </div>
-                    <div class="col">
-                        <!-- <label for="arq5">Arquivo</label> -->
-                        {% render_field form.arq5 class="form-control" id="arq5"%}     
-                    </div>
-                    <div class="col">
-                        <!-- <label for="arq6">Arquivo</label> -->
-                        {% render_field form.arq6 class="form-control" id="arq6"%}   
-                    </div> 
-                </div> 
                 <br>
                 <div>
                     <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-check-lg" style="font-size: 15px;"><!--Icone--></i></button>

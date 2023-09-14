@@ -9,5 +9,5 @@ class ProcessoAdministrativoAdmin(admin.ModelAdmin):
 
 @admin.register(Andamento)
 class AndamentoAdmin(admin.ModelAdmin):
-    list_display = ('processo', 'andamento', 'arq1', 'arq2', 'arq3', 'arq4', 'arq5', 'arq6')
+    list_display = ('processo', 'andamento', 'arq1', 'arq2', 'arq3')
 

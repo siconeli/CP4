@@ -48,7 +48,7 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     # numero = models.IntegerField(blank=True, null=True) # Número 
     complemento = models.CharField(max_length=50, blank=True, null=True) # Complemento
     # bairro = models.CharField(max_length=50, blank=True, null=True) # Bairro
-    municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) # Município Contribuinte
+    municipiocontri = models.CharField(max_length=50, blank=True, null=True) # Município Contribuinte
     ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) # UF Contribuinte
     cep = models.CharField(max_length=10, blank=True, null=True) # CEP
     tel = models.CharField(max_length=20, blank=True, null=True) # Telefone
@@ -76,10 +76,10 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     arq1 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True) 
     arq2 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
     arq3 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
-    arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
-    arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
-    arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True) # blank=True para remover a obrigatoriedade de preencher o campo. 
+    # arq4 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    # arq5 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True)
+    # arq6 = models.FileField(upload_to='uploads/', verbose_name='Arquivo', blank=True) # blank=True para remover a obrigatoriedade de preencher o campo. 
 
     def __str__(self):
-        return f'Processo: {self.processo} Andamento: {self.andamento} Arquivo: {self.arq1} Arquivo: {self.arq2} Arquivo: {self.arq3} Arquivo: {self.arq4} Arquivo: {self.arq5} Arquivo: {self.arq6}'
+        return f'Processo: {self.processo} Andamento: {self.andamento} Arquivo: {self.arq1} Arquivo: {self.arq2} Arquivo: {self.arq3}'
 
