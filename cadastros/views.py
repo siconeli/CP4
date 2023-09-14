@@ -34,7 +34,7 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     model = Andamento
     form_class = AndamentoForm
     template_name = 'cadastros/cadandprocessoadm-cadastrar.html'
-    success_url = reverse_lazy('list-proc-adm')
+    # success_url = reverse_lazy('list-proc-adm')
 
     # Funções para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
     def get_context_data(self, **kwargs): 
@@ -48,6 +48,10 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
         kwargs['processo_pk'] = self.kwargs.get('processo_pk') # Passa a processo_pk para o formulário
         return kwargs
 
+    def get_success_url(self):
+        processo_pk = 5
+
+        return reverse('list-and-proc-adm', args=[processo_pk])
 
 
 
@@ -69,8 +73,9 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     # success_url = reverse_lazy('list-and-proc-adm')
 
-    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update. (Isso o programa voltar para a lista de andamentos do processo após realizar o update com sucesso)
+    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update. (O programa volta para a lista de andamentos do processo após realizar o update com sucesso)
     def get_success_url(self):
+        andamento_pk = self.kwargs.get('pk') # Pega a pk do andamento ao fazer o update
 
         processo_pk = 5 # Descobrir como buscar a PK do processo
 
