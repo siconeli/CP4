@@ -73,13 +73,14 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     # success_url = reverse_lazy('list-and-proc-adm')
 
-    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update. (O programa volta para a lista de andamentos do processo após realizar o update com sucesso)
+    # Após realizar o update com sucesso, reverte para a lista de andamentos do processo
     def get_success_url(self):
-        andamento_pk = self.kwargs.get('pk') # Pega a pk do andamento ao fazer o update
-
-        processo_pk = 5 # Descobrir como buscar a PK do processo
+        andamento_pk = self.kwargs.get('pk') # Pega a PK do andamento ao fazer o update através da URL
+        andamento = Andamento.objects.get(pk=andamento_pk) # Busca o andamento através da PK do andamento
+        processo_pk = andamento.processo_id # Busca a PK do processo através do andamento (processo_id é a ForeignKey entre o processo administrativo e o andamento)
 
         return reverse('list-and-proc-adm', args=[processo_pk])
+
 
 
 
