@@ -44,10 +44,10 @@ class ProcessoAdministrativo(Base): # Cadastro de processo administrativo - Camp
     doc = models.CharField(max_length=20, verbose_name='CPF/CNPJ', unique=True) # CPF / CNPJ
     nomefantasia = models.CharField(max_length=50, blank=True, null=True) # Nome Fantasia
     email = models.EmailField(max_length=50, blank=True, null=True) # E-mail
-    logradouro = models.CharField(max_length=50, blank=True, null=True) # Rua
-    numero = models.IntegerField(blank=True, null=True) # Número
+    endereco = models.CharField(max_length=150) # Rua
+    # numero = models.IntegerField(blank=True, null=True) # Número 
     complemento = models.CharField(max_length=50, blank=True, null=True) # Complemento
-    bairro = models.CharField(max_length=50, blank=True, null=True) # Bairro
+    # bairro = models.CharField(max_length=50, blank=True, null=True) # Bairro
     municipiocontri = models.CharField(max_length=50, choices=municipios, blank=True, null=True) # Município Contribuinte
     ufcontri = models.CharField(max_length=2, choices=ufs, verbose_name='UF', blank=True, null=True) # UF Contribuinte
     cep = models.CharField(max_length=10, blank=True, null=True) # CEP
@@ -69,7 +69,7 @@ class Andamento(Base): # Cadastro de andamentos - Campos do Formulário
     andamento = models.CharField(max_length=100, choices=andamentos, verbose_name='Andamento')
     dias = models.IntegerField(blank=True, null=True)
     dataprazo = models.DateField(blank=True, null=True)
-    locprocesso = models.CharField(max_length=50, blank=True, null=True)
+    # locprocesso = models.CharField(max_length=50, blank=True, null=True)
     funcionario = models.CharField(max_length=50, blank=True, null=True)
     datrecebimento = models.DateField(blank=True, null=True)
     complemento = models.CharField(max_length=150, blank=True, null=True)
