@@ -69,10 +69,10 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
     template_name = 'cadastros/cadandprocessoadm-editar.html'
     # success_url = reverse_lazy('list-and-proc-adm')
 
-    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update.
+    # Busca a PK do processo contida na URL e adiciona na URL de sucesso após realizar o update. (Isso o programa voltar para a lista de andamentos do processo após realizar o update com sucesso)
     def get_success_url(self):
 
-        processo_pk = 5
+        processo_pk = 5 # Descobrir como buscar a PK do processo
 
         return reverse('list-and-proc-adm', args=[processo_pk])
 
