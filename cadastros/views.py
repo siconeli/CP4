@@ -48,8 +48,9 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
         kwargs['processo_pk'] = self.kwargs.get('processo_pk') # Passa a processo_pk para o formulário
         return kwargs
 
+    # Após realizar o create do andamento com sucesso, reverte para a lista de andamentos do processo
     def get_success_url(self):
-        processo_pk = 5
+        processo_pk = self.kwargs.get('processo_pk') # Pega a PK do processo através da URL       
 
         return reverse('list-and-proc-adm', args=[processo_pk])
 
@@ -79,8 +80,7 @@ class CadAndamentoUpdate(GroupRequiredMixin, LoginRequiredMixin, UpdateView): # 
         andamento = Andamento.objects.get(pk=andamento_pk) # Busca o andamento através da PK do andamento
         processo_pk = andamento.processo_id # Busca a PK do processo através do andamento (processo_id é a ForeignKey entre o processo administrativo e o andamento)
 
-        return reverse('list-and-proc-adm', args=[processo_pk])
-
+        return reverse('list-and-proc-adm', args=[processo_pk]) # URL da lista de andamentos + pk do processo 
 
 
 
