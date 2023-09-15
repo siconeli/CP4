@@ -30,3 +30,8 @@ urlpatterns = [
     path('', include('usuarios.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+
+# Editar a Área Administrativa do Django
+admin.site.site_header = 'Controle de Processos' # Título da tela de Login
+admin.site.site_title = 'Controle de Processos' # Título da aba do navegador da tela de Login
+admin.site.index_title = 'Sistema de Gerenciamento de Processos' # Título da página principal após o login

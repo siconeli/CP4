@@ -11,3 +11,4 @@ class ProcessoAdministrativoAdmin(admin.ModelAdmin):
 class AndamentoAdmin(admin.ModelAdmin):
     list_display = ('processo', 'andamento', 'arq1', 'arq2', 'arq3')
 
+

@@ -14,13 +14,6 @@ from braces.views import GroupRequiredMixin # Para realizar o controle de grupos
 from .forms import CadProcessoAdmForm, AndamentoForm  # Para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
 
 
-# Importações do WeasyPrint (Gerar relatórios)
-from django.core.files.storage import FileSystemStorage
-from django.template.loader import render_to_string
-from django.http import HttpResponse
-from weasyprint import HTML
-
-
 ###### VISUALIZAR ######
 
 
@@ -164,13 +157,4 @@ class CadArquivosAdmList(LoginRequiredMixin, ListView):
         # Usei o 'filter' para conseguir iterar com o objeto.
 
         return andamento
-
-
-    
-    
-###### RELATÓRIOS ######
-class CadAndamentoView(LoginRequiredMixin, ListView):
-    login_url = reverse_lazy('login')
-    model = Andamento
-    template_name = 'relatorios/relatorio.html'
 

@@ -16,7 +16,7 @@ from .views import CadProcessoAdmList
 from .views import CadAndamentosList
 from .views import CadArquivosAdmList
 
-from .views import CadAndamentoView
+# from .views import CadAndamentoView
 
 
 urlpatterns = [
@@ -42,8 +42,5 @@ urlpatterns = [
     path('listar/processo/adm/', CadProcessoAdmList.as_view(), name='list-proc-adm'),
     path('listar/andamento/adm/<int:processo_pk>/', CadAndamentosList.as_view(), name='list-and-proc-adm'),
     path('listar/arquivo/andamento/adm/<int:andamento_pk>/', CadArquivosAdmList.as_view(), name='list-arq-and-adm'),
-
-    ##### RELATÓRIOS #####
-    path('relatorio/andamento/', CadAndamentoView.as_view(), name='relatorio'),
 
 ]
