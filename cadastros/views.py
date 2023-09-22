@@ -26,8 +26,6 @@ class CadProcessoAdmCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): 
     template_name = 'cadastros/cadprocessoadm-cadastrar.html'
     success_url = reverse_lazy('list-proc-adm')  # name da url, irá direcionar para a url        
        
-    
-
 # View do create de andamentos, preenche automaticamente o Campo processo
 class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # Cadastro Andamento Administrativo
     login_url = reverse_lazy('login')
@@ -41,7 +39,6 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
     def get_context_data(self, **kwargs): 
         context = super().get_context_data(**kwargs)
         context['processo_pk'] = self.kwargs.get('processo_pk')
-        # context['botao'] = 'Cadastrar' # Para o botão da página de cadastrar andamento, ter o nome 'Cadastrar' e não 'Salvar', pois utilizo o mesmo template para cadastrar e fazer update.
         return context
 
     def get_form_kwargs(self):

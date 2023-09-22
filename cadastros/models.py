@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Base(models.Model): # Classe para registrar no banco de dados, data de criação e modificação dos registros.
     criados = models.DateField('Criação', auto_now_add=True)
     modificado = models.DateField('Atualização', auto_now=True)
-    ativo = models.BooleanField('Ativo?', default=True) 
+    ativo = models.BooleanField('Ativo?', default=True)
     
     class Meta:
         abstract = True
