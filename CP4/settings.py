@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig', # Para excluir arquivos da pasta de uploads após editar o registro e adicionar um novo arquivo.
     'widget_tweaks', # Biblioteca Widget - Muito importante - Torna possível eu criar um formulário HTML próprio sincronizado com as Class Based Views.
 
+
 ]
 
 
