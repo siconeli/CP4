@@ -13,6 +13,7 @@ from braces.views import GroupRequiredMixin # Para realizar o controle de grupos
 
 from .forms import CadProcessoAdmForm, AndamentoForm  # Para preencher o campo processo automaticamente no cadastro de andamento, de acordo com o ID do processo passada pela URL
 
+from docx2pdf import convert
 
 ###### VISUALIZAR ######
 
@@ -51,6 +52,13 @@ class CadAndamentoCreate(GroupRequiredMixin, LoginRequiredMixin, CreateView): # 
         processo_pk = self.kwargs.get('processo_pk') # Pega a PK do processo através da URL       
 
         return reverse('list-and-proc-adm', args=[processo_pk])
+    
+    def get(self, request, documento_id):
+        documento = 
+
+    convert(r"C:\Users\luisf\OneDrive\Área de Trabalho\Siconeli\PARTICULAR\ProjetoCP4\CP4\media\uploads\teste.docx", r"C:\Users\luisf\OneDrive\Área de Trabalho\Siconeli\PARTICULAR\ProjetoCP4\CP4\media\uploads\pdf_converted_file.pdf")
+
+
 
 
 
@@ -154,4 +162,5 @@ class CadArquivosAdmList(LoginRequiredMixin, ListView):
         # Usei o 'filter' para conseguir iterar com o objeto.
 
         return andamento
+
 
